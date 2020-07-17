@@ -1,0 +1,26 @@
+.navbar-brand {
+  padding-right: 2em;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.pad-left {
+  padding: 0em 0em 0em 2em;
+}
+
+@media screen and (max-width: 991px) {
+  .navbar-brand {
+    padding-right: 0em;
+  }
+
+  .pad-left {
+    padding: 0em;
+  }
+
+  .form-control {
+    min-width: 100%;
+    text-align: center;
+  }
+}
