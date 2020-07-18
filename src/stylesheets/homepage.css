@@ -1,0 +1,19 @@
+.h3 {
+  color: #f5c01f;
+  margin-top: 1em;
+}
+
+.left-border {
+  border-left: 2px solid #f5c01f;
+  line-height: 1.12;
+}
+
+.sub-heading {
+  margin-bottom: auto;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.sub-script {
+  color: #ffffff;
+}
