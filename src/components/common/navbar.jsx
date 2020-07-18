@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import logo from "../logo.svg";
-import "../stylesheets/navbar.css";
+import logo from "../../logo.svg";
+import "../../stylesheets/navbar.css";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link className="navbar-brand" to="/">
+      <a className="navbar-brand" href="/">
         <img src={logo} alt="hi" />
-      </Link>
+      </a>
       <button
         className="navbar-toggler"
         type="button"
@@ -23,15 +23,20 @@ const Navbar = () => {
       </button>
       <div className="collapse navbar-collapse" id="myid">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item pad-left active">
-            <Link className="nav-link" to="/movies">
-              Movies
-            </Link>
+          <li className="nav-item pad-left">
+            <NavLink className="nav-link" exact to="/">
+              Home
+            </NavLink>
           </li>
           <li className="nav-item pad-left">
-            <Link className="nav-link" to="/shows">
+            <NavLink className="nav-link" to="/movies">
+              Movies
+            </NavLink>
+          </li>
+          <li className="nav-item pad-left">
+            <NavLink className="nav-link" to="/shows">
               Tv Shows
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <ul className="navbar-nav">
@@ -46,9 +51,9 @@ const Navbar = () => {
             </form>
           </li>
           <li className="nav-item pad-left">
-            <Link className="nav-link" to="/signin">
+            <NavLink className="nav-link" to="/signin">
               Sign In
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
