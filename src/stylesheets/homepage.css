@@ -12,6 +12,16 @@
   margin-bottom: auto;
   color: #ffffff;
   margin-left: 10px;
+  width: fit-content;
+  background-image: linear-gradient(120deg, #f5c01f 0%, #f5c01f 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.1em;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+}
+
+.sub-heading:hover {
+  background-size: 100% 88%;
 }
 
 .sub-script {
