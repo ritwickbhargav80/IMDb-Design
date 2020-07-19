@@ -43,17 +43,20 @@ const Navbar = () => {
           <li className="nav-item">
             <form className="form-inline my-2 my-lg-0">
               <input
-                className="form-control mr-sm-2"
+                className="form-control mr-sm-2 search-box"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
             </form>
           </li>
-          <li className="nav-item pad-left">
-            <NavLink className="nav-link" to="/signin">
-              Sign In
-            </NavLink>
+          <li className="nav-item pad-left last">
+            <div className="behind" />
+            <div className="front">
+              <NavLink className="nav-link sign-in" to="/signin">
+                Sign In
+              </NavLink>
+            </div>
           </li>
         </ul>
       </div>
