@@ -1,24 +1,11 @@
 import React from "react";
+
+import { getDateFunction } from "./../utils/common";
+
 import "../stylesheets/homepage.css";
 
 const HomePage = () => {
-  let date = new Date();
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "March",
-    "May",
-    "June",
-    "July",
-    "August",
-    "October",
-    "November",
-    "December",
-  ];
-  const month = months[date.getMonth() + 1];
-  date = date.getDate();
+  const { date, month } = getDateFunction();
 
   return (
     <div className="container">
