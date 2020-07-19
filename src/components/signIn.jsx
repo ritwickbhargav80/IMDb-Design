@@ -5,9 +5,7 @@ import "../stylesheets/signIn.css";
 const SignIn = () => {
   return (
     <div className="container">
-      <div>
-        <h3 className="h3">Information at your Ease</h3>
-      </div>
+      <h3 className="h3">Information at your Ease</h3>
       <div className="row">
         <div
           className="col-sm"
@@ -67,13 +65,12 @@ const SignIn = () => {
             background: "#ffffff",
             borderTopRightRadius: "14px",
             borderBottomRightRadius: "14px",
+            opacity: "0.95",
           }}
         >
-          <div>
-            <h3 className="h3" style={{ textAlign: "center" }}>
-              Log In
-            </h3>
-          </div>
+          <h3 className="h3" style={{ textAlign: "center" }}>
+            Log In
+          </h3>
         </div>
       </div>
     </div>

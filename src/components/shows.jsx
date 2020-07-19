@@ -1,7 +1,11 @@
 import React from "react";
 
 const Shows = () => {
-  return <h1>Shows</h1>;
+  return (
+    <div className="container">
+      <h3 className="h3">Tv Shows</h3>
+    </div>
+  );
 };
 
 export default Shows;
