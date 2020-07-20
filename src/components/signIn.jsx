@@ -64,7 +64,7 @@ class SignIn extends Component {
             </p>
             <br />
           </div>
-          <div className="col-md right-div">
+          <div className="col-md div-right">
             {!login && !register && <Default />}
             {login && <Login />}
             {register && <Register />}

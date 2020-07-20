@@ -29,7 +29,7 @@
   margin-top: 14% !important;
 }
 
-.right-div {
+.div-right {
   background: #ffffff;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
@@ -55,4 +55,12 @@
 }
 
 @media screen and (max-width: 767px) {
+  .div-left,
+  .div-right {
+    border-radius: 0px;
+  }
+
+  .left-div-heading {
+    margin-top: 5% !important;
+  }
 }
