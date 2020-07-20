@@ -18,15 +18,8 @@ class SignIn extends Component {
     return (
       <div className="container">
         <h3 className="h3">Information at your Ease</h3>
-        <div className="row" style={{ paddingTop: "0.5rem" }}>
-          <div
-            className="col-md"
-            style={{
-              background: "#343a40",
-              borderTopLeftRadius: "14px",
-              borderBottomLeftRadius: "14px",
-            }}
-          >
+        <div className="row default">
+          <div className="col-md div-left">
             <div className="row neg-margin">
               <div className="img-container col-md-3">
                 <img
@@ -36,7 +29,7 @@ class SignIn extends Component {
                 />
               </div>
               <div className="col-md">
-                <h3 className="h3" style={{ marginTop: "14%" }}>
+                <h3 className="h3 left-div-heading">
                   Benefits of your free IMDb account
                 </h3>
               </div>
@@ -71,15 +64,7 @@ class SignIn extends Component {
             </p>
             <br />
           </div>
-          <div
-            className="col-md"
-            style={{
-              background: "#ffffff",
-              borderTopRightRadius: "14px",
-              borderBottomRightRadius: "14px",
-              opacity: "0.95",
-            }}
-          >
+          <div className="col-md right-div">
             {!login && !register && <Default />}
             {login && <Login />}
             {register && <Register />}

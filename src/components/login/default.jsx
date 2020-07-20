@@ -36,6 +36,21 @@ const Default = () => {
         <img src={apple} alt="apple-logo" className="btn-logo-1" />
         <span className="btn-txt">Sign in with Apple</span>
       </button>
+      <div className="divider">
+        <hr />
+        <span>or</span>
+      </div>
+      <button
+        className="btn"
+        style={{ backgroundColor: "#f5c01f", fontWeight: "600" }}
+      >
+        Create a New Account
+      </button>
+      <p style={{ marginTop: "1rem", marginBottom: "0rem" }}>
+        By signing in, you agree to IMDb's{" "}
+        <a href="https://www.imdb.com/conditions">Conditions of Use</a> &{" "}
+        <a href="https://www.imdb.com/privacy">Privacy Policy</a>.
+      </p>
     </div>
   );
 };

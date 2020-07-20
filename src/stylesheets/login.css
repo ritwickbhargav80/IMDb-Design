@@ -21,3 +21,18 @@
 .btn-txt {
   float: left;
 }
+
+.divider {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.divider span {
+  position: absolute;
+  margin-left: -28px;
+  top: -11px;
+  background: #fff;
+  padding: 0 20px;
+}

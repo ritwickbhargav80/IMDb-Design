@@ -1,3 +1,13 @@
+.default {
+  padding-top: 0.5rem;
+}
+
+.div-left {
+  background: #343a40;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
 .neg-margin {
   margin-top: -2px;
 }
@@ -13,6 +23,17 @@
 .rocket {
   margin-left: 15px;
   width: 5em;
+}
+
+.left-div-heading {
+  margin-top: 14% !important;
+}
+
+.right-div {
+  background: #ffffff;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  opacity: 0.95;
 }
 
 /* @-webkit-keyframes mover {
@@ -31,4 +52,7 @@
   100% {
     transform: translateY(-20px);
   }
+}
+
+@media screen and (max-width: 767px) {
 }
