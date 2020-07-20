@@ -1,3 +1,7 @@
+.txt-center {
+  text-align: center;
+}
+
 .custom {
   width: 16em;
   margin-bottom: 10px;
@@ -35,4 +39,9 @@
   top: -11px;
   background: #fff;
   padding: 0 20px;
+}
+
+.create-acc-btn {
+  background-color: #f5c01f !important;
+  font-weight: 600 !important;
 }

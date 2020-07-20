@@ -9,7 +9,7 @@ import "../../stylesheets/login.css";
 
 const Default = () => {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className="txt-center">
       <h3 className="h3">Welcome Back</h3>
       <br />
       <button className="btn custom">
@@ -40,12 +40,7 @@ const Default = () => {
         <hr />
         <span>or</span>
       </div>
-      <button
-        className="btn"
-        style={{ backgroundColor: "#f5c01f", fontWeight: "600" }}
-      >
-        Create a New Account
-      </button>
+      <button className="btn create-acc-btn">Create a New Account</button>
       <p style={{ marginTop: "1rem", marginBottom: "0rem" }}>
         By signing in, you agree to IMDb's{" "}
         <a href="https://www.imdb.com/conditions">Conditions of Use</a> &{" "}
