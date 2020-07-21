@@ -6,6 +6,7 @@ import Movies from "./components/movies";
 import Shows from "./components/shows";
 import SignIn from "./components/signIn";
 import HomePage from "./components/homepage";
+import Footer from "./components/common/footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signin" component={SignIn} />
         <Route path="/" component={HomePage} />
       </Switch>
+      <Footer />
     </div>
   );
 }

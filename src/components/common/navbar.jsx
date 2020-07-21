@@ -6,7 +6,7 @@ import "../../stylesheets/navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
         <img src={logo} alt="imdb-logo" />
       </a>

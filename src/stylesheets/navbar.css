@@ -52,6 +52,16 @@
 }
 
 @media screen and (max-width: 991px) {
+  .pad-left {
+    padding: 0px 0px 0px 10px;
+  }
+
+  .last {
+    padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .navbar-brand {
     padding-right: 0em;
   }

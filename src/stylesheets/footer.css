@@ -1,0 +1,14 @@
+.footer {
+  width: 100%;
+  line-height: 60px;
+}
+
+.fa {
+  color: #ffffff;
+  font-size: x-large !important;
+  padding: 20px;
+}
+
+.footer-container {
+  text-align: center;
+}
