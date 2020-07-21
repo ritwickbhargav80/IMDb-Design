@@ -1,6 +1,7 @@
 .footer {
   width: 100%;
   line-height: 60px;
+  margin-top: 50px;
 }
 
 .fa {
@@ -11,4 +12,31 @@
 
 .footer-container {
   text-align: center;
+}
+
+.footer-row {
+  line-height: 2em;
+  margin-bottom: 15px;
+}
+
+.mar-top {
+  margin-top: 15px;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.5);
+  min-width: fit-content;
+}
+
+.footer-link:hover {
+  text-decoration: none;
+  color: #ffffff;
+  transform: scale(1.07);
+}
+
+@media screen and (max-width: 768px) {
+  .res-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
