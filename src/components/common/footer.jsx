@@ -40,16 +40,16 @@ const Footer = () => {
               <a className="col-sm-1 footer-link" href="/">
                 IMDb Developer
               </a>
+            </div>
+          </div>
+          <div className="footer-row">
+            <div className="ml-auto mr-auto res-row">
               <a className="col-sm-1 footer-link" href="/">
                 Press Room
               </a>
               <a className="col-sm-1 footer-link" href="/">
                 Advertising
               </a>
-            </div>
-          </div>
-          <div className="footer-row">
-            <div className="ml-auto mr-auto res-row">
               <a className="col-sm-1 footer-link" href="/">
                 Jobs
               </a>
@@ -70,10 +70,9 @@ const Footer = () => {
             src={an_amazon_company}
             alt="IMDb, An Amazon Company"
           />
-          <div className="footer-copyright text-center">
-            © 1990-{year} by
-            <Link className="footer-link" to="/">
-              {" "}
+          <div className="footer-copyright text-center font-size">
+            <span className="copyright">© 1990-{year} by</span>
+            <Link className="footer-link " to="/">
               IMDb.com, Inc.
             </Link>
           </div>

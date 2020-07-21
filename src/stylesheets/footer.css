@@ -16,7 +16,7 @@
 
 .footer-row {
   line-height: 2em;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .mar-top {
@@ -26,12 +26,23 @@
 .footer-link {
   color: rgba(255, 255, 255, 0.5);
   min-width: fit-content;
+  display: inline-block;
 }
 
 .footer-link:hover {
   text-decoration: none;
   color: #ffffff;
   transform: scale(1.07);
+}
+
+.footer-copyright {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.copyright {
+  color: #ffffff;
+  padding-right: 8px;
 }
 
 @media screen and (max-width: 768px) {
