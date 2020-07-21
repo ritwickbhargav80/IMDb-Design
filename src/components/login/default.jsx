@@ -41,7 +41,7 @@ const Default = () => {
         <span>or</span>
       </div>
       <button className="btn create-acc-btn">Create a New Account</button>
-      <p style={{ marginTop: "1rem", marginBottom: "0rem" }}>
+      <p className="tnc">
         By signing in, you agree to IMDb's{" "}
         <a href="https://www.imdb.com/conditions">Conditions of Use</a> &{" "}
         <a href="https://www.imdb.com/privacy">Privacy Policy</a>.
