@@ -1,8 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
+import { getDateFunction } from "./../../utils/common";
+
+import an_amazon_company from "../../assets/an_amazon_company.png";
 import "../../stylesheets/footer.css";
 
 const Footer = () => {
+  const { year } = getDateFunction();
+
   return (
     <footer className="footer bg-dark">
       <div className="footer-container">
@@ -57,6 +63,19 @@ const Footer = () => {
                 Interest-Based Ads
               </a>
             </div>
+          </div>
+          <img
+            width="200px"
+            height="32px"
+            src={an_amazon_company}
+            alt="IMDb, An Amazon Company"
+          />
+          <div className="footer-copyright text-center">
+            © 1990-{year} by
+            <Link className="footer-link" to="/">
+              {" "}
+              IMDb.com, Inc.
+            </Link>
           </div>
         </div>
       </div>

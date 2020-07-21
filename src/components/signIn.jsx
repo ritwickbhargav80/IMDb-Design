@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import Default from "./login/default";
-
-import "../stylesheets/signIn.css";
 import Login from "./login/login";
 import Register from "./login/register";
+
+import "../stylesheets/signIn.css";
 
 class SignIn extends Component {
   state = {
