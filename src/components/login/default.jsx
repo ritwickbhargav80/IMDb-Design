@@ -7,12 +7,12 @@ import google from "../../assets/google.png";
 import apple from "../../assets/apple.png";
 import "../../stylesheets/login.css";
 
-const Default = () => {
+const Default = ({ signIn, register }) => {
   return (
     <div className="txt-center">
       <h3 className="h3">Welcome Back</h3>
       <br />
-      <button className="btn custom">
+      <button className="btn custom" onClick={signIn}>
         <img src={logo} alt="imdb-logo" className="btn-logo" />
         <span className="btn-txt">Sign in with IMDb</span>
       </button>
@@ -40,7 +40,9 @@ const Default = () => {
         <hr />
         <span>or</span>
       </div>
-      <button className="btn create-acc-btn">Create a New Account</button>
+      <button className="btn create-acc-btn" onClick={register}>
+        Create a New Account
+      </button>
       <p className="tnc">
         By signing in, you agree to IMDb's{" "}
         <a href="https://www.imdb.com/conditions">Conditions of Use</a> &{" "}

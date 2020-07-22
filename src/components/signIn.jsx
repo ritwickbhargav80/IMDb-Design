@@ -12,6 +12,14 @@ class SignIn extends Component {
     register: false,
   };
 
+  handleSignIn = () => {
+    this.setState({ login: true });
+  };
+
+  handleRegister = () => {
+    this.setState({ register: true });
+  };
+
   render() {
     const { login, register } = this.state;
 
@@ -65,7 +73,12 @@ class SignIn extends Component {
             <br />
           </div>
           <div className="col-md div-right">
-            {!login && !register && <Default />}
+            {!login && !register && (
+              <Default
+                signIn={this.handleSignIn}
+                register={this.handleRegister}
+              />
+            )}
             {login && <Login />}
             {register && <Register />}
           </div>
