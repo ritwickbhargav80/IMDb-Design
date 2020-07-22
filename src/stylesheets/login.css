@@ -2,6 +2,11 @@
   float: left;
 }
 
+/* .custom-input {
+  box-shadow: 2.5px 1.5px;
+  border-radius: 0.25rem;
+} */
+
 .prepend {
   background-color: transparent !important;
   padding: 5px 0.375rem 5px 10px !important;
@@ -16,6 +21,12 @@
   border-left: transparent;
   padding-left: 0.375rem !important;
 }
+
+/* #email:focus,
+#password:focus {
+  border-color: #ced4da;
+  box-shadow: 0 0 0 0;
+} */
 
 #password {
   border-left: transparent;
