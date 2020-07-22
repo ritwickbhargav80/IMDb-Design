@@ -34,7 +34,8 @@
   padding: 0.375rem 0.375rem !important;
 }
 
-.icon {
+.icon,
+.fa-question-circle {
   padding: 0px;
   color: #343a40;
   display: inline-block;
@@ -65,6 +66,10 @@
   margin-bottom: 1rem;
 }
 
+.fa-question-circle {
+  padding-left: 10px;
+}
+
 .custom-width {
   width: 10em;
 }
@@ -72,6 +77,7 @@
 .create-acc-btn-1 {
   background-color: #ebf6f7 !important;
   font-weight: 600 !important;
+  margin-top: 5px;
 }
 
 .create-acc-btn-1:hover {

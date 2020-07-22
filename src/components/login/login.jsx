@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactTooltip from "react-tooltip";
 
 import "../../stylesheets/login.css";
 
@@ -95,7 +96,22 @@ class Login extends Component {
               id="switch"
             />
             <label className="custom-control-label" htmlFor="switch">
-              Remember Me
+              Keep me signed in
+              <i
+                className="fa-question-circle"
+                aria-hidden="true"
+                data-for="question-circle"
+                data-tip
+              />
+              <ReactTooltip place="right" id="question-circle">
+                <p>
+                  Choosing 'Keep me signed in' reduces the number of times
+                  <br />
+                  you're asked to Sign-In on this device. To keep your account
+                  <br />
+                  secure, use this option only on your personal devices.
+                </p>
+              </ReactTooltip>
             </label>
           </div>
           <input
