@@ -6,7 +6,7 @@ class Login extends Component {
   state = {
     type: "password",
     placeholder: "******************",
-    icon: "fa fa-eye eye",
+    icon: "fa fa-eye",
   };
 
   handleToggle = () => {
@@ -14,13 +14,13 @@ class Login extends Component {
       this.setState({
         type: "text",
         placeholder: "Enter the password",
-        icon: "fa fa-eye-slash eye",
+        icon: "fa fa-eye-slash",
       });
     } else {
       this.setState({
         type: "password",
         placeholder: "******************",
-        icon: "fa fa-eye eye",
+        icon: "fa fa-eye",
       });
     }
   };
@@ -35,36 +35,66 @@ class Login extends Component {
         <br />
         <form>
           <div className="form-group">
-            <label className="label" for="email">
+            <label className="label" htmlFor="email">
               Email address
             </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Enter your email address"
-              autoFocus="true"
-            />
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <div className="input-group-text prepend">
+                  <i className="fa-at fa-sm icon" aria-hidden="true" />
+                  {/* <i className="fa fa-envelope-o" aria-hidden="true" /> */}
+                </div>
+              </div>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter your email address"
+                autoFocus={true}
+                required={true}
+              />
+            </div>
           </div>
           <div className="form-group">
-            <label className="label" for="password">
+            <label className="label" htmlFor="password">
               Password
             </label>
             <small id="forget-pwd" className="form-text">
               Forget Password?
             </small>
-            <input
-              type={type}
-              className="form-control"
-              name="password"
-              id="password"
-              placeholder={placeholder}
-            />
-            <i class={icon} toggle="#password" onClick={this.handleToggle} />
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <div className="input-group-text prepend">
+                  <i className="fa-key icon" aria-hidden="true" />
+                </div>
+              </div>
+              <input
+                type={type}
+                className="form-control"
+                name="password"
+                id="password"
+                placeholder={placeholder}
+                autoComplete="false"
+                required={true}
+              />
+              <div className="input-group-append">
+                <div className="input-group-text append">
+                  <i
+                    className={icon + " eye linked-icons"}
+                    toggle="#password"
+                    onClick={this.handleToggle}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="switch" />
-            <label class="custom-control-label" for="switch">
+          <div className="custom-control custom-switch">
+            <input
+              type="checkbox"
+              className="custom-control-input"
+              id="switch"
+            />
+            <label className="custom-control-label" htmlFor="switch">
               Remember Me
             </label>
           </div>

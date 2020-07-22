@@ -14,7 +14,7 @@
   text-align: center;
 }
 
-i:hover {
+.linked-icons:hover {
   transform: scale(1.15);
 }
 

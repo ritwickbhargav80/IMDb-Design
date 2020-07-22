@@ -14,19 +14,22 @@ const Footer = () => {
       <div className="footer-container">
         <div className="container">
           <a href="https://www.imdb.com/whitelist-offsite?url=https%3A%2F%2Ffacebook.com%2Fimdb&page-action=fol_fb&ref=ft_fol_fb">
-            <i className="fa fa-facebook-square" aria-hidden="true" />
+            <i
+              className="fa fa-facebook-square linked-icons"
+              aria-hidden="true"
+            />
           </a>
           <a href="https://www.imdb.com/whitelist-offsite?url=https%3A%2F%2Finstagram.com%2Fimdb&page-action=fol_inst&ref=ft_fol_inst">
-            <i className="fa fa-instagram" aria-hidden="true" />
+            <i className="fa fa-instagram linked-icons" aria-hidden="true" />
           </a>
           <a href="https://www.imdb.com/whitelist-offsite?url=https%3A%2F%2Ftwitch.tv%2FIMDb&page-action=fol_twch&ref=ft_fol_twch">
-            <i className="fa fa-twitch" aria-hidden="true" />
+            <i className="fa fa-twitch linked-icons" aria-hidden="true" />
           </a>
           <a href="https://www.imdb.com/whitelist-offsite?url=https%3A%2F%2Ftwitter.com%2Fimdb&page-action=fol_tw&ref=ft_fol_tw">
-            <i className="fa fa-twitter" aria-hidden="true" />
+            <i className="fa fa-twitter linked-icons" aria-hidden="true" />
           </a>
           <a href="https://www.imdb.com/whitelist-offsite?url=https%3A%2F%2Fyoutube.com%2Fimdb%2F&page-action=fol_yt&ref=ft_fol_yt">
-            <i className="fa fa-youtube" aria-hidden="true" />
+            <i className="fa fa-youtube linked-icons" aria-hidden="true" />
           </a>
         </div>
         <div className="container">

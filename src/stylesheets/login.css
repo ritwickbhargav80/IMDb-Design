@@ -2,6 +2,36 @@
   float: left;
 }
 
+.prepend {
+  background-color: transparent !important;
+  padding: 5px 0.375rem 5px 10px !important;
+}
+
+.append {
+  background-color: transparent !important;
+  padding: 5px 10px 5px 0.375rem !important;
+}
+
+#email {
+  border-left: transparent;
+  padding-left: 0.375rem !important;
+}
+
+#password {
+  border-left: transparent;
+  border-right: transparent;
+  padding: 0.375rem 0.375rem !important;
+}
+
+.icon {
+  padding: 0px;
+  color: #343a40;
+  display: inline-block;
+  font: normal normal normal 20px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
 #forget-pwd {
   float: right;
   color: #007bff;
@@ -9,14 +39,9 @@
 }
 
 .eye {
-  margin-left: -30px;
-  float: right;
-  margin-top: -31px;
-  padding: 0px 11px !important;
+  padding: 0px !important;
   color: #282c34 !important;
   opacity: 0.5;
-  position: relative;
-  z-index: 2;
   cursor: pointer;
 }
 
