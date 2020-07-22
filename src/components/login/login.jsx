@@ -103,7 +103,7 @@ class Login extends Component {
                 data-for="question-circle"
                 data-tip
               />
-              <ReactTooltip place="right" id="question-circle">
+              <ReactTooltip id="question-circle">
                 <p>
                   Choosing 'Keep me signed in' reduces the number of times
                   <br />
