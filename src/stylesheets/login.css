@@ -1,47 +1,51 @@
-.txt-center {
-  text-align: center;
-}
-
-.custom {
-  width: 16em;
-  margin-bottom: 10px;
-  border: 1px solid #212529 !important;
-}
-
-.btn-logo {
-  height: 20px;
-  width: 40px;
-  margin-right: 10px;
+.label {
   float: left;
 }
 
-.btn-logo-1 {
-  height: 20px;
-  width: 20px;
-  margin: 0px 20px 0px 10px;
-  float: left;
+#forget-pwd {
+  float: right;
+  color: #007bff;
+  cursor: pointer;
 }
 
-.btn-txt {
-  float: left;
-}
-
-.divider {
+.eye {
+  margin-left: -30px;
+  float: right;
+  margin-top: -31px;
+  padding: 0px 11px !important;
+  color: #282c34 !important;
+  opacity: 0.5;
   position: relative;
-  margin-bottom: 20px;
-  width: 100%;
-  text-align: center;
+  z-index: 2;
+  cursor: pointer;
 }
 
-.divider span {
-  position: absolute;
-  margin-left: -28px;
-  top: -11px;
-  background: #fff;
-  padding: 0 20px;
+.eye:hover {
+  opacity: 1 !important;
 }
 
-.create-acc-btn {
-  background-color: #f5c01f !important;
+.custom-switch {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.custom-width {
+  width: 10em;
+}
+
+.create-acc-btn-1 {
+  background-color: #ebf6f7 !important;
   font-weight: 600 !important;
+}
+
+.create-acc-btn-1:hover {
+  transform: scale(1.07);
+  box-shadow: 2.5px 1.5px;
+}
+
+@media screen and (max-width: 768px) {
+  .sign-in-register {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
 }

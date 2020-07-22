@@ -36,26 +36,6 @@
   opacity: 0.95;
 }
 
-.custom {
-  opacity: 0.8;
-}
-
-.custom:hover {
-  transform: scale(1.12);
-  opacity: 1;
-  box-shadow: 2px 1px;
-}
-
-.create-acc-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 2.5px 1.5px;
-}
-
-.tnc {
-  margin-top: 1rem;
-  margin-bottom: 0rem;
-}
-
 /* @-webkit-keyframes mover {
   0% {
     transform: translateY(0);

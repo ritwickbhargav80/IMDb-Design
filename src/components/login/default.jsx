@@ -5,7 +5,7 @@ import amazon from "../../assets/amazon.png";
 import facebook from "../../assets/facebook.png";
 import google from "../../assets/google.png";
 import apple from "../../assets/apple.png";
-import "../../stylesheets/login.css";
+import "../../stylesheets/default.css";
 
 const Default = ({ signIn, register }) => {
   return (

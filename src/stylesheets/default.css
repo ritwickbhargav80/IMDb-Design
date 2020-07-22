@@ -1,0 +1,79 @@
+.txt-center {
+  text-align: center;
+}
+
+.custom {
+  width: 16em;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  border: 1px solid #212529 !important;
+}
+
+.custom:hover {
+  transform: scale(1.12);
+  opacity: 1;
+  box-shadow: 2px 1px;
+}
+
+.btn-logo {
+  height: 20px;
+  width: 40px;
+  margin-right: 10px;
+  float: left;
+}
+
+.btn-logo-1 {
+  height: 20px;
+  width: 20px;
+  margin: 0px 20px 0px 10px;
+  float: left;
+}
+
+.btn-txt {
+  float: left;
+}
+
+.divider,
+.divider-1 {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.divider span {
+  position: absolute;
+  margin-left: -28px;
+  top: -11px;
+  background: #fff;
+  padding: 0 20px;
+}
+
+.divider-1 span {
+  position: absolute;
+  margin-left: -73px;
+  top: -11px;
+  background: #fff;
+  padding: 0 20px;
+}
+
+.create-acc-btn {
+  background-color: #f5c01f !important;
+  font-weight: 600 !important;
+}
+
+.create-acc-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 2.5px 1.5px;
+}
+
+.tnc {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+}
+
+@media screen and (max-width: 768px) {
+  .tnc {
+    margin: 1rem 0rem;
+  }
+}
