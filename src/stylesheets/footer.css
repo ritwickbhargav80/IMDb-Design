@@ -10,12 +10,42 @@
   padding: 20px;
 }
 
+.fa-facebook-square:hover {
+  color: #1877f2;
+}
+
+.fa-instagram:hover {
+  color: transparent;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.fa-twitch:hover {
+  color: #6441a4;
+}
+
+.fa-twitter:hover {
+  color: #00aced;
+}
+
+.fa-youtube-play:hover {
+  color: #ff0000;
+}
+
 .footer-container {
   text-align: center;
 }
 
 .linked-icons:hover {
-  transform: scale(1.15);
+  transform: scale(1.22);
 }
 
 .footer-row {

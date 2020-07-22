@@ -29,7 +29,7 @@ const Footer = () => {
             <i className="fa fa-twitter linked-icons" aria-hidden="true" />
           </a>
           <a href="https://www.imdb.com/whitelist-offsite?url=https%3A%2F%2Fyoutube.com%2Fimdb%2F&page-action=fol_yt&ref=ft_fol_yt">
-            <i className="fa fa-youtube linked-icons" aria-hidden="true" />
+            <i className="fa fa-youtube-play linked-icons" aria-hidden="true" />
           </a>
         </div>
         <div className="container">

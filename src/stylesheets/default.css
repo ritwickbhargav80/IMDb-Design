@@ -60,6 +60,7 @@
 .create-acc-btn {
   background-color: #f5c01f !important;
   font-weight: 600 !important;
+  margin-top: 5px;
 }
 
 .create-acc-btn:hover {

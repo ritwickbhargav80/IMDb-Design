@@ -8,7 +8,7 @@ import "../stylesheets/signIn.css";
 
 class SignIn extends Component {
   state = {
-    login: true,
+    login: false,
     register: false,
   };
 
@@ -16,7 +16,7 @@ class SignIn extends Component {
     this.setState({ login: true });
   };
 
-  handleRegister = () => {
+  handleRegister = (props) => {
     this.setState({ login: false, register: true });
   };
 
