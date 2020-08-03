@@ -6,6 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import "bootstrap/dist/js/bootstrap.js";
+import "jquery/dist/jquery";
+import "popper.js/dist/popper";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 import "./index.css";

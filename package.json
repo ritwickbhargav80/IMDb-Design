@@ -8,11 +8,26 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "husky": "^4.2.5",
+    "jquery": "^3.5.1",
+    "lint-staged": "^10.2.11",
+    "popper.js": "^1.16.1",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-tooltip": "^4.2.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
