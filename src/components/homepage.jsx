@@ -9,33 +9,52 @@ const HomePage = () => {
   const { date, month } = getDateFunction();
 
   var settings = {
-    dots: true,
-    infinite: false,
-    speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 7,
     responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+        },
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
-          dots: true,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
     ],
@@ -51,8 +70,69 @@ const HomePage = () => {
       <div className="container">
         <div>
           <Slider {...settings}>
-            <div>
-              <h3>1</h3>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="card custom-card">
+              <img
+                className="img-responsive img-card"
+                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                alt="hi"
+                style={{ width: "100%" }}
+              />
             </div>
           </Slider>
         </div>
