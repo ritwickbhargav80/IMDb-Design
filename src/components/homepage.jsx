@@ -10,7 +10,7 @@ const HomePage = () => {
 
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: 8 > 7 ? true : false, // length > 7
     speed: 500,
     slidesToShow: 7,
     slidesToScroll: 7,
@@ -58,6 +58,10 @@ const HomePage = () => {
         },
       },
     ],
+    // slidesToShow: 1,
+    // centerMode: true,
+    // centerPadding: "15%",
+    // speed: 500
   };
 
   return (
@@ -70,69 +74,93 @@ const HomePage = () => {
       <div className="container">
         <div>
           <Slider {...settings}>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="card custom-card">
-              <img
-                className="img-responsive img-card"
-                src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-                alt="hi"
-                style={{ width: "100%" }}
-              />
+            <div className="slide">
+              <div className="child-element">
+                <div className="card custom-card">
+                  <img
+                    className="img-responsive img-card"
+                    src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
+                    alt="hi"
+                  />
+                </div>
+              </div>
             </div>
           </Slider>
         </div>
