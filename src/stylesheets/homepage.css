@@ -71,11 +71,10 @@
   box-shadow: 0 9px 0px 0px #212529, 0 -9px 0px 0px #212529,
     12px 0 15px -4px #212529, -12px 0 15px -4px #212529;
   width: fit-content !important;
-  margin-bottom: 19px !important;
+  margin-bottom: 28px !important;
 }
 
 .custom-card {
-  background-color: transparent !important;
   width: 134px !important;
   border: 0px !important;
 }
