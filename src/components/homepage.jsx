@@ -8,12 +8,24 @@ import "../stylesheets/homepage.css";
 const HomePage = () => {
   const { date, month } = getDateFunction();
 
+  function SampleNextArrow(props) {
+    const { onClick } = props;
+    return <i className="fa fa-chevron-right right-arrow" onClick={onClick} />;
+  }
+
+  function SamplePrevArrow(props) {
+    const { onClick } = props;
+    return <i className="fa fa-chevron-left left-arrow" onClick={onClick} />;
+  }
+
   var settings = {
     dots: false,
     infinite: 8 > 7 ? true : false, // length > 7
     speed: 500,
     slidesToShow: 7,
     slidesToScroll: 7,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1200,

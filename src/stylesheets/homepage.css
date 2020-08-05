@@ -32,6 +32,31 @@
   height: 250px;
 }
 
+.left-arrow,
+.right-arrow {
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+}
+
+.left-arrow {
+  left: -50px;
+  padding: 0px 20px !important;
+}
+
+.right-arrow {
+  right: -50px;
+  padding: 0px 35px 0px 0px !important;
+}
+
 .slick-track {
   padding-top: 28px;
 }
@@ -58,6 +83,16 @@
 .img-card {
   border-radius: 10px;
   width: 100%;
+}
+
+@media screen and (max-width: 575px) {
+  .left-arrow {
+    left: -44px;
+  }
+
+  .right-arrow {
+    right: -42px;
+  }
 }
 
 @media screen and (max-width: 370px) {
