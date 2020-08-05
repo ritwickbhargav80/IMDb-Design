@@ -3,6 +3,8 @@ import Slider from "react-slick";
 
 import Slide from "./slide";
 
+import "../../stylesheets/customSlider.css";
+
 function SampleNextArrow(props) {
   const { onClick, show } = props;
   return (

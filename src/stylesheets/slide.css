@@ -1,0 +1,9 @@
+.custom-card {
+  width: 134px !important;
+  border: 0px !important;
+}
+
+.img-card {
+  border-radius: 10px;
+  width: 100%;
+}

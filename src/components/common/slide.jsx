@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../../stylesheets/slide.css";
+
 const Slide = () => {
   return (
     <div className="slide">
