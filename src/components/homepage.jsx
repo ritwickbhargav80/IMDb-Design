@@ -58,10 +58,6 @@ const HomePage = () => {
         },
       },
     ],
-    // slidesToShow: 1,
-    // centerMode: true,
-    // centerPadding: "15%",
-    // speed: 500
   };
 
   return (
