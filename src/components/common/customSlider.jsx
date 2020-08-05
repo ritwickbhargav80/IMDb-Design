@@ -3,8 +3,34 @@ import Slider from "react-slick";
 
 import Slide from "./slide";
 
+function SampleNextArrow(props) {
+  const { onClick, show } = props;
+  return (
+    <i
+      className="fa fa-chevron-right right-arrow"
+      onClick={onClick}
+      style={{ visibility: show ? "visible" : "hidden" }}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { onClick, show } = props;
+  return (
+    <i
+      className="fa fa-chevron-left left-arrow"
+      onClick={onClick}
+      style={{ visibility: show ? "visible" : "hidden" }}
+    />
+  );
+}
+
 class CustomSlider extends Component {
-  state = {};
+  state = { show: false };
+
+  setIsShown(value) {
+    this.setState({ show: value });
+  }
 
   render() {
     const settings = {
@@ -13,8 +39,8 @@ class CustomSlider extends Component {
       speed: 500,
       slidesToShow: 7,
       slidesToScroll: 7,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />,
+      nextArrow: <SampleNextArrow show={this.state.show} />,
+      prevArrow: <SamplePrevArrow show={this.state.show} />,
       responsive: [
         {
           breakpoint: 1200,
@@ -76,7 +102,11 @@ class CustomSlider extends Component {
     };
 
     return (
-      <div className="container">
+      <div
+        className="container"
+        onMouseEnter={() => this.setIsShown(true)}
+        onMouseLeave={() => this.setIsShown(false)}
+      >
         <Slider {...settings}>
           <Slide />
           <Slide />
