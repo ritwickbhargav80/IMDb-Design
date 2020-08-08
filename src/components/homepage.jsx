@@ -18,6 +18,7 @@ const HomePage = () => {
       <p className="sub-script">This week's top TV and movies</p>
       <CustomSlider />
       <h3 className="h3">Explore what's streaming</h3>
+      <CustomSlider />
       <h3 className="h3">Today's Exclusive</h3>
       <div className="left-border">
         <h5 className="sub-heading">Top Coverage &gt;</h5>
