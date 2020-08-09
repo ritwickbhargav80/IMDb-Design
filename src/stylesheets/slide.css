@@ -29,7 +29,7 @@
   bottom: 0;
   opacity: 0;
   color: #ffffff;
-  padding: 30px 5px 7px 5px;
+  padding: 30px 11px 7px 11px;
   position: absolute;
   width: 100%;
   -webkit-transition: opacity 0.25s ease-in,
@@ -38,5 +38,47 @@
     bottom 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
   transition: opacity 0.25s ease-in,
     bottom 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
-  padding: 30px 10px 7px 5px;
+}
+
+.content-title {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.content-info {
+  font-size: 0.56em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.content-desc {
+  font-size: 0.52em;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.add-to-watchlist {
+  text-align: center;
+  border-radius: 4px;
+  background-color: #1b3a64;
+}
+
+.plus-icon {
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  color: #ffffff;
+  font-size: 12.5px;
+  padding: 0px !important;
+  margin-right: 7px;
+  float: left;
+}
+
+.watchlist {
+  text-transform: uppercase;
+  font-size: 0.56em !important;
+  color: #ffffff !important;
+  margin-bottom: 0px;
+  text-align: center;
+  padding: 0.25rem 0.25rem !important;
 }
