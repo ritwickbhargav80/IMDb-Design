@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
 
+import { Input, Password } from "../common/input";
+
 import "../../stylesheets/login.css";
 
 class Login extends Component {
@@ -35,60 +37,26 @@ class Login extends Component {
         <h3 className="h3">Welcome Back</h3>
         <br />
         <form>
-          <div className="form-group">
-            <label className="label" htmlFor="email">
-              Email address
-            </label>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <div className="input-group-text prepend">
-                  <i className="fa-at fa-sm icon" aria-hidden="true" />
-                  {/* <i className="fa fa-envelope-o" aria-hidden="true" /> */}
-                </div>
-              </div>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                placeholder="Enter your email address"
-                autoFocus={true}
-                required={true}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="label" htmlFor="password">
-              Password
-            </label>
-            <small id="forget-pwd" className="form-text">
-              Forget Password?
-            </small>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <div className="input-group-text prepend">
-                  <i className="fa-key icon" aria-hidden="true" />
-                </div>
-              </div>
-              <input
-                type={type}
-                className="form-control"
-                name="password"
-                id="password"
-                placeholder={placeholder}
-                autoComplete="false"
-                required={true}
-              />
-              <div className="input-group-append">
-                <div className="input-group-text append">
-                  <i
-                    className={icon + " eye linked-icons"}
-                    toggle="#password"
-                    onClick={this.handleToggle}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+          <Input
+            htmlfor="email"
+            label="Email address"
+            icon="fa-at"
+            type="email"
+            id="email"
+            placeholder="Enter your email address"
+            autofocus={true}
+          />
+          <Password
+            htmlfor="password"
+            label="Password"
+            prependicon="fa-key"
+            type={type}
+            id="password"
+            placeholder={placeholder}
+            appendicon={icon}
+            onClick={this.handleToggle}
+            register={false}
+          />
           <div className="custom-control custom-switch">
             <input
               type="checkbox"
