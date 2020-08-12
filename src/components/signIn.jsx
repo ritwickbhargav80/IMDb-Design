@@ -10,18 +10,55 @@ class SignIn extends Component {
   state = {
     login: false,
     register: false,
+    form: { email: "", password: "" },
+    error: { email: "", password: "" },
   };
 
+  validate(type, value) {
+    let error = { ...this.state.error };
+
+    if (value === "") {
+      error[type] = "This field is mandatory";
+      this.setState({ error });
+      return;
+    }
+
+    const emailRegex = /^\S+@\S+\.\S+/;
+    let temp = true;
+    if (type === "email") {
+      if (!emailRegex.test(String(value))) {
+        error[type] = "Please enter a valid email";
+        temp = false;
+      }
+    } else {
+      if (String(value).length < 8) {
+        error[type] = "Password can't be less than 8 characters";
+        temp = false;
+      }
+    }
+    if (temp) error[type] = "";
+    this.setState({ error });
+  }
+
   handleSignIn = () => {
-    this.setState({ login: true, register: false });
+    const obj = { email: "", password: "" };
+    this.setState({ login: true, register: false, form: obj, error: obj });
   };
 
   handleRegister = (props) => {
-    this.setState({ login: false, register: true });
+    const obj = { email: "", password: "" };
+    this.setState({ login: false, register: true, form: obj, error: obj });
+  };
+
+  handleChange = (e) => {
+    let form = { ...this.state.form };
+    form[e.currentTarget.name] = e.currentTarget.value;
+    this.setState({ form });
+    this.validate(e.currentTarget.name, e.currentTarget.value);
   };
 
   render() {
-    const { login, register } = this.state;
+    const { login, register, error } = this.state;
 
     return (
       <div className="container">
@@ -79,8 +116,20 @@ class SignIn extends Component {
                 register={this.handleRegister}
               />
             )}
-            {login && <Login register={this.handleRegister} />}
-            {register && <Register login={this.handleSignIn} />}
+            {login && (
+              <Login
+                register={this.handleRegister}
+                error={error}
+                onChange={this.handleChange}
+              />
+            )}
+            {register && (
+              <Register
+                login={this.handleSignIn}
+                error={error}
+                onChange={this.handleChange}
+              />
+            )}
           </div>
         </div>
       </div>

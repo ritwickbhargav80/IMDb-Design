@@ -27,7 +27,7 @@ class Register extends Component {
 
   render() {
     const { type, placeholder, icon } = this.state;
-    const { login } = this.props;
+    const { login, error, onChange } = this.props;
 
     return (
       <div className="txt-center">
@@ -49,8 +49,11 @@ class Register extends Component {
             icon="fa-at"
             type="email"
             id="email"
+            name="email"
             placeholder="Enter your email address"
             autofocus={false}
+            onChange={onChange}
+            error={error.email}
           />
           <Password
             htmlfor="password"
@@ -58,10 +61,13 @@ class Register extends Component {
             prependicon="fa-key"
             type={type}
             id="password"
+            name="password"
             placeholder={placeholder}
             appendicon={icon}
             onClick={this.handleToggle}
             register={true}
+            onChange={onChange}
+            error={error.password}
           />
           <input
             className="btn create-acc-btn"

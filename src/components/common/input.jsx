@@ -1,7 +1,18 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
 
-const Input = ({ htmlFor, label, icon, type, id, placeholder, autofocus }) => {
+const Input = ({
+  htmlFor,
+  label,
+  icon,
+  type,
+  id,
+  name,
+  placeholder,
+  autofocus,
+  onChange,
+  error,
+}) => {
   return (
     <div className="form-group">
       <label className="label" htmlFor={htmlFor}>
@@ -15,12 +26,15 @@ const Input = ({ htmlFor, label, icon, type, id, placeholder, autofocus }) => {
         </div>
         <input
           type={type}
-          className="form-control"
+          className={"form-control" + (error ? " is-invalid" : "")} // is-invalid
           id={id}
+          name={name}
           placeholder={placeholder}
           autoFocus={autofocus}
           required={true}
+          onChange={onChange}
         />
+        {error && <div class="invalid-feedback">{error}</div>}
       </div>
     </div>
   );
@@ -32,10 +46,13 @@ const Password = ({
   prependicon,
   type,
   id,
+  name,
   placeholder,
   appendicon,
   onClick,
   register,
+  onChange,
+  error,
 }) => {
   return (
     <div className="form-group">
@@ -63,10 +80,12 @@ const Password = ({
         </div>
         <input
           type={type}
-          className="form-control"
+          className={"form-control" + (error ? " is-invalid" : "")} // is-invalid
           id={id}
+          name={name}
           placeholder={placeholder}
           required={true}
+          onChange={onChange}
         />
         <div className="input-group-append">
           <div className="input-group-text append">
@@ -77,6 +96,7 @@ const Password = ({
             />
           </div>
         </div>
+        {error && <div class="invalid-feedback">{error}</div>}
       </div>
     </div>
   );

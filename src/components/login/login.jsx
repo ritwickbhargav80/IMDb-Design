@@ -30,7 +30,7 @@ class Login extends Component {
 
   render() {
     const { type, placeholder, icon } = this.state;
-    const { register } = this.props;
+    const { register, error, onChange } = this.props;
 
     return (
       <div className="txt-center">
@@ -43,8 +43,11 @@ class Login extends Component {
             icon="fa-at"
             type="email"
             id="email"
+            name="email"
             placeholder="Enter your email address"
             autofocus={true}
+            onChange={onChange}
+            error={error.email}
           />
           <Password
             htmlfor="password"
@@ -52,10 +55,13 @@ class Login extends Component {
             prependicon="fa-key"
             type={type}
             id="password"
+            name="password"
             placeholder={placeholder}
             appendicon={icon}
             onClick={this.handleToggle}
             register={false}
+            onChange={onChange}
+            error={error.password}
           />
           <div className="custom-control custom-switch">
             <input
