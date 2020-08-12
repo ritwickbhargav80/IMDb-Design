@@ -20,7 +20,11 @@ const Input = ({
       </label>
       <div className="input-group">
         <div className="input-group-prepend">
-          <div className="input-group-text prepend">
+          <div
+            className={
+              "input-group-text prepend" + (error ? " invalid-prepapp" : "")
+            }
+          >
             <i className={icon + " fa-sm icon"} aria-hidden="true" />
           </div>
         </div>
@@ -74,7 +78,11 @@ const Password = ({
       </label>
       <div className="input-group">
         <div className="input-group-prepend">
-          <div className="input-group-text prepend">
+          <div
+            className={
+              "input-group-text prepend" + (error ? " invalid-prepapp" : "")
+            }
+          >
             <i className={prependicon + " fa-sm icon"} aria-hidden="true" />
           </div>
         </div>
@@ -88,7 +96,11 @@ const Password = ({
           onChange={onChange}
         />
         <div className="input-group-append">
-          <div className="input-group-text append">
+          <div
+            className={
+              "input-group-text append" + (error ? " invalid-prepapp" : "")
+            }
+          >
             <i
               className={appendicon + " eye linked-icons"}
               toggle="#password"

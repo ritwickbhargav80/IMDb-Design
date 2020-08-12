@@ -100,7 +100,7 @@ class Login extends Component {
           <span>New to IMDb?</span>
         </div>
         <button
-          className="btn create-acc-btn-1 sign-in-register"
+          className="btn create-acc-btn-1 sign-in-register margin-bottom-10"
           onClick={register}
         >
           Create a New Account

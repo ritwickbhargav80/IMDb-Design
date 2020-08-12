@@ -36,6 +36,10 @@
   opacity: 0.95;
 }
 
+.invalid-prepapp {
+  border-color: #dc3545 !important;
+}
+
 /* @-webkit-keyframes mover {
   0% {
     transform: translateY(0);
