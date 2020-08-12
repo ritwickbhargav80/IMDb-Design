@@ -2,9 +2,9 @@ import React from "react";
 
 import CustomSlider from "./common/customSlider";
 
-import { getDateFunction } from "./../utils/common";
-
 import "../stylesheets/homepage.css";
+
+import { getDateFunction } from "./../utils/common";
 
 const HomePage = () => {
   const { date, month } = getDateFunction();
@@ -17,7 +17,24 @@ const HomePage = () => {
       </div>
       <p className="sub-script">This week's top TV and movies</p>
       <CustomSlider />
-      <h3 className="h3">Explore what's streaming</h3>
+      <h3 className="h3 margin-bottom-10">Explore what's streaming</h3>
+      <ul className="nav nav-pills">
+        <li className="nav-item">
+          <span className="nav-link navs navs-active">Prime Video</span>
+        </li>
+        <li className="nav-item">
+          <span className="nav-link navs">Netflix</span>
+        </li>
+        <li className="nav-item">
+          <span className="nav-link navs">Hotstar</span>
+        </li>
+        <li className="nav-item">
+          <span className="nav-link navs">Sonyliv</span>
+        </li>
+        <li className="nav-item">
+          <span className="nav-link navs">Tvfplay</span>
+        </li>
+      </ul>
       <CustomSlider />
       <h3 className="h3">Today's Exclusive</h3>
       <div className="left-border">

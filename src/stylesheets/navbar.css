@@ -51,6 +51,41 @@
   margin-top: -2.7rem;
 }
 
+.navs {
+  color: #ffffff;
+  opacity: 0.5;
+  text-transform: uppercase;
+  margin-right: 1.5em;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.navs:hover {
+  background-color: #f5c01f;
+  font-weight: 400;
+  vertical-align: middle;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  opacity: 0.8;
+}
+
+.navs-active {
+  background-color: #f5c01f;
+  font-weight: 400;
+  vertical-align: middle;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  opacity: 1;
+  transform: scale(1.07);
+  box-shadow: 2.5px 1.5px;
+}
+
+.navs-active:hover {
+  opacity: 1;
+}
+
 @media screen and (max-width: 991px) {
   .pad-left {
     padding: 0px 0px 0px 10px;
@@ -77,5 +112,11 @@
 
   .sign-in {
     width: auto;
+  }
+
+  .nav-pills .nav-item {
+    flex-basis: 1;
+    flex-grow: 1;
+    text-align: center;
   }
 }

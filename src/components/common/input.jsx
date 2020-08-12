@@ -38,7 +38,7 @@ const Input = ({
           required={true}
           onChange={onChange}
         />
-        {error && <div class="invalid-feedback">{error}</div>}
+        {error && <div className="invalid-feedback">{error}</div>}
       </div>
     </div>
   );
@@ -108,7 +108,7 @@ const Password = ({
             />
           </div>
         </div>
-        {error && <div class="invalid-feedback">{error}</div>}
+        {error && <div className="invalid-feedback">{error}</div>}
       </div>
     </div>
   );
