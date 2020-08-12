@@ -32,7 +32,7 @@ class Login extends Component {
 
     return (
       <div className="txt-center">
-        <h3 className="h3">Login</h3>
+        <h3 className="h3">Welcome Back</h3>
         <br />
         <form>
           <div className="form-group">

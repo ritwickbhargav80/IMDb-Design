@@ -13,7 +13,7 @@ class SignIn extends Component {
   };
 
   handleSignIn = () => {
-    this.setState({ login: true });
+    this.setState({ login: true, register: false });
   };
 
   handleRegister = (props) => {
@@ -80,7 +80,7 @@ class SignIn extends Component {
               />
             )}
             {login && <Login register={this.handleRegister} />}
-            {register && <Register />}
+            {register && <Register login={this.handleSignIn} />}
           </div>
         </div>
       </div>
