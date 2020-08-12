@@ -12,6 +12,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h3 className="h3">What to Watch</h3>
+      {/* <span className="pulse" /> */}
       <div className="left-border">
         <h5 className="sub-heading">Fan Favorites</h5>
       </div>

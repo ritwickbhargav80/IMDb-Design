@@ -31,7 +31,17 @@ class Slide extends Component {
               className="slide-text"
               style={{ opacity: this.state.show ? 1 : 0 }}
             >
-              <span className="content-title"> Lootcase</span>
+              <div className="content-title-div">
+                <span className="content-title">Lootcase</span>
+                <abbr title="Play Trailer">
+                  <div className="pulse">
+                    <i
+                      className="fa fa-play-circle-o play-circle-icon"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </abbr>
+              </div>
               <div className="content-info">
                 <div className="duration">2 hr 11 min</div>{" "}
                 <span className="genre">Comedy, Hindi, 2020</span>
