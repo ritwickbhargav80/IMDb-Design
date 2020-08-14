@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Navbar from "./components/common/navbar";
 import Movies from "./components/movies";
 import Shows from "./components/shows";
 import SignIn from "./components/signIn";
 import HomePage from "./components/homepage";
+import NotFound from "./components/notFound";
 import Footer from "./components/common/footer";
 
 class App extends Component {
@@ -25,7 +26,10 @@ class App extends Component {
           <Route path="/movies" component={Movies} />
           <Route path="/shows" component={Shows} />
           <Route path="/signin" component={SignIn} />
-          <Route path="/" component={HomePage} />
+          <Route path="/not-found" exact component={NotFound} />
+          {/* <Route path="/movie/:id" component={NotFound} /> */}
+          <Route path="/" exact component={HomePage} />
+          <Redirect to="/not-found" />
         </Switch>
         <Footer />
       </div>

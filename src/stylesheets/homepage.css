@@ -27,3 +27,45 @@
 .sub-script {
   color: #ffffff;
 }
+
+.content-404 {
+  color: #f5c01f;
+  text-shadow: 2px 1.5px #f7f7f7;
+  text-align: center;
+  margin-top: 20%;
+  font-weight: bolder;
+  font-size: 2em;
+}
+
+.box {
+  width: 100%;
+  margin: 20px 0px;
+  background: #fde992;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+}
+
+.sb4:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #fde992;
+  border-top: 10px solid #fde992;
+  border-bottom: 10px solid transparent;
+  right: 19px;
+  bottom: -19px;
+}
+
+.curly-quotes {
+  font-size: 2.2em;
+  font-weight: bold;
+  font-family: serif;
+}
+
+.quotes {
+  font-size: 18.5px;
+}

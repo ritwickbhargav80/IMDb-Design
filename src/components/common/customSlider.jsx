@@ -34,8 +34,12 @@ class CustomSlider extends Component {
     this.setState({ show: value });
   }
 
+  handleClick = (props, id) => {
+    props.history.push(`/movie/${id}`);
+  };
+
   render() {
-    let { movies } = this.props;
+    let { movies, props } = this.props;
     const settings = {
       dots: false,
       infinite: 8 > 7 ? true : false, // length > 7
@@ -112,14 +116,18 @@ class CustomSlider extends Component {
       >
         <Slider {...settings}>
           {movies.map((movie) => (
-            <Slide
+            <div
               key={movie.id}
-              banner={movie.banner}
-              title={movie.title}
-              duration={movie.duration}
-              genre={movie.genre}
-              content={movie.content}
-            />
+              onClick={() => this.handleClick(props, movie.id)}
+            >
+              <Slide
+                banner={movie.banner}
+                title={movie.title}
+                duration={movie.duration}
+                genre={movie.genre}
+                content={movie.content}
+              />
+            </div>
           ))}
         </Slider>
       </div>

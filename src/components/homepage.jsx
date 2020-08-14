@@ -21,10 +21,10 @@ class HomePage extends Component {
           id: 1,
           banner:
             "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
-          title: "Lootcase",
+          title: "Lootcase try kar raha hu",
           trailer: "",
           duration: "2 hr 11 min",
-          genre: "Comedy, Hindi, 2020",
+          genre: "Comedy, 2020",
           content:
             "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
         },
@@ -155,7 +155,7 @@ class HomePage extends Component {
           <h5 className="sub-heading">Fan Favorites</h5>
         </div>
         <p className="sub-script">This week's top TV and movies</p>
-        <CustomSlider movies={popular} />
+        <CustomSlider movies={popular} props={this.props} />
         <h3 className="h3 margin-bottom-10">Explore what's streaming</h3>
         <ul className="nav nav-pills">
           <li className="nav-item">
@@ -199,7 +199,7 @@ class HomePage extends Component {
             </span>
           </li>
         </ul>
-        <CustomSlider movies={popular} />
+        <CustomSlider movies={popular} props={this.props} />
         <h3 className="h3">Today's Exclusive</h3>
         <div className="left-border">
           <h5 className="sub-heading">Top Coverage &gt;</h5>

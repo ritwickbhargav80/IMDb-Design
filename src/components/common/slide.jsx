@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "../../stylesheets/slide.css";
 
+import { getTitle, getContent } from "../../utils/slide";
+
 class Slide extends Component {
   state = { show: false, showBtn: false };
 
@@ -15,6 +17,9 @@ class Slide extends Component {
 
   render() {
     let { banner, title, trailer, duration, genre, content } = this.props;
+
+    let titleSliced = getTitle(title),
+      contentSliced = getContent(content);
 
     return (
       <div className="slide">
@@ -30,7 +35,11 @@ class Slide extends Component {
               style={{ opacity: this.state.show ? 1 : 0 }}
             >
               <div className="content-title-div">
-                <span className="content-title">{title}</span>
+                <abbr title={title}>
+                  <span className="content-title" style={{ cursor: "pointer" }}>
+                    {titleSliced}
+                  </span>
+                </abbr>
                 <a href={trailer}>
                   <abbr title="Play Trailer">
                     <div className="pulse">
@@ -46,7 +55,7 @@ class Slide extends Component {
                 <div className="duration">{duration}</div>{" "}
                 <span className="genre">{genre}</span>
               </div>
-              <div className="content-desc">{content}</div>
+              <div className="content-desc">{contentSliced}</div>
               <div className="add-to-watchlist" title="Add to Watchlist">
                 <a href="/">
                   <p
