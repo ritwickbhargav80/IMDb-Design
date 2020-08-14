@@ -14,6 +14,8 @@ class Slide extends Component {
   }
 
   render() {
+    let { banner, title, trailer, duration, genre, content } = this.props;
+
     return (
       <div className="slide">
         <div className="child-element">
@@ -22,44 +24,41 @@ class Slide extends Component {
             onMouseEnter={() => this.setIsShown(true)}
             onMouseLeave={() => this.setIsShown(false)}
           >
-            <img
-              className="img-responsive img-card"
-              src="https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v"
-              alt="hi"
-            />
+            <img className="img-responsive img-card" src={banner} alt="hi" />
             <div
               className="slide-text"
               style={{ opacity: this.state.show ? 1 : 0 }}
             >
               <div className="content-title-div">
-                <span className="content-title">Lootcase</span>
-                <abbr title="Play Trailer">
-                  <div className="pulse">
-                    <i
-                      className="fa fa-play-circle-o play-circle-icon"
-                      aria-hidden="true"
-                    />
-                  </div>
-                </abbr>
+                <span className="content-title">{title}</span>
+                <a href={trailer}>
+                  <abbr title="Play Trailer">
+                    <div className="pulse">
+                      <i
+                        className="fa fa-play-circle-o play-circle-icon"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </abbr>
+                </a>
               </div>
               <div className="content-info">
-                <div className="duration">2 hr 11 min</div>{" "}
-                <span className="genre">Comedy, Hindi, 2020</span>
+                <div className="duration">{duration}</div>{" "}
+                <span className="genre">{genre}</span>
               </div>
-              <div className="content-desc">
-                What will you do if you find a bag full of cash? Nandan Kumar
-                faces a similar dilemma when a bag tri ...
-              </div>
+              <div className="content-desc">{content}</div>
               <div className="add-to-watchlist" title="Add to Watchlist">
-                <p
-                  className="watchlist btn"
-                  onMouseEnter={() => this.setBtnIsShown(true)}
-                  onMouseLeave={() => this.setBtnIsShown(false)}
-                  style={{ opacity: this.state.showBtn ? 1 : 0.8 }}
-                >
-                  <i className="fa-plus plus-icon" aria-hidden="true" />
-                  <span className="btn-txt">Add to Watchlist</span>
-                </p>
+                <a href="/">
+                  <p
+                    className="watchlist btn"
+                    onMouseEnter={() => this.setBtnIsShown(true)}
+                    onMouseLeave={() => this.setBtnIsShown(false)}
+                    style={{ opacity: this.state.showBtn ? 1 : 0.8 }}
+                  >
+                    <i className="fa-plus plus-icon" aria-hidden="true" />
+                    <span className="btn-txt">Add to Watchlist</span>
+                  </p>
+                </a>
               </div>
             </div>
           </div>

@@ -15,6 +15,120 @@ class HomePage extends Component {
       sonyliv: false,
       tvfplay: false,
     },
+    data: {
+      popular: [
+        {
+          id: 1,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 2,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 3,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 4,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 5,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 6,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 7,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 8,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 9,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+        {
+          id: 10,
+          banner:
+            "https://img1.hotstarext.com/image/upload/f_auto,t_web_vl_3x/sources/r1/cms/prod/3095/733095-v",
+          title: "Lootcase",
+          trailer: "",
+          duration: "2 hr 11 min",
+          genre: "Comedy, Hindi, 2020",
+          content:
+            "What will you do if you find a bag full of cash? Nandan Kumar faces a similar dilemma when a bag tri ...",
+        },
+      ],
+    },
   };
 
   toggleActive = (medium) => {
@@ -32,6 +146,7 @@ class HomePage extends Component {
   render() {
     const { date, month } = getDateFunction();
     let { prime, netflix, hotstar, sonyliv, tvfplay } = this.state.stream;
+    let { popular } = this.state.data;
 
     return (
       <div className="container">
@@ -40,7 +155,7 @@ class HomePage extends Component {
           <h5 className="sub-heading">Fan Favorites</h5>
         </div>
         <p className="sub-script">This week's top TV and movies</p>
-        <CustomSlider />
+        <CustomSlider movies={popular} />
         <h3 className="h3 margin-bottom-10">Explore what's streaming</h3>
         <ul className="nav nav-pills">
           <li className="nav-item">
@@ -84,7 +199,7 @@ class HomePage extends Component {
             </span>
           </li>
         </ul>
-        <CustomSlider />
+        <CustomSlider movies={popular} />
         <h3 className="h3">Today's Exclusive</h3>
         <div className="left-border">
           <h5 className="sub-heading">Top Coverage &gt;</h5>

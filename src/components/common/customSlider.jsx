@@ -35,6 +35,7 @@ class CustomSlider extends Component {
   }
 
   render() {
+    let { movies } = this.props;
     const settings = {
       dots: false,
       infinite: 8 > 7 ? true : false, // length > 7
@@ -110,14 +111,16 @@ class CustomSlider extends Component {
         onMouseLeave={() => this.setIsShown(false)}
       >
         <Slider {...settings}>
-          <Slide />
-          <Slide />
-          <Slide />
-          <Slide />
-          <Slide />
-          <Slide />
-          <Slide />
-          <Slide />
+          {movies.map((movie) => (
+            <Slide
+              key={movie.id}
+              banner={movie.banner}
+              title={movie.title}
+              duration={movie.duration}
+              genre={movie.genre}
+              content={movie.content}
+            />
+          ))}
         </Slider>
       </div>
     );

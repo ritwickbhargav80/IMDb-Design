@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../../logo.svg";
 import "../../stylesheets/navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ onChange }) => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
@@ -47,6 +47,7 @@ const Navbar = () => {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={onChange}
               />
             </form>
           </li>
