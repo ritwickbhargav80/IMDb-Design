@@ -11,6 +11,10 @@ class NotFound extends Component {
     },
   };
 
+  handleClick = (props) => {
+    props.history.replace("/");
+  };
+
   componentDidMount() {
     let randNum = Math.floor(Math.random() * array.length);
     const { quote, movie, year } = array[randNum];
@@ -49,6 +53,7 @@ class NotFound extends Component {
               className="btn create-acc-btn back-button"
               type="submit"
               value="Back to Homepage"
+              onClick={() => this.handleClick(this.props)}
             />
           </div>
           <img

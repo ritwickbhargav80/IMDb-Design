@@ -119,6 +119,7 @@ class CustomSlider extends Component {
             <div
               key={movie.id}
               onClick={() => this.handleClick(props, movie.id)}
+              className="single-card"
             >
               <Slide
                 banner={movie.banner}
