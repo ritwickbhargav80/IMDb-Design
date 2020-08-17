@@ -27,7 +27,7 @@ class Register extends Component {
 
   render() {
     const { type, placeholder, icon } = this.state;
-    const { login, error, onChange } = this.props;
+    const { login, error, onChange, onSubmit, props } = this.props;
 
     return (
       <div className="txt-center">
@@ -73,6 +73,7 @@ class Register extends Component {
             className="btn create-acc-btn"
             type="submit"
             value="Create a New Account"
+            onClick={() => onSubmit(props)}
           />
         </form>
         <br />

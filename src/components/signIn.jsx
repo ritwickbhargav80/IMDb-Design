@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 
 import Default from "./login/default";
 import Login from "./login/login";
@@ -55,6 +56,18 @@ class SignIn extends Component {
     form[e.currentTarget.name] = e.currentTarget.value;
     this.setState({ form });
     this.validate(e.currentTarget.name, e.currentTarget.value);
+  };
+
+  handleSubmit = (props) => {
+    let { login, register, form, error } = this.state;
+    if (error.email || error.password || !form.email || !form.password) {
+      this.setState({ login, register, form, error });
+      toast.error("Form is not valid");
+    } else {
+      props.history.replace("/");
+      if (login) toast.success("Logged in successfully!");
+      if (register) toast.success("Account created successfully!");
+    }
   };
 
   render() {
@@ -121,6 +134,8 @@ class SignIn extends Component {
                 register={this.handleRegister}
                 error={error}
                 onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
+                props={this.props}
               />
             )}
             {register && (
@@ -128,6 +143,8 @@ class SignIn extends Component {
                 login={this.handleSignIn}
                 error={error}
                 onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
+                props={this.props}
               />
             )}
           </div>
