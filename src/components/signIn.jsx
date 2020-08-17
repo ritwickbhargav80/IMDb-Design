@@ -58,13 +58,13 @@ class SignIn extends Component {
     this.validate(e.currentTarget.name, e.currentTarget.value);
   };
 
-  handleSubmit = (props) => {
+  handleSubmit = () => {
     let { login, register, form, error } = this.state;
     if (error.email || error.password || !form.email || !form.password) {
-      this.setState({ login, register, form, error });
       toast.error("Form is not valid");
+      return;
     } else {
-      props.history.replace("/");
+      this.props.history.replace("/");
       if (login) toast.success("Logged in successfully!");
       if (register) toast.success("Account created successfully!");
     }

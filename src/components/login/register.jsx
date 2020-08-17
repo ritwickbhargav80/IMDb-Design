@@ -27,13 +27,13 @@ class Register extends Component {
 
   render() {
     const { type, placeholder, icon } = this.state;
-    const { login, error, onChange, onSubmit, props } = this.props;
+    const { login, error, onChange, onSubmit } = this.props;
 
     return (
       <div className="txt-center">
         <h3 className="h3">Register</h3>
         <br />
-        <form>
+        <form onSubmit={onSubmit}>
           <Input
             htmlfor="name"
             label="Full name"
@@ -73,7 +73,6 @@ class Register extends Component {
             className="btn create-acc-btn"
             type="submit"
             value="Create a New Account"
-            onClick={() => onSubmit(props)}
           />
         </form>
         <br />
