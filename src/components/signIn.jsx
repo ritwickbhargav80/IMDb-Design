@@ -58,12 +58,17 @@ class SignIn extends Component {
     this.validate(e.currentTarget.name, e.currentTarget.value);
   };
 
+  isError = () => {
+    let { form, error } = this.state;
+    if (error.email || error.password || !form.email || !form.password)
+      return true;
+    return false;
+  };
+
   handleSubmit = () => {
-    let { login, register, form, error } = this.state;
-    if (error.email || error.password || !form.email || !form.password) {
-      toast.error("Form is not valid");
-      return;
-    } else {
+    let { login, register } = this.state;
+    if (this.isError()) toast.error("Form is not valid");
+    else {
       this.props.history.replace("/");
       if (login) toast.success("Logged in successfully!");
       if (register) toast.success("Account created successfully!");
@@ -136,6 +141,7 @@ class SignIn extends Component {
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 props={this.props}
+                isError={this.isError}
               />
             )}
             {register && (
@@ -145,6 +151,7 @@ class SignIn extends Component {
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 props={this.props}
+                isError={this.isError}
               />
             )}
           </div>

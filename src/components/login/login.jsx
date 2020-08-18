@@ -30,7 +30,7 @@ class Login extends Component {
 
   render() {
     const { type, placeholder, icon } = this.state;
-    const { register, error, onChange, onSubmit } = this.props;
+    const { register, error, onChange, onSubmit, isError } = this.props;
 
     return (
       <div className="txt-center">
@@ -92,6 +92,7 @@ class Login extends Component {
             className="btn create-acc-btn custom-width"
             type="submit"
             value="Sign-In"
+            disabled={isError()}
           />
         </form>
         <br />

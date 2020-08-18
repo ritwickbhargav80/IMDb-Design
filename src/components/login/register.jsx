@@ -27,7 +27,7 @@ class Register extends Component {
 
   render() {
     const { type, placeholder, icon } = this.state;
-    const { login, error, onChange, onSubmit } = this.props;
+    const { login, error, onChange, onSubmit, isError } = this.props;
 
     return (
       <div className="txt-center">
@@ -73,6 +73,7 @@ class Register extends Component {
             className="btn create-acc-btn"
             type="submit"
             value="Create a New Account"
+            disabled={isError()}
           />
         </form>
         <br />
