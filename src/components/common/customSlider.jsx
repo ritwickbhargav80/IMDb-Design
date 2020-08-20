@@ -58,7 +58,7 @@ class CustomSlider extends Component {
     const settings = {
       dots: false,
       infinite: movies.length > 7 ? true : false, // length > 7
-      speed: 1000,
+      speed: 1100,
       slidesToShow: 7,
       slidesToScroll: 7,
       nextArrow: <SampleNextArrow show={this.state.show} />,
@@ -142,7 +142,7 @@ class CustomSlider extends Component {
                 title={movie.title}
                 duration={movie.release_date}
                 genre={getGenre(movie.genre_ids, genres, movie.release_date)}
-                content={"Hi hello"}
+                content={movie.overview}
               />
             </div>
           ))}
