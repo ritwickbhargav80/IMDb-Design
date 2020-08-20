@@ -57,12 +57,13 @@ class CustomSlider extends Component {
     let { movies, genres, props } = this.props;
     const settings = {
       dots: false,
-      infinite: 8 > 7 ? true : false, // length > 7
-      speed: 500,
+      infinite: movies.length > 7 ? true : false, // length > 7
+      speed: 1000,
       slidesToShow: 7,
       slidesToScroll: 7,
       nextArrow: <SampleNextArrow show={this.state.show} />,
       prevArrow: <SamplePrevArrow show={this.state.show} />,
+      autoplay: true,
       responsive: [
         {
           breakpoint: 1200,

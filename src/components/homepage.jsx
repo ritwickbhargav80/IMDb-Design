@@ -25,17 +25,23 @@ class HomePage extends Component {
   };
 
   async componentDidMount() {
+    let apiGenres, movies, data1, data2;
     try {
-      const { data: apiGenres } = await axios.get(
+      data1 = await axios.get(
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
       );
-      const { data: movies } = await axios.get(
+      data2 = await axios.get(
         `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
       );
-      this.setState({ popular: movies.results, genres: apiGenres.genres });
+      apiGenres = data1.data;
+      movies = data2.data;
     } catch (err) {
       console.log(err);
     }
+    console.log(movies.results);
+    this.setState({
+      data: { popular: movies.results, genres: apiGenres.genres },
+    });
   }
 
   toggleActive = (medium) => {
@@ -54,6 +60,8 @@ class HomePage extends Component {
     const { date, month } = getDateFunction();
     let { prime, netflix, hotstar, sonyliv, tvfplay } = this.state.stream;
     let { popular, genres } = this.state.data;
+
+    console.log(popular);
 
     return (
       <div className="container">
