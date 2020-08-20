@@ -5,6 +5,8 @@ import Slide from "./slide";
 
 import "../../stylesheets/customSlider.css";
 
+require("dotenv").config();
+
 function SampleNextArrow(props) {
   const { onClick, show } = props;
   return (
@@ -27,6 +29,19 @@ function SamplePrevArrow(props) {
   );
 }
 
+function getPosterLink(poster_path) {
+  return process.env.REACT_APP_API_LINK + poster_path;
+}
+
+function getGenre(movie_ids, genres, rdate) {
+  let str = "";
+  movie_ids.map((m) => {
+    str += genres.filter((g) => g.id === m)[0].name + ", ";
+  });
+  str += rdate.slice(0, 4);
+  return str;
+}
+
 class CustomSlider extends Component {
   state = { show: false };
 
@@ -39,7 +54,7 @@ class CustomSlider extends Component {
   };
 
   render() {
-    let { movies, props } = this.props;
+    let { movies, genres, props } = this.props;
     const settings = {
       dots: false,
       infinite: 8 > 7 ? true : false, // length > 7
@@ -122,11 +137,11 @@ class CustomSlider extends Component {
               className="single-card"
             >
               <Slide
-                banner={movie.banner}
+                banner={getPosterLink(movie.poster_path)}
                 title={movie.title}
-                duration={movie.duration}
-                genre={movie.genre}
-                content={movie.content}
+                duration={movie.release_date}
+                genre={getGenre(movie.genre_ids, genres, movie.release_date)}
+                content={"Hi hello"}
               />
             </div>
           ))}
