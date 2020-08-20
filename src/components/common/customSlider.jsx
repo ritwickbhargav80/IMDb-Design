@@ -37,6 +37,7 @@ function getGenre(movie_ids, genres, rdate) {
   let str = "";
   movie_ids.map((m) => {
     str += genres.filter((g) => g.id === m)[0].name + ", ";
+    return null;
   });
   str += rdate.slice(0, 4);
   return str;
@@ -57,8 +58,8 @@ class CustomSlider extends Component {
     let { movies, genres, props } = this.props;
     const settings = {
       dots: false,
-      infinite: movies.length > 7 ? true : false, // length > 7
-      speed: 1100,
+      infinite: movies.length > 7 ? true : false,
+      speed: 1300,
       slidesToShow: 7,
       slidesToScroll: 7,
       nextArrow: <SampleNextArrow show={this.state.show} />,
