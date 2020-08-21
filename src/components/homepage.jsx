@@ -6,6 +6,7 @@ import CustomSlider from "./common/customSlider";
 import "../stylesheets/homepage.css";
 
 import { getDateFunction } from "./../utils/common";
+import AwesomeComponent from "./common/spinner";
 
 require("dotenv").config();
 
@@ -24,24 +25,31 @@ class HomePage extends Component {
     },
   };
 
+  getTrailer = async (id) => {
+    const { data: trailer } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    );
+    const obj = trailer.results.find((o) => o.type.toLowerCase() === "trailer");
+    return obj?.key;
+  };
+
   async componentDidMount() {
-    let apiGenres, movies, data1, data2;
     try {
-      data1 = await axios.get(
+      const { data: apiGenres } = await axios.get(
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
       );
-      data2 = await axios.get(
+      const { data: movies } = await axios.get(
         `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
       );
-      apiGenres = data1.data;
-      movies = data2.data;
+      movies.results.map(
+        async (m) => (m.trailer = await this.getTrailer(m.id))
+      );
+      this.setState({
+        data: { popular: movies.results, genres: apiGenres.genres },
+      });
     } catch (err) {
       console.log(err);
     }
-    console.log(movies.results);
-    this.setState({
-      data: { popular: movies.results, genres: apiGenres.genres },
-    });
   }
 
   toggleActive = (medium) => {
@@ -70,7 +78,11 @@ class HomePage extends Component {
           <h5 className="sub-heading">Fan Favorites</h5>
         </div>
         <p className="sub-script">This week's top TV and movies</p>
-        <CustomSlider movies={popular} genres={genres} props={this.props} />
+        {popular.length === 0 ? (
+          <AwesomeComponent />
+        ) : (
+          <CustomSlider movies={popular} genres={genres} props={this.props} />
+        )}
         <h3 className="h3 margin-bottom-10">Explore what's streaming</h3>
         <ul className="nav nav-pills">
           <li className="nav-item">
@@ -114,7 +126,11 @@ class HomePage extends Component {
             </span>
           </li>
         </ul>
-        <CustomSlider movies={popular} genres={genres} props={this.props} />
+        {popular.length === 0 ? (
+          <AwesomeComponent />
+        ) : (
+          <CustomSlider movies={popular} genres={genres} props={this.props} />
+        )}
         <h3 className="h3">Today's Exclusive</h3>
         <div className="left-border">
           <h5 className="sub-heading">Top Coverage &gt;</h5>
