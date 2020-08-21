@@ -95,3 +95,9 @@
 .back-button {
   width: 100%;
 }
+
+.sweet-loading {
+  height: 10em;
+  margin-left: -97px;
+  padding: 50px 0px;
+}

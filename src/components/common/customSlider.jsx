@@ -59,12 +59,12 @@ class CustomSlider extends Component {
     const settings = {
       dots: false,
       infinite: movies.length > 7 ? true : false,
-      speed: 1300,
+      speed: 1000,
       slidesToShow: 7,
       slidesToScroll: 7,
       nextArrow: <SampleNextArrow show={this.state.show} />,
       prevArrow: <SamplePrevArrow show={this.state.show} />,
-      autoplay: true,
+      // autoplay: true,
       responsive: [
         {
           breakpoint: 1200,
@@ -145,6 +145,7 @@ class CustomSlider extends Component {
                 genre={getGenre(movie.genre_ids, genres, movie.release_date)}
                 content={movie.overview}
                 trailer={movie.trailer}
+                props={props}
               />
             </div>
           ))}
