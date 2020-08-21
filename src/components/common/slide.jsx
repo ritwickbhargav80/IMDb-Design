@@ -40,7 +40,7 @@ class Slide extends Component {
                     {titleSliced}
                   </span>
                 </abbr>
-                <a href={trailer}>
+                <a href={"youtu.be/" + trailer}>
                   <abbr title="Play Trailer">
                     <div className="pulse">
                       <i

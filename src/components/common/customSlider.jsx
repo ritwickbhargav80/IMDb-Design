@@ -144,6 +144,7 @@ class CustomSlider extends Component {
                 duration={movie.release_date}
                 genre={getGenre(movie.genre_ids, genres, movie.release_date)}
                 content={movie.overview}
+                trailer={movie.trailer}
               />
             </div>
           ))}
