@@ -15,9 +15,10 @@ class Slide extends Component {
     this.setState({ showBtn: value });
   }
 
-  handleTrailer = (e, trailer) => {
+  handleTrailer = (e, trailer, loadLink) => {
     e.stopPropagation();
-    window.location = trailer ? "https://youtu.be/" + trailer : "/not-found";
+    if (!trailer) window.location = "/not-found";
+    else loadLink("https://youtu.be/" + trailer);
   };
 
   handleWhitelist = (e, props) => {
@@ -34,6 +35,7 @@ class Slide extends Component {
       genre,
       content,
       props,
+      loadLink,
     } = this.props;
 
     let titleSliced = getTitle(title),
@@ -70,7 +72,7 @@ class Slide extends Component {
                 <abbr title="Play Trailer">
                   <div
                     className="pulse"
-                    onClick={(e) => this.handleTrailer(e, trailer)}
+                    onClick={(e) => this.handleTrailer(e, trailer, loadLink)}
                   >
                     <i
                       className="fa fa-play-circle-o play-circle-icon"

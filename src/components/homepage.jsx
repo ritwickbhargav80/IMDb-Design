@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ReactPlayer from "react-player/lazy";
 
 import CustomSlider from "./common/customSlider";
 
 import "../stylesheets/homepage.css";
 
 import { getDateFunction } from "./../utils/common";
-import AwesomeComponent from "./common/spinner";
+import Spinner from "./common/spinner";
 
 require("dotenv").config();
 
@@ -23,6 +24,7 @@ class HomePage extends Component {
       popular: [],
       genres: [],
     },
+    link: "",
   };
 
   getTrailer = async (id) => {
@@ -64,24 +66,40 @@ class HomePage extends Component {
     this.setState({ stream });
   };
 
+  loadLink = (link) => {
+    this.setState({ link });
+  };
+
   render() {
     const { date, month } = getDateFunction();
     let { prime, netflix, hotstar, sonyliv, tvfplay } = this.state.stream;
     let { popular, genres } = this.state.data;
-
-    console.log(popular);
+    let { link } = this.state;
 
     return (
       <div className="container">
+        <ReactPlayer
+          url={link}
+          width="100%"
+          volume="1"
+          pip="false"
+          controls="true"
+          playing
+        />
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">
           <h5 className="sub-heading">Fan Favorites</h5>
         </div>
         <p className="sub-script">This week's top TV and movies</p>
         {popular.length === 0 ? (
-          <AwesomeComponent />
+          <Spinner />
         ) : (
-          <CustomSlider movies={popular} genres={genres} props={this.props} />
+          <CustomSlider
+            movies={popular}
+            genres={genres}
+            props={this.props}
+            loadLink={this.loadLink}
+          />
         )}
         <h3 className="h3 margin-bottom-10">Explore what's streaming</h3>
         <ul className="nav nav-pills">
@@ -127,7 +145,7 @@ class HomePage extends Component {
           </li>
         </ul>
         {popular.length === 0 ? (
-          <AwesomeComponent />
+          <Spinner />
         ) : (
           <CustomSlider movies={popular} genres={genres} props={this.props} />
         )}

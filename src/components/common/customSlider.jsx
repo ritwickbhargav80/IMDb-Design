@@ -55,7 +55,7 @@ class CustomSlider extends Component {
   };
 
   render() {
-    let { movies, genres, props } = this.props;
+    let { movies, genres, props, loadLink } = this.props;
     const settings = {
       dots: false,
       infinite: movies.length > 7 ? true : false,
@@ -146,6 +146,7 @@ class CustomSlider extends Component {
                 content={movie.overview}
                 trailer={movie.trailer}
                 props={props}
+                loadLink={loadLink}
               />
             </div>
           ))}
