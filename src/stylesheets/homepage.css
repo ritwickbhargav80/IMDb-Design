@@ -121,6 +121,11 @@
   width: 100%;
 }
 
+.carousel-inner {
+  border-radius: 8px;
+  box-shadow: 5px 5.5px #282c34;
+}
+
 @media screen and (max-width: 1200px) {
   .sticky-video--player--3QVPP {
     height: 400px !important;

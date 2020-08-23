@@ -80,7 +80,7 @@ class HomePage extends Component {
 
     return (
       <div className="container">
-        <Carousel />
+        {popular.length !== 0 ? <Carousel movies={popular} /> : <Spinner />}
         {link ? (
           <StickyVideo
             url={link}
