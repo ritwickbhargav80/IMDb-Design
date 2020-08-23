@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import ReactPlayer from "react-player/lazy";
+import StickyVideo from "react-sticky-video";
 
 import CustomSlider from "./common/customSlider";
 
+import "react-sticky-video/dist/index.css";
 import "../stylesheets/homepage.css";
 
 import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
+import Carousel from "./common/carousel";
 
 require("dotenv").config();
 
@@ -78,14 +80,17 @@ class HomePage extends Component {
 
     return (
       <div className="container">
-        <ReactPlayer
-          url={link}
-          width="100%"
-          volume="1"
-          pip="false"
-          controls="true"
-          playing
-        />
+        <Carousel />
+        {link ? (
+          <StickyVideo
+            url={link}
+            stickyConfig={{
+              position: "bottom-right",
+            }}
+          />
+        ) : (
+          ""
+        )}
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">
           <h5 className="sub-heading">Fan Favorites</h5>

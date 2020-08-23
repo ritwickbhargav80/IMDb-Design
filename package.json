@@ -17,11 +17,11 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-player": "^2.6.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-slick": "^0.27.2",
     "react-spinners": "^0.9.0",
+    "react-sticky-video": "^0.3.3",
     "react-toastify": "^6.0.8",
     "react-tooltip": "^4.2.7",
     "slick-carousel": "^1.8.1"

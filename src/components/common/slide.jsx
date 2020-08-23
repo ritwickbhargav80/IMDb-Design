@@ -17,8 +17,8 @@ class Slide extends Component {
 
   handleTrailer = (e, trailer, loadLink) => {
     e.stopPropagation();
-    if (!trailer) window.location = "/not-found";
-    else loadLink("https://youtu.be/" + trailer);
+    if (!trailer) loadLink("");
+    else loadLink("https://www.youtube.com/watch?v=" + trailer);
   };
 
   handleWhitelist = (e, props) => {
