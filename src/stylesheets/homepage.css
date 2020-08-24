@@ -103,6 +103,7 @@
 }
 
 .sticky-video--container--1H7C6 {
+  margin-top: 1.5rem;
   width: 100% !important;
   height: 100% !important;
 }
@@ -121,9 +122,31 @@
   width: 100%;
 }
 
+.carousel-top {
+  background-color: #e0e0e0;
+}
+
 .carousel-inner {
   border-radius: 8px;
   box-shadow: 5px 5.5px #282c34;
+}
+
+.laptop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+.color {
+  color: #f5c01f;
+}
+
+.carousel-master,
+.carousel-slide,
+.carousel-inner {
+  height: 100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -153,6 +176,26 @@
 
   .sticky-video--sticky--3LGf- {
     height: initial !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-master,
+  .carousel-slide,
+  .carousel-inner {
+    height: auto;
+  }
+
+  .carousel-content {
+    display: none;
+  }
+
+  .laptop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
   }
 }
 

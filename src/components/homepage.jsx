@@ -80,16 +80,18 @@ class HomePage extends Component {
 
     return (
       <div className="container">
-        {popular.length !== 0 ? <Carousel movies={popular} /> : <Spinner />}
         {link ? (
           <StickyVideo
+            className="mt-4"
             url={link}
             stickyConfig={{
               position: "bottom-right",
             }}
           />
+        ) : popular.length !== 0 ? (
+          <Carousel movies={popular} />
         ) : (
-          ""
+          <Spinner />
         )}
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">

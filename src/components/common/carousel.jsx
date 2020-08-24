@@ -6,12 +6,12 @@ const Carousel = ({ movies }) => {
   }
 
   return (
-    <div style={{ backgroundColor: "#E0E0E0" }} id="venue">
-      <div className="container">
-        <div className="row bg-dark mt-4">
-          <div className="p-4 col-md-4">
+    <div className="sticky-video--player--3QVPP carousel-top" id="venue">
+      <div className="container sticky-video--player--3QVPP">
+        <div className="row bg-dark mt-4 sticky-video--player--3QVPP">
+          <div className="p-4 col-md-4 carousel-master">
             <div
-              className="carousel slide"
+              className="carousel slide carousel-slide"
               data-ride="carousel"
               id="carousel1"
               data-interval="4000"
@@ -20,8 +20,14 @@ const Carousel = ({ movies }) => {
                 <div className="carousel-item active" key={movies[0].id}>
                   {" "}
                   <img
-                    className="d-block img-fluid w-100"
+                    className="img-fluid w-100 laptop"
                     src={getPosterLink(movies[0].poster_path)}
+                    data-holder-rendered="true"
+                    alt="slide"
+                  />
+                  <img
+                    className="img-fluid w-100 mobile"
+                    src={getPosterLink(movies[0].backdrop_path)}
                     data-holder-rendered="true"
                     alt="slide"
                   />
@@ -30,8 +36,14 @@ const Carousel = ({ movies }) => {
                   <div className="carousel-item" key={m.id}>
                     {" "}
                     <img
-                      className="d-block img-fluid w-100"
+                      className="img-fluid w-100 laptop"
                       src={getPosterLink(m.poster_path)}
+                      data-holder-rendered="true"
+                      alt="slide"
+                    />
+                    <img
+                      className="img-fluid w-100 mobile"
+                      src={getPosterLink(m.backdrop_path)}
                       data-holder-rendered="true"
                       alt="slide"
                     />
@@ -65,9 +77,12 @@ const Carousel = ({ movies }) => {
                 <span className="sr-only">Next</span>{" "}
               </a>
             </div>
+            <div className="text-light">
+              <h5 className="mt-3 mobile color">Popular Movies</h5>
+            </div>
           </div>
-          <div className="pr-4 pl-0 col-md-8 align-self-center text-light">
-            <h2 style={{ color: "#f5c01f" }}>Lorem ipsum dolor sit amet</h2>
+          <div className="pr-4 pl-0 col-md-8 align-self-center text-light carousel-content">
+            <h2 className="color">Lorem ipsum dolor sit amet</h2>
             <p className="my-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ut
               voluptates sit voluptate ab rem non vel harum fuga, qui officia
