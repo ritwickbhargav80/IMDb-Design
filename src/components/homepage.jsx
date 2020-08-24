@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import StickyVideo from "react-sticky-video";
 
 import CustomSlider from "./common/customSlider";
@@ -10,38 +9,21 @@ import "../stylesheets/homepage.css";
 import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
 import Carousel from "./common/carousel";
-
-require("dotenv").config();
+import { getGenres, getPopularMovies } from "../utils/apiCalls";
 
 class HomePage extends Component {
   state = {
     media: { upcoming: [], trending: [], popular: [], genres: [], latest: [] },
-    people: { popular: [], link: "" },
-  };
-
-  getTrailer = async (id) => {
-    const { data: trailer } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    );
-    const obj = trailer.results.find((o) => o.type.toLowerCase() === "trailer");
-    return obj?.key;
+    people: { popular: [] },
+    link: "",
   };
 
   async componentDidMount() {
     try {
-      const { data: apiGenres } = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
-      );
-      const { data: movies } = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
-      );
-      movies.results.map(
-        async (m) => (m.trailer = await this.getTrailer(m.id))
-      );
       this.setState({
         media: {
-          popular: movies.results,
-          genres: apiGenres.genres,
+          popular: await getPopularMovies(),
+          genres: await getGenres(),
         },
       });
     } catch (err) {

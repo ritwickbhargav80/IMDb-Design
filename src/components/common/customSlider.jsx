@@ -4,8 +4,7 @@ import Slider from "react-slick";
 import Slide from "./slide";
 
 import "../../stylesheets/customSlider.css";
-
-require("dotenv").config();
+import { getGenreString } from "../../utils/apiCalls";
 
 function SampleNextArrow(props) {
   const { onClick, show } = props;
@@ -31,16 +30,6 @@ function SamplePrevArrow(props) {
 
 function getPosterLink(poster_path) {
   return process.env.REACT_APP_API_LINK + poster_path;
-}
-
-function getGenre(movie_ids, genres, rdate) {
-  let str = "";
-  movie_ids.map((m) => {
-    str += genres.filter((g) => g.id === m)[0].name + ", ";
-    return null;
-  });
-  str += rdate.slice(0, 4);
-  return str;
 }
 
 class CustomSlider extends Component {
@@ -142,7 +131,11 @@ class CustomSlider extends Component {
                 banner={getPosterLink(movie.poster_path)}
                 title={movie.title}
                 duration={movie.release_date}
-                genre={getGenre(movie.genre_ids, genres, movie.release_date)}
+                genre={getGenreString(
+                  movie.genre_ids,
+                  genres,
+                  movie.release_date
+                )}
                 content={movie.overview}
                 trailer={movie.trailer}
                 props={props}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import image from "../assets/404.png";
-let array = require("../utils/data.json");
+let array = require("../utils/quotes.json");
 
 class NotFound extends Component {
   state = {
