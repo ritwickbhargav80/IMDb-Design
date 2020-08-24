@@ -3,6 +3,7 @@
   border: 0px !important;
   border-radius: 10px;
   overflow: hidden;
+  background-color: transparent !important;
 }
 
 .img-card {
@@ -10,14 +11,6 @@
 }
 
 .slide-text {
-  /* background-image: linear-gradient(
-    rgba(32, 35, 41, 0),
-    rgba(32, 35, 41, 0.12) 5px,
-    rgba(32, 35, 41, 0.52) 24px,
-    rgba(40, 44, 52, 0.79) 40px,
-    rgb(32, 35, 41) 56px,
-    rgb(32, 35, 41) 100%
-  ); */
   background-image: linear-gradient(
     rgba(18, 38, 66, 0),
     rgba(18, 38, 66, 0.12) 5px,

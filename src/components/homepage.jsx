@@ -15,18 +15,8 @@ require("dotenv").config();
 
 class HomePage extends Component {
   state = {
-    stream: {
-      prime: true,
-      netflix: false,
-      hotstar: false,
-      sonyliv: false,
-      tvfplay: false,
-    },
-    data: {
-      popular: [],
-      genres: [],
-    },
-    link: "",
+    media: { upcoming: [], trending: [], popular: [], genres: [], latest: [] },
+    people: { popular: [], link: "" },
   };
 
   getTrailer = async (id) => {
@@ -49,24 +39,15 @@ class HomePage extends Component {
         async (m) => (m.trailer = await this.getTrailer(m.id))
       );
       this.setState({
-        data: { popular: movies.results, genres: apiGenres.genres },
+        media: {
+          popular: movies.results,
+          genres: apiGenres.genres,
+        },
       });
     } catch (err) {
       console.log(err);
     }
   }
-
-  toggleActive = (medium) => {
-    let stream = {
-      prime: false,
-      netflix: false,
-      hotstar: false,
-      sonyliv: false,
-      tvfplay: false,
-    };
-    stream[medium] = true;
-    this.setState({ stream });
-  };
 
   loadLink = (link) => {
     this.setState({ link });
@@ -74,8 +55,7 @@ class HomePage extends Component {
 
   render() {
     const { date, month } = getDateFunction();
-    let { prime, netflix, hotstar, sonyliv, tvfplay } = this.state.stream;
-    let { popular, genres } = this.state.data;
+    let { popular, genres } = this.state.media;
     let { link } = this.state;
 
     return (
@@ -108,49 +88,7 @@ class HomePage extends Component {
             loadLink={this.loadLink}
           />
         )}
-        <h3 className="h3 margin-bottom-10">Explore what's streaming</h3>
-        <ul className="nav nav-pills">
-          <li className="nav-item">
-            <span
-              className={"nav-link navs" + (prime ? " navs-active" : "")}
-              onClick={() => this.toggleActive("prime")}
-            >
-              Prime Video
-            </span>
-          </li>
-          <li className="nav-item">
-            <span
-              className={"nav-link navs" + (netflix ? " navs-active" : "")}
-              onClick={() => this.toggleActive("netflix")}
-            >
-              Netflix
-            </span>
-          </li>
-          <li className="nav-item">
-            <span
-              className={"nav-link navs" + (hotstar ? " navs-active" : "")}
-              onClick={() => this.toggleActive("hotstar")}
-            >
-              Hotstar
-            </span>
-          </li>
-          <li className="nav-item">
-            <span
-              className={"nav-link navs" + (sonyliv ? " navs-active" : "")}
-              onClick={() => this.toggleActive("sonyliv")}
-            >
-              Sonyliv
-            </span>
-          </li>
-          <li className="nav-item">
-            <span
-              className={"nav-link navs" + (tvfplay ? " navs-active" : "")}
-              onClick={() => this.toggleActive("tvfplay")}
-            >
-              Tvfplay
-            </span>
-          </li>
-        </ul>
+        <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
         {popular.length === 0 ? (
           <Spinner />
         ) : (
