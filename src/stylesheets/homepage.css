@@ -133,6 +133,7 @@
 
 .laptop {
   display: block;
+  width: 100%;
 }
 
 .mobile {
@@ -167,6 +168,11 @@
   .sticky-video--sticky--3LGf- {
     height: initial !important;
   }
+
+  .laptop {
+    width: 110%;
+    max-width: 110% !important;
+  }
 }
 
 @media screen and (max-width: 769px) {
@@ -177,9 +183,7 @@
   .sticky-video--sticky--3LGf- {
     height: initial !important;
   }
-}
 
-@media screen and (max-width: 768px) {
   .carousel-master,
   .carousel-slide,
   .carousel-inner {

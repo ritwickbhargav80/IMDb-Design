@@ -9,7 +9,7 @@ import "../stylesheets/homepage.css";
 import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
 import Carousel from "./common/carousel";
-import { getGenres, getPopularMovies } from "../utils/apiCalls";
+import { getGenres, getMovies } from "../utils/apiCalls";
 
 class HomePage extends Component {
   state = {
@@ -22,7 +22,8 @@ class HomePage extends Component {
     try {
       this.setState({
         media: {
-          popular: await getPopularMovies(),
+          popular: await getMovies("popular"),
+          upcoming: await getMovies("upcoming"),
           genres: await getGenres(),
         },
       });
@@ -35,26 +36,30 @@ class HomePage extends Component {
     this.setState({ link });
   };
 
+  topComponent = (link, upcoming) => {
+    return link ? (
+      <StickyVideo
+        className="mt-4"
+        url={link}
+        stickyConfig={{
+          position: "bottom-right",
+        }}
+      />
+    ) : upcoming.length !== 0 ? (
+      <Carousel movies={upcoming} />
+    ) : (
+      <Spinner />
+    );
+  };
+
   render() {
     const { date, month } = getDateFunction();
-    let { popular, genres } = this.state.media;
+    let { popular, upcoming, genres } = this.state.media;
     let { link } = this.state;
 
     return (
       <div className="container">
-        {link ? (
-          <StickyVideo
-            className="mt-4"
-            url={link}
-            stickyConfig={{
-              position: "bottom-right",
-            }}
-          />
-        ) : popular.length !== 0 ? (
-          <Carousel movies={popular} />
-        ) : (
-          <Spinner />
-        )}
+        {this.topComponent(link, upcoming)}
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">
           <h5 className="sub-heading">Fan Favorites</h5>
@@ -64,7 +69,7 @@ class HomePage extends Component {
           <Spinner />
         ) : (
           <CustomSlider
-            movies={popular}
+            movies={popular.slice(0, 10)}
             genres={genres}
             props={this.props}
             loadLink={this.loadLink}

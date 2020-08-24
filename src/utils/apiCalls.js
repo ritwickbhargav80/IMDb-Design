@@ -1,6 +1,11 @@
 import axios from "axios";
 
-let { common, genres, popularMovies } = require("./../config.json");
+let {
+  common,
+  genres,
+  popularMovies,
+  upcomingMovies,
+} = require("./../config.json");
 
 async function getTrailer(id) {
   const { data } = await axios.get(
@@ -29,12 +34,14 @@ function getGenreString(genre_ids, genres, rdate) {
   return str;
 }
 
-async function getPopularMovies() {
+async function getMovies(type) {
   const { data } = await axios.get(
-    `${common}${popularMovies}${process.env.REACT_APP_API_KEY}`
+    `${common}${
+      type.toLowerCase() === "popular" ? popularMovies : upcomingMovies
+    }${process.env.REACT_APP_API_KEY}`
   );
   data.results.map(async (m) => (m.trailer = await getTrailer(m.id)));
   return data.results;
 }
 
-export { getGenres, getGenreString, getPopularMovies };
+export { getGenres, getGenreString, getMovies };

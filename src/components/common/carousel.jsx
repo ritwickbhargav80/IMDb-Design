@@ -14,13 +14,13 @@ const Carousel = ({ movies }) => {
               className="carousel slide carousel-slide"
               data-ride="carousel"
               id="carousel1"
-              data-interval="4000"
+              data-interval="3500"
             >
               <div className="carousel-inner" role="listbox">
                 <div className="carousel-item active" key={movies[0].id}>
                   {" "}
                   <img
-                    className="img-fluid w-100 laptop"
+                    className="img-fluid laptop"
                     src={getPosterLink(movies[0].poster_path)}
                     data-holder-rendered="true"
                     alt="slide"
@@ -36,7 +36,7 @@ const Carousel = ({ movies }) => {
                   <div className="carousel-item" key={m.id}>
                     {" "}
                     <img
-                      className="img-fluid w-100 laptop"
+                      className="img-fluid laptop"
                       src={getPosterLink(m.poster_path)}
                       data-holder-rendered="true"
                       alt="slide"
@@ -78,11 +78,11 @@ const Carousel = ({ movies }) => {
               </a>
             </div>
             <div className="text-light">
-              <h5 className="mt-3 mobile color">Popular Movies</h5>
+              <h5 className="mt-3 mobile color">Upcoming Movies</h5>
             </div>
           </div>
           <div className="pr-4 pl-0 col-md-8 align-self-center text-light carousel-content">
-            <h2 className="color">Lorem ipsum dolor sit amet</h2>
+            <h2 className="color">Upcoming Movies</h2>
             <p className="my-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ut
               voluptates sit voluptate ab rem non vel harum fuga, qui officia
