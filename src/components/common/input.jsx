@@ -1,6 +1,8 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
 
+import "../../stylesheets/common.css";
+
 const Input = ({
   htmlFor,
   label,
@@ -114,4 +116,37 @@ const Password = ({
   );
 };
 
-export { Input, Password };
+const CheckBox = ({ mChecked, sChecked }) => {
+  return (
+    <div className="myTest custom-control custom-checkbox">
+      <input
+        type="checkbox"
+        className="custom-control-input"
+        id="customCheck1"
+        checked={mChecked}
+      />
+      <label
+        className="custom-control-label"
+        for="customCheck1"
+        style={{ color: mChecked ? "#f5c01f" : "#ffffff", marginRight: "2em" }}
+      >
+        Movies
+      </label>
+      <input
+        type="checkbox"
+        className="custom-control-input"
+        id="customCheck2"
+        checked={sChecked}
+      />
+      <label
+        className="custom-control-label"
+        for="customCheck2"
+        style={{ color: sChecked ? "#f5c01f" : "#ffffff" }}
+      >
+        Shows
+      </label>
+    </div>
+  );
+};
+
+export { Input, Password, CheckBox };

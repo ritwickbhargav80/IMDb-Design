@@ -77,8 +77,13 @@ const Carousel = ({ movies }) => {
                 <span className="sr-only">Next</span>{" "}
               </a>
             </div>
-            <div className="text-light">
-              <h5 className="mt-3 mobile color">Upcoming Movies</h5>
+            <div className="mobile text-light mobile-text">
+              <h5 className="mt-3 color">
+                Upcoming Movies{" "}
+                <a href="/" className="btn mt-0 p-2 create-acc-btn">
+                  View All
+                </a>
+              </h5>
             </div>
           </div>
           <div className="pr-4 pl-0 col-md-8 align-self-center text-light carousel-content">
@@ -90,7 +95,7 @@ const Carousel = ({ movies }) => {
               necessitatibus.
             </p>{" "}
             <a href="/" className="btn mb-3 p-2 create-acc-btn">
-              View the gallery
+              View All
             </a>
           </div>
         </div>

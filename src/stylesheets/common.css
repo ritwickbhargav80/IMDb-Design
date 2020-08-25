@@ -2,3 +2,34 @@
   height: 10em;
   padding: 50px 0px;
 }
+
+.custom-checkbox {
+  float: right;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before,
+.custom-switch .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #f5c01f !important;
+  border-color: #f5c01f !important;
+  border: #ffffff solid 1px;
+}
+
+.custom-control-label {
+  padding-top: 2px;
+}
+
+.custom-checkbox
+  .custom-control-input:checked:focus
+  ~ .custom-control-label::before,
+.custom-switch
+  .custom-control-input:checked:focus
+  ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(245, 192, 31, 0.25);
+}
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(245, 192, 31, 0.1);
+}
+.custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+  background-color: #c8ffc8;
+  color: white;
+}

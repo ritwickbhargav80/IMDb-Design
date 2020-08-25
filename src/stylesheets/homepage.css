@@ -198,6 +198,10 @@
     display: none;
   }
 
+  .mobile-text .color {
+    display: none;
+  }
+
   .mobile {
     display: block;
   }
@@ -210,5 +214,9 @@
 
   .sticky-video--sticky--3LGf- {
     height: initial !important;
+  }
+
+  .mobile-text .color {
+    display: block;
   }
 }

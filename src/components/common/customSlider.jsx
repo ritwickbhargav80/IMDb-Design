@@ -5,6 +5,7 @@ import Slide from "./slide";
 
 import "../../stylesheets/customSlider.css";
 import { getGenreString } from "../../utils/apiCalls";
+import { CheckBox } from "./input";
 
 function SampleNextArrow(props) {
   const { onClick, show } = props;
@@ -115,36 +116,41 @@ class CustomSlider extends Component {
     };
 
     return (
-      <div
-        className="container"
-        onMouseEnter={() => this.setIsShown(true)}
-        onMouseLeave={() => this.setIsShown(false)}
-      >
-        <Slider {...settings}>
-          {movies.map((movie) => (
-            <div
-              key={movie.id}
-              onClick={() => this.handleClick(props, movie.id)}
-              className="single-card"
-            >
-              <Slide
-                banner={getPosterLink(movie.poster_path)}
-                title={movie.title}
-                duration={movie.release_date}
-                genre={getGenreString(
-                  movie.genre_ids,
-                  genres,
-                  movie.release_date
-                )}
-                content={movie.overview}
-                trailer={movie.trailer}
-                props={props}
-                loadLink={loadLink}
-              />
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <React.Fragment>
+        <p style={{ height: "0.64em" }}>
+          <CheckBox mChecked={true} sChecked={true} />
+        </p>
+        <div
+          className="container"
+          onMouseEnter={() => this.setIsShown(true)}
+          onMouseLeave={() => this.setIsShown(false)}
+        >
+          <Slider {...settings}>
+            {movies.map((movie) => (
+              <div
+                key={movie.id}
+                onClick={() => this.handleClick(props, movie.id)}
+                className="single-card"
+              >
+                <Slide
+                  banner={getPosterLink(movie.poster_path)}
+                  title={movie.title}
+                  duration={movie.release_date}
+                  genre={getGenreString(
+                    movie.genre_ids,
+                    genres,
+                    movie.release_date
+                  )}
+                  content={movie.overview}
+                  trailer={movie.trailer}
+                  props={props}
+                  loadLink={loadLink}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </React.Fragment>
     );
   }
 }
