@@ -116,36 +116,47 @@ const Password = ({
   );
 };
 
-const CheckBox = ({ mChecked, sChecked }) => {
+const CheckBox = ({ mChecked, sChecked, onChange }) => {
   return (
-    <div className="myTest custom-control custom-checkbox">
-      <input
-        type="checkbox"
-        className="custom-control-input"
-        id="customCheck1"
-        checked={mChecked}
-      />
-      <label
-        className="custom-control-label"
-        htmlFor="customCheck1"
-        style={{ color: mChecked ? "#f5c01f" : "#ffffff", marginRight: "2em" }}
-      >
-        Movies
-      </label>
-      <input
-        type="checkbox"
-        className="custom-control-input"
-        id="customCheck2"
-        checked={sChecked}
-      />
-      <label
-        className="custom-control-label"
-        htmlFor="customCheck2"
-        style={{ color: sChecked ? "#f5c01f" : "#ffffff" }}
-      >
-        Shows
-      </label>
-    </div>
+    <React.Fragment>
+      <div className="myTest custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          className="custom-control-input"
+          id="customCheck2"
+          checked={sChecked}
+          onChange={() => onChange("shows")}
+        />
+        <label
+          className="custom-control-label"
+          htmlFor="customCheck2"
+          style={{
+            color: sChecked ? "#f5c01f" : "#ffffff",
+          }}
+        >
+          Shows
+        </label>
+      </div>
+      <div className="myTest custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          className="custom-control-input"
+          id="customCheck1"
+          checked={mChecked}
+          onChange={() => onChange("movies")}
+        />
+        <label
+          className="custom-control-label"
+          htmlFor="customCheck1"
+          style={{
+            color: mChecked ? "#f5c01f" : "#ffffff",
+            marginRight: "0.8em",
+          }}
+        >
+          Movies
+        </label>
+      </div>
+    </React.Fragment>
   );
 };
 

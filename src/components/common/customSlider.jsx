@@ -34,7 +34,13 @@ function getPosterLink(poster_path) {
 }
 
 class CustomSlider extends Component {
-  state = { show: false };
+  state = {
+    show: false,
+    checkbox: {
+      movies: true,
+      shows: true,
+    },
+  };
 
   setIsShown(value) {
     this.setState({ show: value });
@@ -44,16 +50,29 @@ class CustomSlider extends Component {
     props.history.push(`/movie/${id}`);
   };
 
+  handleChange = (box) => {
+    let checkbox = this.state.checkbox;
+    checkbox[box] = !checkbox[box];
+    this.setState({ checkbox });
+  };
+
   render() {
-    let { movies, genres, props, loadLink } = this.props;
+    let {
+      movies,
+      genres,
+      props,
+      loadLink,
+      checkbox: displayCheckbox,
+    } = this.props;
+    let { show, checkbox } = this.state;
     const settings = {
       dots: false,
       infinite: movies.length > 7 ? true : false,
       speed: 1000,
       slidesToShow: 7,
       slidesToScroll: 7,
-      nextArrow: <SampleNextArrow show={this.state.show} />,
-      prevArrow: <SamplePrevArrow show={this.state.show} />,
+      nextArrow: <SampleNextArrow show={show} />,
+      prevArrow: <SamplePrevArrow show={show} />,
       // autoplay: true,
       responsive: [
         {
@@ -117,9 +136,17 @@ class CustomSlider extends Component {
 
     return (
       <React.Fragment>
-        <div style={{ height: "1.64em" }}>
-          <CheckBox mChecked={true} sChecked={true} />
-        </div>
+        {displayCheckbox ? (
+          <div style={{ height: "1.64em" }}>
+            <CheckBox
+              mChecked={checkbox.movies}
+              sChecked={checkbox.shows}
+              onChange={this.handleChange}
+            />
+          </div>
+        ) : (
+          ""
+        )}
         <div
           className="container"
           onMouseEnter={() => this.setIsShown(true)}

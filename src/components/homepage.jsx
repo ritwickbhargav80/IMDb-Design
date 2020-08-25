@@ -73,13 +73,20 @@ class HomePage extends Component {
             genres={genres}
             props={this.props}
             loadLink={this.loadLink}
+            checkbox={true}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
         {popular.length === 0 ? (
           <Spinner />
         ) : (
-          <CustomSlider movies={popular} genres={genres} props={this.props} />
+          <CustomSlider
+            movies={popular}
+            genres={genres}
+            props={this.props}
+            loadLink={this.loadLink}
+            checkbox={false}
+          />
         )}
         <h3 className="h3">Today's Exclusive</h3>
         <div className="left-border">
