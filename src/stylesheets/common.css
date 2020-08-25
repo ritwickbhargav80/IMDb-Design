@@ -33,3 +33,13 @@
   background-color: #c8ffc8;
   color: white;
 }
+
+.not-available {
+  margin: 6.7rem 0rem;
+  color: #f5c01f;
+  font-size: 1.6em;
+}
+
+.not-available img {
+  margin-right: 20px;
+}
