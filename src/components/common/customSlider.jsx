@@ -117,9 +117,9 @@ class CustomSlider extends Component {
 
     return (
       <React.Fragment>
-        <p style={{ height: "0.64em" }}>
+        <div style={{ height: "1.64em" }}>
           <CheckBox mChecked={true} sChecked={true} />
-        </p>
+        </div>
         <div
           className="container"
           onMouseEnter={() => this.setIsShown(true)}

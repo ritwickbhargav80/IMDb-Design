@@ -127,7 +127,7 @@ const CheckBox = ({ mChecked, sChecked }) => {
       />
       <label
         className="custom-control-label"
-        for="customCheck1"
+        htmlFor="customCheck1"
         style={{ color: mChecked ? "#f5c01f" : "#ffffff", marginRight: "2em" }}
       >
         Movies
@@ -140,7 +140,7 @@ const CheckBox = ({ mChecked, sChecked }) => {
       />
       <label
         className="custom-control-label"
-        for="customCheck2"
+        htmlFor="customCheck2"
         style={{ color: sChecked ? "#f5c01f" : "#ffffff" }}
       >
         Shows
