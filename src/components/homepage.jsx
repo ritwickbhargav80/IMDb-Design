@@ -22,7 +22,6 @@ class HomePage extends Component {
         latest: [],
       },
       shows: {
-        upcoming: [],
         trending: [],
         popular: [],
         genres: [],
@@ -75,10 +74,9 @@ class HomePage extends Component {
 
   render() {
     const { date, month } = getDateFunction();
-    let { movies, shows } = this.state.media;
+    let { media } = this.state;
+    let { movies } = this.state.media;
     let { link } = this.state;
-
-    console.log(movies.popular.slice(10));
 
     return (
       <div className="container">
@@ -92,15 +90,15 @@ class HomePage extends Component {
           <Spinner />
         ) : (
           <CustomSlider
-            media={movies.popular.slice(0, 10)}
-            genres={movies.genres}
+            media={media}
+            type={"popular"}
             props={this.props}
             loadLink={this.loadLink}
             checkbox={true}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
-        {shows.popular.length === 0 ? (
+        {/* {shows.popular.length === 0 ? (
           <Spinner />
         ) : (
           <CustomSlider
@@ -110,7 +108,7 @@ class HomePage extends Component {
             loadLink={this.loadLink}
             checkbox={false}
           />
-        )}
+        )} */}
         <h3 className="h3">Today's Exclusive</h3>
         <div className="left-border">
           <h5 className="sub-heading">Top Coverage &gt;</h5>

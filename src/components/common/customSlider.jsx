@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import Slide from "./slide";
 
 import "../../stylesheets/customSlider.css";
-import { getGenreString } from "../../utils/apiCalls";
 import { CheckBox } from "./input";
 import empty from "./../../assets/empty.png";
 
@@ -57,16 +56,10 @@ class CustomSlider extends Component {
     this.setState({ checkbox });
   };
 
-  render() {
-    let {
-      media,
-      genres,
-      props,
-      loadLink,
-      checkbox: displayCheckbox,
-    } = this.props;
-    let { show, checkbox } = this.state;
-    const settings = {
+  getSettings = (media) => {
+    let { show } = this.state;
+
+    return {
       dots: false,
       infinite: media.length > 7 ? true : false,
       speed: 1000,
@@ -134,6 +127,108 @@ class CustomSlider extends Component {
         },
       ],
     };
+  };
+
+  getString = (genre_ids, genre) => {
+    let str = "";
+    genre_ids.map((m) => {
+      str += genre.filter((g) => g.id === m)[0].name + ", ";
+      return null;
+    });
+    return str;
+  };
+
+  splicer = (array, element, index) => {
+    array.splice(index * 2, 0, element);
+    return array;
+  };
+
+  weave = (array1, array2) => {
+    return array1.reduce(this.splicer, array2.slice());
+  };
+
+  getData = (movies, shows, type, checkbox) => {
+    let { genres: mGenres } = movies,
+      { genres: sGenres } = shows;
+    movies[type].map((movie) => {
+      movie.genre = this.getString(movie.genre_ids, mGenres);
+      movie.color = "blue";
+      return null;
+    });
+    shows[type].map((show) => {
+      show.genre = this.getString(show.genre_ids, sGenres);
+      show.color = "green";
+      return null;
+    });
+    let data;
+    if (checkbox.movies && checkbox.shows)
+      data = this.weave(movies[type].slice(0, 10), shows[type].slice(0, 10));
+    else if (checkbox.movies) data = movies[type];
+    else data = shows[type];
+    return data;
+  };
+
+  getSlider = (checkbox, data, props, loadLink) => {
+    const settings = this.getSettings(data);
+    if (checkbox.movies || checkbox.shows)
+      return (
+        <div
+          className="container"
+          onMouseEnter={() => this.setIsShown(true)}
+          onMouseLeave={() => this.setIsShown(false)}
+        >
+          <Slider {...settings}>
+            {data.map((movie) => (
+              <div
+                key={movie.id}
+                onClick={() => this.handleClick(props, movie.id)}
+                className="single-card"
+              >
+                <Slide
+                  banner={getPosterLink(movie.poster_path)}
+                  title={movie.title ? movie.title : movie.name}
+                  genre={
+                    movie.genre +
+                    (movie.release_date
+                      ? movie.release_date
+                      : movie.first_air_date
+                    ).slice(0, 4)
+                  }
+                  content={movie.overview}
+                  trailer={movie.trailer}
+                  props={props}
+                  loadLink={loadLink}
+                  color={movie.color}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      );
+    else
+      return (
+        <div className="text-center not-available">
+          <p>
+            <img src={empty} alt="NA" />
+            Not Available
+          </p>
+        </div>
+      );
+  };
+
+  render() {
+    let {
+      media,
+      type,
+      props,
+      loadLink,
+      checkbox: displayCheckbox,
+    } = this.props;
+    let { checkbox } = this.state;
+
+    let { movies, shows } = media;
+
+    let data = this.getData(movies, shows, type, checkbox);
 
     return (
       <React.Fragment>
@@ -148,46 +243,7 @@ class CustomSlider extends Component {
         ) : (
           ""
         )}
-        {checkbox.media || checkbox.shows ? (
-          <div
-            className="container"
-            onMouseEnter={() => this.setIsShown(true)}
-            onMouseLeave={() => this.setIsShown(false)}
-          >
-            <Slider {...settings}>
-              {media.map((movie) => (
-                <div
-                  key={movie.id}
-                  onClick={() => this.handleClick(props, movie.id)}
-                  className="single-card"
-                >
-                  <Slide
-                    banner={getPosterLink(movie.poster_path)}
-                    title={movie.title ? movie.title : movie.name}
-                    genre={getGenreString(
-                      movie.genre_ids,
-                      genres,
-                      movie.release_date
-                        ? movie.release_date
-                        : movie.first_air_date
-                    )}
-                    content={movie.overview}
-                    trailer={movie.trailer}
-                    props={props}
-                    loadLink={loadLink}
-                  />
-                </div>
-              ))}
-            </Slider>
-          </div>
-        ) : (
-          <div className="text-center not-available">
-            <p>
-              <img src={empty} alt="NA" />
-              Not Available
-            </p>
-          </div>
-        )}
+        {this.getSlider(checkbox, data, props, loadLink)}
       </React.Fragment>
     );
   }

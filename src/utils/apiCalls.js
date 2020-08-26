@@ -17,18 +17,6 @@ async function getGenres(type) {
   return data.genres;
 }
 
-function getGenreString(genre_ids, genres, rdate) {
-  let str = "";
-
-  genre_ids.map((m) => {
-    str += genres.filter((g) => g.id === m)[0].name + ", ";
-    return null;
-  });
-
-  str += rdate.slice(0, 4);
-  return str;
-}
-
 async function getMedia(type, category) {
   const { data } = await axios.get(
     `${common}${category}${
@@ -39,4 +27,4 @@ async function getMedia(type, category) {
   return data.results;
 }
 
-export { getGenres, getGenreString, getMedia };
+export { getGenres, getMedia };

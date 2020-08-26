@@ -32,23 +32,27 @@ const Carousel = ({ movies }) => {
                     alt="slide"
                   />
                 </div>
-                {movies.slice(1).map((m) => (
-                  <div className="carousel-item" key={m.id}>
-                    {" "}
-                    <img
-                      className="img-fluid laptop"
-                      src={getPosterLink(m.poster_path)}
-                      data-holder-rendered="true"
-                      alt="slide"
-                    />
-                    <img
-                      className="img-fluid w-100 mobile"
-                      src={getPosterLink(m.backdrop_path)}
-                      data-holder-rendered="true"
-                      alt="slide"
-                    />
-                  </div>
-                ))}
+                {movies.slice(1).map(
+                  (m) =>
+                    m.poster_path &&
+                    m.backdrop_path && (
+                      <div className="carousel-item" key={m.id}>
+                        {" "}
+                        <img
+                          className="img-fluid laptop"
+                          src={getPosterLink(m.poster_path)}
+                          data-holder-rendered="true"
+                          alt="slide"
+                        />
+                        <img
+                          className="img-fluid w-100 mobile"
+                          src={getPosterLink(m.backdrop_path)}
+                          data-holder-rendered="true"
+                          alt="slide"
+                        />
+                      </div>
+                    )
+                )}
               </div>
               <a
                 className="carousel-control-prev"

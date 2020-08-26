@@ -11,13 +11,21 @@
 }
 
 .slide-text {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     rgba(18, 38, 66, 0),
     rgba(18, 38, 66, 0.12) 5px,
     rgba(18, 38, 66, 0.52) 24px,
     rgba(18, 38, 66, 0.79) 40px,
     rgb(18, 38, 66) 56px,
     rgb(18, 38, 66) 100%
+  ); */
+  background-image: linear-gradient(
+    rgba(0, 41, 23, 0),
+    rgba(0, 41, 23, 0.12) 5px,
+    rgba(0, 41, 23, 0.52) 24px,
+    rgba(0, 41, 23, 0.79) 40px,
+    rgb(0, 41, 23) 56px,
+    rgb(0, 41, 23) 100%
   );
   bottom: 0;
   opacity: 0;
