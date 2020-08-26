@@ -31,7 +31,6 @@ class Slide extends Component {
       banner,
       title,
       trailer,
-      duration,
       genre,
       content,
       props,
@@ -82,7 +81,6 @@ class Slide extends Component {
                 </abbr>
               </div>
               <div className="content-info">
-                <div className="duration">{duration}</div>{" "}
                 <span className="genre">{genre}</span>
               </div>
               <div className="content-desc">{contentSliced}</div>

@@ -1,23 +1,18 @@
 import axios from "axios";
 
-let {
-  common,
-  genres,
-  popularMovies,
-  upcomingMovies,
-} = require("./../config.json");
+let { common, genres, popular, upcoming } = require("./../config.json");
 
-async function getTrailer(id) {
+async function getTrailer(id, type) {
   const { data } = await axios.get(
-    `${common}movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    `${common}${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   );
   const obj = data.results.find((o) => o.type.toLowerCase() === "trailer");
   return obj?.key;
 }
 
-async function getGenres() {
+async function getGenres(type) {
   const { data } = await axios.get(
-    `${common}${genres}${process.env.REACT_APP_API_KEY}`
+    `${common}genre/${type}${genres}${process.env.REACT_APP_API_KEY}`
   );
   return data.genres;
 }
@@ -34,14 +29,14 @@ function getGenreString(genre_ids, genres, rdate) {
   return str;
 }
 
-async function getMovies(type) {
+async function getMedia(type, category) {
   const { data } = await axios.get(
-    `${common}${
-      type.toLowerCase() === "popular" ? popularMovies : upcomingMovies
+    `${common}${category}${
+      type.toLowerCase() === "popular" ? popular : upcoming
     }${process.env.REACT_APP_API_KEY}`
   );
-  data.results.map(async (m) => (m.trailer = await getTrailer(m.id)));
+  data.results.map(async (m) => (m.trailer = await getTrailer(m.id, category)));
   return data.results;
 }
 
-export { getGenres, getGenreString, getMovies };
+export { getGenres, getGenreString, getMedia };

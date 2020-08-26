@@ -59,7 +59,7 @@ class CustomSlider extends Component {
 
   render() {
     let {
-      movies,
+      media,
       genres,
       props,
       loadLink,
@@ -68,7 +68,7 @@ class CustomSlider extends Component {
     let { show, checkbox } = this.state;
     const settings = {
       dots: false,
-      infinite: movies.length > 7 ? true : false,
+      infinite: media.length > 7 ? true : false,
       speed: 1000,
       slidesToShow: 7,
       slidesToScroll: 7,
@@ -148,14 +148,14 @@ class CustomSlider extends Component {
         ) : (
           ""
         )}
-        {checkbox.movies || checkbox.shows ? (
+        {checkbox.media || checkbox.shows ? (
           <div
             className="container"
             onMouseEnter={() => this.setIsShown(true)}
             onMouseLeave={() => this.setIsShown(false)}
           >
             <Slider {...settings}>
-              {movies.map((movie) => (
+              {media.map((movie) => (
                 <div
                   key={movie.id}
                   onClick={() => this.handleClick(props, movie.id)}
@@ -163,12 +163,13 @@ class CustomSlider extends Component {
                 >
                   <Slide
                     banner={getPosterLink(movie.poster_path)}
-                    title={movie.title}
-                    duration={movie.release_date}
+                    title={movie.title ? movie.title : movie.name}
                     genre={getGenreString(
                       movie.genre_ids,
                       genres,
                       movie.release_date
+                        ? movie.release_date
+                        : movie.first_air_date
                     )}
                     content={movie.overview}
                     trailer={movie.trailer}

@@ -178,6 +178,7 @@
 @media screen and (max-width: 769px) {
   .sticky-video--player--3QVPP {
     height: 300px !important;
+    width: 100%;
   }
 
   .sticky-video--sticky--3LGf- {

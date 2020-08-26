@@ -9,11 +9,26 @@ import "../stylesheets/homepage.css";
 import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
 import Carousel from "./common/carousel";
-import { getGenres, getMovies } from "../utils/apiCalls";
+import { getGenres, getMedia } from "../utils/apiCalls";
 
 class HomePage extends Component {
   state = {
-    media: { upcoming: [], trending: [], popular: [], genres: [], latest: [] },
+    media: {
+      movies: {
+        upcoming: [],
+        trending: [],
+        popular: [],
+        genres: [],
+        latest: [],
+      },
+      shows: {
+        upcoming: [],
+        trending: [],
+        popular: [],
+        genres: [],
+        latest: [],
+      },
+    },
     people: { popular: [] },
     link: "",
   };
@@ -22,9 +37,15 @@ class HomePage extends Component {
     try {
       this.setState({
         media: {
-          popular: await getMovies("popular"),
-          upcoming: await getMovies("upcoming"),
-          genres: await getGenres(),
+          movies: {
+            popular: await getMedia("popular", "movie"),
+            upcoming: await getMedia("upcoming", "movie"),
+            genres: await getGenres("movie"),
+          },
+          shows: {
+            popular: await getMedia("popular", "tv"),
+            genres: await getGenres("tv"),
+          },
         },
       });
     } catch (err) {
@@ -54,35 +75,37 @@ class HomePage extends Component {
 
   render() {
     const { date, month } = getDateFunction();
-    let { popular, upcoming, genres } = this.state.media;
+    let { movies, shows } = this.state.media;
     let { link } = this.state;
+
+    console.log(movies.popular.slice(10));
 
     return (
       <div className="container">
-        {this.topComponent(link, upcoming)}
+        {this.topComponent(link, movies.upcoming)}
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">
           <h5 className="sub-heading">Fan Favorites</h5>
         </div>
         <p className="sub-script">This week's top TV and movies</p>
-        {popular.length === 0 ? (
+        {movies.popular.length === 0 ? (
           <Spinner />
         ) : (
           <CustomSlider
-            movies={popular.slice(0, 10)}
-            genres={genres}
+            media={movies.popular.slice(0, 10)}
+            genres={movies.genres}
             props={this.props}
             loadLink={this.loadLink}
             checkbox={true}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
-        {popular.length === 0 ? (
+        {shows.popular.length === 0 ? (
           <Spinner />
         ) : (
           <CustomSlider
-            movies={popular}
-            genres={genres}
+            media={shows.popular}
+            genres={shows.genres}
             props={this.props}
             loadLink={this.loadLink}
             checkbox={false}
