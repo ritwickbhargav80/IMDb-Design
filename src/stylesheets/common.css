@@ -7,6 +7,12 @@
   float: right;
 }
 
+.custom-control-label,
+.custom-control-label::before,
+.custom-control-label::after {
+  cursor: pointer;
+}
+
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before,
 .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #f5c01f !important;
