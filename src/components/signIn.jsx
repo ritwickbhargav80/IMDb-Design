@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { toast } from "react-toastify";
 
 import Default from "./login/default";
 import Login from "./login/login";
 import Register from "./login/register";
 
 import "../stylesheets/signIn.css";
+import { toast } from "react-toastify";
 
 class SignIn extends Component {
   state = {

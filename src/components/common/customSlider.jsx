@@ -36,7 +36,7 @@ function getPosterLink(poster_path) {
 class CustomSlider extends Component {
   state = {
     show: false,
-    checkbox: {
+    checkboxes: {
       movies: true,
       shows: true,
     },
@@ -51,9 +51,9 @@ class CustomSlider extends Component {
   };
 
   handleChange = (box) => {
-    let checkbox = this.state.checkbox;
-    checkbox[box] = !checkbox[box];
-    this.setState({ checkbox });
+    let checkboxes = this.state.checkboxes;
+    checkboxes[box] = !checkboxes[box];
+    this.setState({ checkboxes });
   };
 
   getSettings = (media) => {
@@ -222,28 +222,31 @@ class CustomSlider extends Component {
       type,
       props,
       loadLink,
-      checkbox: displayCheckbox,
+      checkbox = false,
+      single = false,
     } = this.props;
-    let { checkbox } = this.state;
+    let { checkboxes } = this.state,
+      data;
 
-    let { movies, shows } = media;
-
-    let data = this.getData(movies, shows, type, checkbox);
+    if (!single) {
+      let { movies, shows } = media;
+      data = this.getData(movies, shows, type, checkboxes);
+    } else data = media[type];
 
     return (
       <React.Fragment>
-        {displayCheckbox ? (
+        {checkbox ? (
           <div style={{ height: "1.64em" }}>
             <CheckBox
-              mChecked={checkbox.movies}
-              sChecked={checkbox.shows}
+              mChecked={checkboxes.movies}
+              sChecked={checkboxes.shows}
               onChange={this.handleChange}
             />
           </div>
         ) : (
           ""
         )}
-        {this.getSlider(checkbox, data, props, loadLink)}
+        {this.getSlider(checkboxes, data, props, loadLink)}
       </React.Fragment>
     );
   }

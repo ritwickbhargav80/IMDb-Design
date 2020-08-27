@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 
 import Navbar from "./components/common/navbar";
 import Movies from "./components/movies";
@@ -9,6 +8,7 @@ import SignIn from "./components/signIn";
 import HomePage from "./components/homepage";
 import NotFound from "./components/notFound";
 import Footer from "./components/common/footer";
+import { ToastContainer, Flip } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,7 +24,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ToastContainer />
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          transition={Flip}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Navbar onChange={this.handleChange} />
         <Switch>
           <Route path="/movies" component={Movies} />

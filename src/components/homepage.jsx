@@ -75,7 +75,7 @@ class HomePage extends Component {
   render() {
     const { date, month } = getDateFunction();
     let { media } = this.state;
-    let { movies } = this.state.media;
+    let { movies, shows } = this.state.media;
     let { link } = this.state;
 
     return (
@@ -98,17 +98,17 @@ class HomePage extends Component {
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
-        {/* {shows.popular.length === 0 ? (
+        {movies.popular.length === 0 ? (
           <Spinner />
         ) : (
           <CustomSlider
-            media={shows.popular}
-            genres={shows.genres}
+            media={shows}
+            type={"popular"}
             props={this.props}
             loadLink={this.loadLink}
-            checkbox={false}
+            single={true}
           />
-        )} */}
+        )}
         <h3 className="h3">Today's Exclusive</h3>
         <div className="left-border">
           <h5 className="sub-heading">Top Coverage &gt;</h5>
