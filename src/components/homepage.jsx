@@ -116,6 +116,7 @@ class HomePage extends Component {
             props={this.props}
             loadLink={this.loadLink}
             checkbox={true}
+            val={0}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
@@ -128,6 +129,7 @@ class HomePage extends Component {
             props={this.props}
             loadLink={this.loadLink}
             checkbox={true}
+            val={2}
           />
         )}
         <h3 className="h3">Top Rated</h3>
@@ -140,6 +142,7 @@ class HomePage extends Component {
             props={this.props}
             loadLink={this.loadLink}
             checkbox={true}
+            val={4}
           />
         )}
         <h3 className="h3">Today's Exclusive</h3>

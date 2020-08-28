@@ -229,7 +229,15 @@ class CustomSlider extends Component {
   };
 
   render() {
-    let { media, type, props, loadLink, checkbox = false, single } = this.props;
+    let {
+      media,
+      type,
+      props,
+      loadLink,
+      checkbox = false,
+      single,
+      val,
+    } = this.props;
     let { checkboxes } = this.state,
       data;
 
@@ -246,6 +254,7 @@ class CustomSlider extends Component {
               mChecked={checkboxes.movies}
               sChecked={checkboxes.shows}
               onChange={this.handleChange}
+              val={val}
             />
           </div>
         ) : (
