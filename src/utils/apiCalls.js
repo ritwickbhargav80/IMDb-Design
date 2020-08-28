@@ -18,9 +18,6 @@ async function getGenres(type) {
 }
 
 async function getMedia(type, category) {
-  console.log(
-    `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}`
-  );
   const { data } = await axios.get(
     `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}`
   );

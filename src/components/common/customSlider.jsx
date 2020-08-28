@@ -167,8 +167,15 @@ class CustomSlider extends Component {
     return data;
   };
 
-  getSlider = (checkbox, data, props, loadLink, single) => {
+  getSlider = (checkbox, data, props, loadLink, media, single) => {
     const settings = this.getSettings(data);
+    if (single) {
+      let { genres } = media;
+      data.map((m) => {
+        m.genre = this.getString(m.genre_ids, genres);
+        return null;
+      });
+    }
     if (checkbox.movies || checkbox.shows)
       return (
         <div
@@ -244,7 +251,7 @@ class CustomSlider extends Component {
         ) : (
           ""
         )}
-        {this.getSlider(checkboxes, data, props, loadLink, single)}
+        {this.getSlider(checkboxes, data, props, loadLink, media, single)}
       </React.Fragment>
     );
   }

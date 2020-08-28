@@ -44,6 +44,7 @@ class HomePage extends Component {
           },
           shows: {
             popular: await getMedia("popular", "tv"),
+            playing: await getMedia("airing_today", "tv"),
             topRated: await getMedia("top_rated", "tv"),
             genres: await getGenres("tv"),
           },
@@ -59,7 +60,7 @@ class HomePage extends Component {
   };
 
   topComponent = (link) => {
-    let { playing } = this.state.media.movies;
+    let { upcoming } = this.state.media.movies;
 
     return link ? (
       <StickyVideo
@@ -69,11 +70,15 @@ class HomePage extends Component {
           position: "bottom-right",
         }}
       />
-    ) : playing.length !== 0 ? (
-      <Carousel movies={playing} />
+    ) : upcoming.length !== 0 ? (
+      <Carousel movies={upcoming} />
     ) : (
-      <Spinner topPad={50} />
+      <Spinner />
     );
+  };
+
+  handleClose = () => {
+    this.setState({ link: "" });
   };
 
   render() {
@@ -85,17 +90,29 @@ class HomePage extends Component {
     return (
       <div className="container">
         {this.topComponent(link)}
+        <div style={{ height: "1.64em" }}>
+          {link && (
+            <button
+              className="btn btn-danger mt-2"
+              style={{ float: "right" }}
+              onClick={this.handleClose}
+            >
+              Close Player
+            </button>
+          )}
+        </div>
+        <br />
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">
           <h5 className="sub-heading">Fan Favorites</h5>
         </div>
         <p className="sub-script">This week's top TV and movies</p>
         {movies.topRated.length === 0 ? (
-          <Spinner topPad={50} />
+          <Spinner />
         ) : (
           <CustomSlider
             media={media}
-            type={"topRated"}
+            type={"playing"}
             props={this.props}
             loadLink={this.loadLink}
             checkbox={true}
@@ -103,11 +120,23 @@ class HomePage extends Component {
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
         {movies.popular.length === 0 ? (
-          <Spinner topPad={50} />
+          <Spinner />
         ) : (
           <CustomSlider
             media={media}
             type={"popular"}
+            props={this.props}
+            loadLink={this.loadLink}
+            checkbox={true}
+          />
+        )}
+        <h3 className="h3">Top Rated</h3>
+        {movies.topRated.length === 0 ? (
+          <Spinner />
+        ) : (
+          <CustomSlider
+            media={media}
+            type={"topRated"}
             props={this.props}
             loadLink={this.loadLink}
             checkbox={true}
