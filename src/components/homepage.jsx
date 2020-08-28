@@ -90,11 +90,11 @@ class HomePage extends Component {
           <Spinner />
         ) : (
           <CustomSlider
-            media={media}
+            media={shows}
             type={"popular"}
             props={this.props}
             loadLink={this.loadLink}
-            checkbox={true}
+            single={true}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
@@ -102,11 +102,11 @@ class HomePage extends Component {
           <Spinner />
         ) : (
           <CustomSlider
-            media={shows}
+            media={media}
             type={"popular"}
             props={this.props}
             loadLink={this.loadLink}
-            single={true}
+            checkbox={true}
           />
         )}
         <h3 className="h3">Today's Exclusive</h3>
