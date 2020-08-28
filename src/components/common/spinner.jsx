@@ -9,6 +9,9 @@ const override = css`
   border-color: red;
 `;
 
+// padding-top: 100px;
+// padding-bottom: 165px;
+
 class Spinner extends React.Component {
   constructor(props) {
     super(props);

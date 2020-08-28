@@ -1,6 +1,10 @@
 .sweet-loading {
   height: 10em;
-  padding: 50px 0px;
+  padding: 50px 0px 120px;
+}
+
+.view-all {
+  width: 104px;
 }
 
 .custom-checkbox {

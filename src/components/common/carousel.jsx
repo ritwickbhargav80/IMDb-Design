@@ -83,22 +83,25 @@ const Carousel = ({ movies }) => {
             </div>
             <div className="mobile text-light mobile-text">
               <h5 className="mt-3 color">
-                Upcoming Movies{" "}
-                <a href="/" className="btn mt-0 p-2 create-acc-btn">
+                Now Playing{" "}
+                <a
+                  href="/"
+                  className="btn mt-0 p-2 ml-5 create-acc-btn view-all"
+                >
                   View All
                 </a>
               </h5>
             </div>
           </div>
           <div className="pr-4 pl-0 col-md-8 align-self-center text-light carousel-content">
-            <h2 className="color">Upcoming Movies</h2>
+            <h2 className="color">Now Playing</h2>
             <p className="my-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ut
               voluptates sit voluptate ab rem non vel harum fuga, qui officia
               natus aliquam, cumque, adipisci ipsam explicabo sapiente in
               necessitatibus.
             </p>{" "}
-            <a href="/" className="btn mb-3 p-2 create-acc-btn">
+            <a href="/" className="btn mb-3 p-2 create-acc-btn view-all">
               View All
             </a>
           </div>

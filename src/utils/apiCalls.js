@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let { common, genres, popular, upcoming } = require("./../config.json");
+let { common, genres, apiKey } = require("./../config.json");
 
 async function getTrailer(id, type) {
   const { data } = await axios.get(
@@ -18,10 +18,11 @@ async function getGenres(type) {
 }
 
 async function getMedia(type, category) {
+  console.log(
+    `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}`
+  );
   const { data } = await axios.get(
-    `${common}${category}${
-      type.toLowerCase() === "popular" ? popular : upcoming
-    }${process.env.REACT_APP_API_KEY}`
+    `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}`
   );
   data.results.map(async (m) => (m.trailer = await getTrailer(m.id, category)));
   return data.results;

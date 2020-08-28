@@ -152,7 +152,6 @@ class CustomSlider extends Component {
       { genres: sGenres } = shows;
     movies[type].map((movie) => {
       movie.genre = this.getString(movie.genre_ids, mGenres);
-      movie.color = "blue";
       return null;
     });
     shows[type].map((show) => {
@@ -168,7 +167,7 @@ class CustomSlider extends Component {
     return data;
   };
 
-  getSlider = (checkbox, data, props, loadLink) => {
+  getSlider = (checkbox, data, props, loadLink, single) => {
     const settings = this.getSettings(data);
     if (checkbox.movies || checkbox.shows)
       return (
@@ -198,7 +197,13 @@ class CustomSlider extends Component {
                   trailer={movie.trailer}
                   props={props}
                   loadLink={loadLink}
-                  color={movie.color}
+                  color={
+                    single
+                      ? single === "movie"
+                        ? "blue"
+                        : "green"
+                      : movie.color
+                  }
                 />
               </div>
             ))}
@@ -217,14 +222,7 @@ class CustomSlider extends Component {
   };
 
   render() {
-    let {
-      media,
-      type,
-      props,
-      loadLink,
-      checkbox = false,
-      single = false,
-    } = this.props;
+    let { media, type, props, loadLink, checkbox = false, single } = this.props;
     let { checkboxes } = this.state,
       data;
 
@@ -246,7 +244,7 @@ class CustomSlider extends Component {
         ) : (
           ""
         )}
-        {this.getSlider(checkboxes, data, props, loadLink)}
+        {this.getSlider(checkboxes, data, props, loadLink, single)}
       </React.Fragment>
     );
   }

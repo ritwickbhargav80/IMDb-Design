@@ -64,9 +64,9 @@ class Slide extends Component {
               style={{
                 opacity: this.state.show ? 1 : 0,
                 backgroundImage:
-                  color === "blue"
-                    ? "linear-gradient(rgba(18, 38, 66, 0),rgba(18, 38, 66, 0.12) 5px,rgba(18, 38, 66, 0.52) 24px,rgba(18, 38, 66, 0.79) 40px,rgb(18, 38, 66) 56px,rgb(18, 38, 66) 100%)"
-                    : "linear-gradient(rgba(0, 41, 23, 0),rgba(0, 41, 23, 0.12) 5px,rgba(0, 41, 23, 0.52) 24px,rgba(0, 41, 23, 0.79) 40px,rgb(0, 41, 23) 56px,rgb(0, 41, 23) 100%)",
+                  color === "green"
+                    ? "linear-gradient(rgba(0, 41, 23, 0),rgba(0, 41, 23, 0.12) 5px,rgba(0, 41, 23, 0.52) 24px,rgba(0, 41, 23, 0.79) 40px,rgb(0, 41, 23) 56px,rgb(0, 41, 23) 100%)"
+                    : "linear-gradient(rgba(18, 38, 66, 0),rgba(18, 38, 66, 0.12) 5px,rgba(18, 38, 66, 0.52) 24px,rgba(18, 38, 66, 0.79) 40px,rgb(18, 38, 66) 56px,rgb(18, 38, 66) 100%)",
               }}
             >
               <div className="content-title-div">
@@ -96,7 +96,7 @@ class Slide extends Component {
                 title="Add to Watchlist"
                 onClick={(e) => this.handleWhitelist(e, props)}
                 style={{
-                  backgroundColor: color === "blue" ? "#1b3a64" : "#004235",
+                  backgroundColor: color === "green" ? "#004235" : "#1b3a64",
                 }}
               >
                 <p

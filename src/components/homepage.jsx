@@ -16,16 +16,15 @@ class HomePage extends Component {
     media: {
       movies: {
         upcoming: [],
-        trending: [],
+        topRated: [],
         popular: [],
+        playing: [],
         genres: [],
-        latest: [],
       },
       shows: {
-        trending: [],
+        topRated: [],
         popular: [],
         genres: [],
-        latest: [],
       },
     },
     people: { popular: [] },
@@ -39,10 +38,13 @@ class HomePage extends Component {
           movies: {
             popular: await getMedia("popular", "movie"),
             upcoming: await getMedia("upcoming", "movie"),
+            playing: await getMedia("now_playing", "movie"),
+            topRated: await getMedia("top_rated", "movie"),
             genres: await getGenres("movie"),
           },
           shows: {
             popular: await getMedia("popular", "tv"),
+            topRated: await getMedia("top_rated", "tv"),
             genres: await getGenres("tv"),
           },
         },
@@ -56,7 +58,9 @@ class HomePage extends Component {
     this.setState({ link });
   };
 
-  topComponent = (link, upcoming) => {
+  topComponent = (link) => {
+    let { playing } = this.state.media.movies;
+
     return link ? (
       <StickyVideo
         className="mt-4"
@@ -65,41 +69,41 @@ class HomePage extends Component {
           position: "bottom-right",
         }}
       />
-    ) : upcoming.length !== 0 ? (
-      <Carousel movies={upcoming} />
+    ) : playing.length !== 0 ? (
+      <Carousel movies={playing} />
     ) : (
-      <Spinner />
+      <Spinner topPad={50} />
     );
   };
 
   render() {
     const { date, month } = getDateFunction();
     let { media } = this.state;
-    let { movies, shows } = this.state.media;
+    let { movies } = this.state.media;
     let { link } = this.state;
 
     return (
       <div className="container">
-        {this.topComponent(link, movies.upcoming)}
+        {this.topComponent(link)}
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">
           <h5 className="sub-heading">Fan Favorites</h5>
         </div>
         <p className="sub-script">This week's top TV and movies</p>
-        {movies.popular.length === 0 ? (
-          <Spinner />
+        {movies.topRated.length === 0 ? (
+          <Spinner topPad={50} />
         ) : (
           <CustomSlider
-            media={shows}
-            type={"popular"}
+            media={media}
+            type={"topRated"}
             props={this.props}
             loadLink={this.loadLink}
-            single={true}
+            checkbox={true}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
         {movies.popular.length === 0 ? (
-          <Spinner />
+          <Spinner topPad={50} />
         ) : (
           <CustomSlider
             media={media}

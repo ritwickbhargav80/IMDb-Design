@@ -1,6 +1,5 @@
 {
   "common": "https://api.themoviedb.org/3/",
   "genres": "/list?api_key=",
-  "popular": "/popular?api_key=",
-  "upcoming": "/upcoming?api_key="
+  "apiKey": "?api_key="
 }
