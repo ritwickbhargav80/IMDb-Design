@@ -15,7 +15,8 @@ export function getDateFunction() {
     "December",
   ];
   const year = date.getFullYear();
+  const monthInNo = date.getMonth() + 1;
   const month = months[date.getMonth() + 1];
   date = date.getDate();
-  return { date, month, year };
+  return { date, month, year, monthInNo };
 }

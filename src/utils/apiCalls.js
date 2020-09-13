@@ -25,4 +25,35 @@ async function getMedia(type, category) {
   return data.results;
 }
 
-export { getGenres, getMedia };
+async function getActorBirthday(date, month) {
+  // const api = process.env.REACT_APP_ACTORS_API_KEY;
+  // const headers = {
+  //   "x-rapidapi-host": "imdb8.p.rapidapi.com",
+  //   "x-rapidapi-key": api,
+  // };
+  // try {
+  //   var {
+  //     data: actorsId,
+  //   } = await axios.get(
+  //     `https://imdb8.p.rapidapi.com/actors/list-born-today?day=${date}&month=${month}`,
+  //     { headers }
+  //   );
+  // } catch (err) {}
+  // var arr = [];
+  // actorsId.map(async (id) => {
+  //   try {
+  //     const {
+  //       data: actor,
+  //     } = await axios.get(
+  //       `https://imdb8.p.rapidapi.com/actors/get-bio?nconst=${id
+  //         .toString()
+  //         .substring(6, 15)}`,
+  //       { headers }
+  //     );
+  //     if (arr.find((elem) => elem.id === id) === undefined) arr.push(actor);
+  //   } catch (e) {}
+  // });
+  // console.log(arr);
+}
+
+export { getGenres, getMedia, getActorBirthday };

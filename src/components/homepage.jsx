@@ -9,7 +9,7 @@ import "../stylesheets/homepage.css";
 import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
 import Carousel from "./common/carousel";
-import { getGenres, getMedia } from "../utils/apiCalls";
+import { getGenres, getMedia, getActorBirthday } from "../utils/apiCalls";
 
 class HomePage extends Component {
   state = {
@@ -82,7 +82,8 @@ class HomePage extends Component {
   };
 
   render() {
-    const { date, month } = getDateFunction();
+    const { date, month, monthInNo } = getDateFunction();
+    getActorBirthday(date, monthInNo);
     let { media } = this.state;
     let { movies } = this.state.media;
     let { link } = this.state;

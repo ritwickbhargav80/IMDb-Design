@@ -132,7 +132,7 @@ class CustomSlider extends Component {
   getString = (genre_ids, genre) => {
     let str = "";
     genre_ids.map((m) => {
-      str += genre.filter((g) => g.id === m)[0].name + ", ";
+      str += genre.filter((g) => g.id === m)[0]?.name + ", ";
       return null;
     });
     return str;

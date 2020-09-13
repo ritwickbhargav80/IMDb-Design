@@ -36,6 +36,7 @@ class Slide extends Component {
       props,
       loadLink,
       color,
+      css,
     } = this.props;
 
     let titleSliced = getTitle(title),
@@ -48,6 +49,7 @@ class Slide extends Component {
             className="card custom-card"
             onMouseEnter={() => this.setIsShown(true)}
             onMouseLeave={() => this.setIsShown(false)}
+            style={css}
           >
             <img
               className="img-responsive img-card"
