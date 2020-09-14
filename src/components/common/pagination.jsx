@@ -29,18 +29,29 @@ class Pagination extends Component {
       <div className="row" style={{ color: "white" }}>
         <i
           className="col-sm-1 fa fa-chevron-left"
-          style={() => this.arrowStyle(1)}
+          style={this.arrowStyle(1)}
           onClick={() => this.updatePage("left")}
         />
-        <p className="col-sm text-center" style={{ marginTop: "1rem" }}>
-          1
-        </p>
+        <div className="col-sm text-center">
+          <div className="row" style={{ display: "inline-flex" }}>
+            {pageNo <= 4 ? (
+              <React.Fragment>
+                {[1, 2, 3, 4, 5].map((a) => (
+                  <p className="paginate" key={a}>
+                    {a}
+                  </p>
+                ))}
+              </React.Fragment>
+            ) : (
+              <p className="paginate">1</p>
+            )}
+            <p className="paginate-dot">...</p>
+            <p className="paginate">500</p>
+          </div>
+        </div>
         <i
           className="col-sm-1 fa fa-chevron-right"
-          style={{
-            opacity: pageNo === 500 ? 0.5 : 1,
-            cursor: pageNo === 500 ? "" : "pointer",
-          }}
+          style={this.arrowStyle(500)}
           onClick={() => this.updatePage("right")}
         />
       </div>

@@ -53,3 +53,13 @@
 .not-available img {
   margin-right: 20px;
 }
+
+.paginate {
+  margin-top: 1rem;
+  padding: 2px 10px;
+}
+
+.paginate-dot {
+  margin-top: 1rem;
+  padding: 2px 20px;
+}
