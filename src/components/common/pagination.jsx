@@ -26,8 +26,12 @@ class Pagination extends Component {
     let { pageNo } = this.state;
     if (value === "left" && pageNo !== 1) pageNo -= 1;
     else if (value === "right" && pageNo !== 500) pageNo += 1;
-    else if (pageNo !== 1 && pageNo !== 500) pageNo = value;
+    else if (value !== "left" && value !== "right") pageNo = value;
     this.setState({ pageNo });
+  };
+
+  styles = (a) => {
+    return this.state.pageNo === a ? { scale: "1.4", color: "#f5c01f" } : {};
   };
 
   render() {
@@ -46,19 +50,31 @@ class Pagination extends Component {
             {pageNo <= 4 ? (
               <React.Fragment>
                 {arr.map((a) => (
-                  <p className="paginate" key={a}>
+                  <p
+                    className="paginate"
+                    key={a}
+                    style={this.styles(a)}
+                    onClick={() => this.updatePage(a)}
+                  >
                     {a}
                   </p>
                 ))}
               </React.Fragment>
             ) : (
-              <p className="paginate">1</p>
+              <p className="paginate" onClick={() => this.updatePage(1)}>
+                1
+              </p>
             )}
             {pageNo > 4 && pageNo < 497 ? (
               <React.Fragment>
                 <p className="paginate-dot">...</p>
                 {arr.map((a) => (
-                  <p className="paginate" key={a}>
+                  <p
+                    className="paginate"
+                    key={a}
+                    style={this.styles(a)}
+                    onClick={() => this.updatePage(a)}
+                  >
                     {a}
                   </p>
                 ))}
@@ -70,13 +86,20 @@ class Pagination extends Component {
             {pageNo >= 497 ? (
               <React.Fragment>
                 {arr.map((a) => (
-                  <p className="paginate" key={a}>
+                  <p
+                    className="paginate"
+                    key={a}
+                    style={this.styles(a)}
+                    onClick={() => this.updatePage(a)}
+                  >
                     {a}
                   </p>
                 ))}
               </React.Fragment>
             ) : (
-              <p className="paginate">500</p>
+              <p className="paginate" onClick={() => this.updatePage(500)}>
+                500
+              </p>
             )}
           </div>
         </div>
