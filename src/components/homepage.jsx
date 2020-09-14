@@ -91,8 +91,8 @@ class HomePage extends Component {
     return (
       <div className="container">
         {this.topComponent(link)}
-        <div style={{ height: "1.64em" }}>
-          {link && (
+        {link && (
+          <div style={{ height: "1.64em" }}>
             <button
               className="btn btn-danger mt-2"
               style={{ float: "right" }}
@@ -100,8 +100,8 @@ class HomePage extends Component {
             >
               Close Player
             </button>
-          )}
-        </div>
+          </div>
+        )}
         <br />
         <h3 className="h3">What to Watch</h3>
         <div className="left-border">

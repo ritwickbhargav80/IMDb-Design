@@ -3,6 +3,7 @@ import Slide from "./common/slide";
 import { getMedia, getGenres } from "../utils/apiCalls";
 import StickyVideo from "react-sticky-video";
 import Pagination from "./common/pagination";
+import Spinner from "./common/spinner";
 
 class Movies extends Component {
   state = {
@@ -19,7 +20,6 @@ class Movies extends Component {
           genres: await getGenres("movie"),
         },
       });
-      console.log("hi");
     } catch (err) {
       console.log(err);
     }
@@ -60,6 +60,21 @@ class Movies extends Component {
     this.setState({ link: "" });
   };
 
+  handleUpdate = async (pageNo) => {
+    let { genres } = this.state.data;
+    this.setState({ popular: [], genres });
+    try {
+      this.setState({
+        data: {
+          popular: await getMedia("popular", "movie", pageNo),
+          genres,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   render() {
     const css = {
       marginLeft: "0.75em",
@@ -77,8 +92,8 @@ class Movies extends Component {
       <div className="container">
         <h3 className="h3">Movies</h3>
         {this.topComponent(this.state.link)}
-        <div style={{ height: "1.64em", marginBottom: "20px" }}>
-          {this.state.link && (
+        {this.state.link && (
+          <div style={{ height: "1.64em", marginBottom: "20px" }}>
             <button
               className="btn btn-danger mt-2"
               style={{ float: "right" }}
@@ -86,26 +101,32 @@ class Movies extends Component {
             >
               Close Player
             </button>
+          </div>
+        )}
+        <div className="left-border">
+          <h5 className="sub-heading">Popular Movies</h5>
+        </div>
+        <div className="row text-center">
+          {popular.length === 0 ? (
+            <Spinner />
+          ) : (
+            popular.map((movie) => (
+              <Slide
+                banner={this.getPosterLink(movie.poster_path)}
+                title={movie.title}
+                genre={movie.genre + movie.release_date.slice(0, 4)}
+                content={movie.overview}
+                trailer={movie.trailer}
+                color={"blue"}
+                css={css}
+                key={movie.id}
+                loadLink={this.loadLink}
+              />
+            ))
           )}
         </div>
-        <div className="row">
-          {popular.map((movie) => (
-            <Slide
-              banner={this.getPosterLink(movie.poster_path)}
-              title={movie.title}
-              genre={movie.genre + movie.release_date.slice(0, 4)}
-              content={movie.overview}
-              trailer={movie.trailer}
-              color={"blue"}
-              css={css}
-              key={movie.id}
-              loadLink={this.loadLink}
-            />
-          ))}
-        </div>
         <br />
-        <br />
-        <Pagination />
+        <Pagination update={this.handleUpdate} />
       </div>
     );
   }

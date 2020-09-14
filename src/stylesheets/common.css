@@ -1,6 +1,7 @@
 .sweet-loading {
   height: 10em;
   padding: 50px 0px 120px;
+  margin-left: -50px !important;
 }
 
 .view-all {
@@ -63,4 +64,13 @@
 .paginate-dot {
   margin-top: 1rem;
   padding: 2px 20px;
+}
+
+@media screen and (max-width: 437px) {
+  .paginate-dot {
+    padding: 2px 0px;
+  }
+  .pagination-arrow {
+    padding: 20px 5px !important;
+  }
 }

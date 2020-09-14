@@ -22,7 +22,7 @@ class Spinner extends React.Component {
 
   render() {
     return (
-      <div className="sweet-loading">
+      <div className="sweet-loading container">
         <PacmanLoader
           css={override}
           size={35}
