@@ -17,9 +17,9 @@ async function getGenres(type) {
   return data.genres;
 }
 
-async function getMedia(type, category) {
+async function getMedia(type, category, pageNo = 1) {
   const { data } = await axios.get(
-    `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}`
+    `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&page=${pageNo}`
   );
   data.results.map(async (m) => (m.trailer = await getTrailer(m.id, category)));
   return data.results;

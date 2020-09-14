@@ -1,20 +1,25 @@
 import React, { Component } from "react";
 import Slide from "./common/slide";
 import { getMedia, getGenres } from "../utils/apiCalls";
+import StickyVideo from "react-sticky-video";
+import Pagination from "./common/pagination";
 
 class Movies extends Component {
   state = {
     data: { popular: [], genres: [] },
+    link: "",
+    pageNo: 1,
   };
 
   async componentDidMount() {
     try {
       this.setState({
         data: {
-          popular: await getMedia("popular", "movie"),
+          popular: await getMedia("popular", "movie", "1"),
           genres: await getGenres("movie"),
         },
       });
+      console.log("hi");
     } catch (err) {
       console.log(err);
     }
@@ -33,6 +38,28 @@ class Movies extends Component {
     return process.env.REACT_APP_API_LINK + poster_path;
   };
 
+  loadLink = (link) => {
+    this.setState({ link });
+  };
+
+  topComponent = (link) => {
+    return link ? (
+      <StickyVideo
+        className="mt-4"
+        url={link}
+        stickyConfig={{
+          position: "bottom-right",
+        }}
+      />
+    ) : (
+      ""
+    );
+  };
+
+  handleClose = () => {
+    this.setState({ link: "" });
+  };
+
   render() {
     const css = {
       marginLeft: "0.75em",
@@ -49,6 +76,18 @@ class Movies extends Component {
     return (
       <div className="container">
         <h3 className="h3">Movies</h3>
+        {this.topComponent(this.state.link)}
+        <div style={{ height: "1.64em", marginBottom: "20px" }}>
+          {this.state.link && (
+            <button
+              className="btn btn-danger mt-2"
+              style={{ float: "right" }}
+              onClick={this.handleClose}
+            >
+              Close Player
+            </button>
+          )}
+        </div>
         <div className="row">
           {popular.map((movie) => (
             <Slide
@@ -60,9 +99,13 @@ class Movies extends Component {
               color={"blue"}
               css={css}
               key={movie.id}
+              loadLink={this.loadLink}
             />
           ))}
         </div>
+        <br />
+        <br />
+        <Pagination />
       </div>
     );
   }
