@@ -38,6 +38,10 @@ class Movies extends Component {
     return process.env.REACT_APP_API_LINK + poster_path;
   };
 
+  handleClick = (props, id) => {
+    props.history.push(`/movie/${id}`);
+  };
+
   loadLink = (link) => {
     this.setState({ link });
   };
@@ -116,22 +120,27 @@ class Movies extends Component {
         <div className="left-border">
           <h5 className="sub-heading">Popular Movies</h5>
         </div>
-        <div className="row text-center">
+        <div className="row">
           {popular.length === 0 ? (
             <Spinner />
           ) : (
             popular.map((movie) => (
-              <Slide
-                banner={this.getPosterLink(movie.poster_path)}
-                title={movie.title}
-                genre={movie.genre + movie.release_date.slice(0, 4)}
-                content={movie.overview}
-                trailer={movie.trailer}
-                color={"blue"}
-                css={css}
+              <div
                 key={movie.id}
-                loadLink={this.loadLink}
-              />
+                onClick={() => this.handleClick(this.props, movie.id)}
+                className="single-card"
+              >
+                <Slide
+                  banner={this.getPosterLink(movie.poster_path)}
+                  title={movie.title}
+                  genre={movie.genre + movie.release_date.slice(0, 4)}
+                  content={movie.overview}
+                  trailer={movie.trailer}
+                  color={"blue"}
+                  css={css}
+                  loadLink={this.loadLink}
+                />
+              </div>
             ))
           )}
         </div>
