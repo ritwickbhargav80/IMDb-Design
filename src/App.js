@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import Navbar from "./components/common/navbar";
-import Movies from "./components/movies";
 import Shows from "./components/shows";
 import SignIn from "./components/signIn";
 import HomePage from "./components/homepage";
@@ -11,6 +10,7 @@ import Footer from "./components/common/footer";
 import { ToastContainer, Flip } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import CustomPage from "./components/common/customPage";
 
 class App extends Component {
   state = {
@@ -38,7 +38,10 @@ class App extends Component {
         />
         <Navbar onChange={this.handleChange} />
         <Switch>
-          <Route path="/movies" component={Movies} />
+          <Route
+            path="/movies"
+            component={() => <CustomPage type={"movie"} />}
+          />
           <Route path="/shows" component={Shows} />
           <Route path="/signin" component={SignIn} />
           <Route path="/not-found" exact component={NotFound} />

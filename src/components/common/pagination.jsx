@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pagination = ({ page, updatePage }) => {
+const Pagination = ({ page, type, updatePage }) => {
   function getArray(pageNo) {
     if (pageNo <= 4) return [1, 2, 3, 4, 5];
     else if (pageNo >= 497) return [496, 497, 498, 499, 500];
@@ -26,7 +26,7 @@ const Pagination = ({ page, updatePage }) => {
           <i
             className="fa fa-chevron-left pagination-arrow"
             style={arrowStyle(page, 1)}
-            onClick={() => updatePage("left")}
+            onClick={() => updatePage(type, "left")}
           />
           {page <= 4 ? (
             <React.Fragment>
@@ -35,14 +35,14 @@ const Pagination = ({ page, updatePage }) => {
                   className="paginate"
                   key={a}
                   style={styles(page, a)}
-                  onClick={() => updatePage(a)}
+                  onClick={() => updatePage(type, a)}
                 >
                   {a}
                 </p>
               ))}
             </React.Fragment>
           ) : (
-            <p className="paginate" onClick={() => updatePage(1)}>
+            <p className="paginate" onClick={() => updatePage(type, 1)}>
               1
             </p>
           )}
@@ -54,7 +54,7 @@ const Pagination = ({ page, updatePage }) => {
                   className="paginate"
                   key={a}
                   style={styles(page, a)}
-                  onClick={() => updatePage(a)}
+                  onClick={() => updatePage(type, a)}
                 >
                   {a}
                 </p>
@@ -71,21 +71,21 @@ const Pagination = ({ page, updatePage }) => {
                   className="paginate"
                   key={a}
                   style={styles(page, a)}
-                  onClick={() => updatePage(a)}
+                  onClick={() => updatePage(type, a)}
                 >
                   {a}
                 </p>
               ))}
             </React.Fragment>
           ) : (
-            <p className="paginate" onClick={() => updatePage(500)}>
+            <p className="paginate" onClick={() => updatePage(type, 500)}>
               500
             </p>
           )}
           <i
             className="fa fa-chevron-right pagination-arrow"
             style={arrowStyle(page, 500)}
-            onClick={() => updatePage("right")}
+            onClick={() => updatePage(type, "right")}
           />
         </div>
       </div>

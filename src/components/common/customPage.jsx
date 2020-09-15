@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Slide from "./common/slide";
-import { getMedia, getGenres } from "../utils/apiCalls";
+import Slide from "./slide";
+import { getMedia, getGenres } from "../../utils/apiCalls";
 import StickyVideo from "react-sticky-video";
-import Pagination from "./common/pagination";
-import Spinner from "./common/spinner";
+import Spinner from "./spinner";
+import Pagination from "./pagination";
 
-class Movies extends Component {
+class CustomPage extends Component {
   state = {
     data: { popular: [], genres: [] },
     link: "",
@@ -14,10 +14,12 @@ class Movies extends Component {
 
   async componentDidMount() {
     try {
+      const { type } = this.props;
+      console.log(type);
       this.setState({
         data: {
-          popular: await getMedia("popular", "movie", "1"),
-          genres: await getGenres("movie"),
+          popular: await getMedia("popular", type, "1"),
+          genres: await getGenres(type),
         },
       });
     } catch (err) {
@@ -64,13 +66,13 @@ class Movies extends Component {
     this.setState({ link: "" });
   };
 
-  handleUpdate = async (pageNo) => {
+  handleUpdate = async (pageNo, type) => {
     let { genres } = this.state.data;
     this.setState({ popular: [], genres });
     try {
       this.setState({
         data: {
-          popular: await getMedia("popular", "movie", pageNo),
+          popular: await getMedia("popular", type, pageNo),
           genres,
         },
       });
@@ -79,16 +81,17 @@ class Movies extends Component {
     }
   };
 
-  updatePage = (value) => {
+  updatePage = (type, value) => {
     let { pageNo } = this.state;
     if (value === "left" && pageNo !== 1) pageNo -= 1;
     else if (value === "right" && pageNo !== 500) pageNo += 1;
     else if (value !== "left" && value !== "right") pageNo = value;
     this.setState({ pageNo });
-    this.handleUpdate(pageNo);
+    this.handleUpdate(pageNo, type);
   };
 
   render() {
+    const { type } = this.props;
     const css = {
       marginLeft: "0.75em",
       marginRight: "0.75em",
@@ -104,7 +107,7 @@ class Movies extends Component {
 
     return (
       <div className="container">
-        <h3 className="h3">Movies</h3>
+        <h3 className="h3">{type + "s"}</h3>
         {this.topComponent(this.state.link)}
         {this.state.link && (
           <div style={{ height: "1.64em", marginBottom: "20px" }}>
@@ -118,24 +121,24 @@ class Movies extends Component {
           </div>
         )}
         <div className="left-border">
-          <h5 className="sub-heading">Popular Movies</h5>
+          <h5 className="sub-heading">Popular {type + "s"}</h5>
         </div>
         <div className="row">
           {popular.length === 0 ? (
             <Spinner />
           ) : (
-            popular.map((movie) => (
+            popular.map((media) => (
               <div
-                key={movie.id}
-                onClick={() => this.handleClick(this.props, movie.id)}
+                key={media.id}
+                onClick={() => this.handleClick(this.props, media.id)}
                 className="single-card"
               >
                 <Slide
-                  banner={this.getPosterLink(movie.poster_path)}
-                  title={movie.title}
-                  genre={movie.genre + movie.release_date.slice(0, 4)}
-                  content={movie.overview}
-                  trailer={movie.trailer}
+                  banner={this.getPosterLink(media.poster_path)}
+                  title={media.title}
+                  genre={media.genre + media.release_date.slice(0, 4)}
+                  content={media.overview}
+                  trailer={media.trailer}
                   color={"blue"}
                   css={css}
                   loadLink={this.loadLink}
@@ -145,10 +148,10 @@ class Movies extends Component {
           )}
         </div>
         <br />
-        <Pagination page={pageNo} updatePage={this.updatePage} />
+        <Pagination page={pageNo} type={type} updatePage={this.updatePage} />
       </div>
     );
   }
 }
 
-export default Movies;
+export default CustomPage;
