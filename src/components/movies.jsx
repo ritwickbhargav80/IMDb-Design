@@ -75,6 +75,15 @@ class Movies extends Component {
     }
   };
 
+  updatePage = (value) => {
+    let { pageNo } = this.state;
+    if (value === "left" && pageNo !== 1) pageNo -= 1;
+    else if (value === "right" && pageNo !== 500) pageNo += 1;
+    else if (value !== "left" && value !== "right") pageNo = value;
+    this.setState({ pageNo });
+    this.handleUpdate(pageNo);
+  };
+
   render() {
     const css = {
       marginLeft: "0.75em",
@@ -82,6 +91,7 @@ class Movies extends Component {
       marginTop: "2.5em",
     };
     const { popular, genres } = this.state.data;
+    let { pageNo } = this.state;
 
     popular.map((m) => {
       m.genre = this.getString(m.genre_ids, genres);
@@ -126,7 +136,7 @@ class Movies extends Component {
           )}
         </div>
         <br />
-        <Pagination update={this.handleUpdate} />
+        <Pagination page={pageNo} updatePage={this.updatePage} />
       </div>
     );
   }
