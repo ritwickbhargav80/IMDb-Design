@@ -152,7 +152,7 @@ class CustomPage extends Component {
                   }
                   content={media.overview}
                   trailer={media.trailer}
-                  color={"green"}
+                  color={type === "movie" ? "blue" : "green"}
                   css={css}
                   loadLink={this.loadLink}
                 />
