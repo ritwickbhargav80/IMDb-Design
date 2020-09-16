@@ -40,6 +40,7 @@ class CustomPage extends Component {
   };
 
   handleClick = (props, type, id) => {
+    console.log(props);
     props.history.push(`/${type}/${id}`);
   };
 
@@ -139,7 +140,9 @@ class CustomPage extends Component {
               media.poster_path ? (
                 <div
                   key={media.id}
-                  onClick={() => this.handleClick(this.props, type, media.id)}
+                  onClick={() =>
+                    this.handleClick(this.props.history, type, media.id)
+                  }
                   className="single-card"
                 >
                   <Slide

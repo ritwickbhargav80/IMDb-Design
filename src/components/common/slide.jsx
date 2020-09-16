@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "../../stylesheets/slide.css";
 
 import { getTitle, getContent } from "../../utils/slide";
+import { toast } from "react-toastify";
 
 class Slide extends Component {
   state = { show: false, showBtn: false };
@@ -17,7 +18,7 @@ class Slide extends Component {
 
   handleTrailer = (e, trailer, loadLink) => {
     e.stopPropagation();
-    if (!trailer) loadLink("");
+    if (!trailer) toast.info("No trailer available");
     else loadLink("https://www.youtube.com/watch?v=" + trailer);
   };
 

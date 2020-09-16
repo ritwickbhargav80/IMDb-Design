@@ -39,9 +39,12 @@ class App extends Component {
         <Switch>
           <Route
             path="/movies"
-            component={() => <CustomPage type={"movie"} />}
+            component={(props) => <CustomPage type={"movie"} history={props} />}
           />
-          <Route path="/shows" component={() => <CustomPage type={"tv"} />} />
+          <Route
+            path="/shows"
+            component={(props) => <CustomPage type={"tv"} history={props} />}
+          />
           <Route path="/signin" component={SignIn} />
           <Route path="/not-found" exact component={NotFound} />
           {/* <Route path="/movie/:id" component={NotFound} /> 
