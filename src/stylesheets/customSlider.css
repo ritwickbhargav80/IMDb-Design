@@ -1,6 +1,7 @@
 .single-card {
   cursor: pointer;
   outline: none;
+  height: 16em;
 }
 
 .slick-slider {

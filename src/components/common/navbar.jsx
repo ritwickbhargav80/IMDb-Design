@@ -7,9 +7,9 @@ import "../../stylesheets/navbar.css";
 const Navbar = ({ onChange }) => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
+      <NavLink to="/">
         <img src={logo} alt="imdb-logo" />
-      </a>
+      </NavLink>
       <button
         className="navbar-toggler"
         type="button"
