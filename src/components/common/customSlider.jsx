@@ -46,8 +46,8 @@ class CustomSlider extends Component {
     this.setState({ show: value });
   }
 
-  handleClick = (props, id) => {
-    props.history.push(`/movie/${id}`);
+  handleClick = (props, type, id) => {
+    props.history.push(`/${type}/${id}`);
   };
 
   handleChange = (box) => {
@@ -187,7 +187,13 @@ class CustomSlider extends Component {
             {data.map((movie) => (
               <div
                 key={movie.id}
-                onClick={() => this.handleClick(props, movie.id)}
+                onClick={() =>
+                  this.handleClick(
+                    props,
+                    movie.release_date ? "movie" : "show",
+                    movie.id
+                  )
+                }
                 className="single-card"
               >
                 <Slide

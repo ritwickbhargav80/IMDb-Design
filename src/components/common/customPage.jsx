@@ -15,7 +15,6 @@ class CustomPage extends Component {
   async componentDidMount() {
     try {
       const { type } = this.props;
-      console.log(type);
       this.setState({
         data: {
           popular: await getMedia("popular", type, "1"),
@@ -40,8 +39,8 @@ class CustomPage extends Component {
     return process.env.REACT_APP_API_LINK + poster_path;
   };
 
-  handleClick = (props, id) => {
-    props.history.push(`/movie/${id}`);
+  handleClick = (props, type, id) => {
+    props.history.push(`/${type}/${id}`);
   };
 
   loadLink = (link) => {
@@ -107,7 +106,11 @@ class CustomPage extends Component {
 
     return (
       <div className="container">
-        <h3 className="h3">{type + "s"}</h3>
+        <h3 className="h3">
+          {type.charAt(0).toUpperCase() +
+            type.substr(1).toLowerCase() +
+            (type === "movie" ? "s" : " Shows")}
+        </h3>
         {this.topComponent(this.state.link)}
         {this.state.link && (
           <div style={{ height: "1.64em", marginBottom: "20px" }}>
@@ -121,7 +124,12 @@ class CustomPage extends Component {
           </div>
         )}
         <div className="left-border">
-          <h5 className="sub-heading">Popular {type + "s"}</h5>
+          <h5 className="sub-heading">
+            Popular{" "}
+            {type.charAt(0).toUpperCase() +
+              type.substr(1).toLowerCase() +
+              (type === "movie" ? "s" : " Shows")}
+          </h5>
         </div>
         <div className="row">
           {popular.length === 0 ? (
@@ -130,16 +138,21 @@ class CustomPage extends Component {
             popular.map((media) => (
               <div
                 key={media.id}
-                onClick={() => this.handleClick(this.props, media.id)}
+                onClick={() => this.handleClick(this.props, type, media.id)}
                 className="single-card"
               >
                 <Slide
                   banner={this.getPosterLink(media.poster_path)}
-                  title={media.title}
-                  genre={media.genre + media.release_date.slice(0, 4)}
+                  title={type === "movie" ? media.title : media.name}
+                  genre={
+                    media.genre +
+                    (type === "movie"
+                      ? media.release_date.slice(0, 4)
+                      : media.first_air_date.slice(0, 4))
+                  }
                   content={media.overview}
                   trailer={media.trailer}
-                  color={"blue"}
+                  color={"green"}
                   css={css}
                   loadLink={this.loadLink}
                 />

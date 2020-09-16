@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import Navbar from "./components/common/navbar";
-import Shows from "./components/shows";
 import SignIn from "./components/signIn";
 import HomePage from "./components/homepage";
 import NotFound from "./components/notFound";
@@ -42,10 +41,11 @@ class App extends Component {
             path="/movies"
             component={() => <CustomPage type={"movie"} />}
           />
-          <Route path="/shows" component={Shows} />
+          <Route path="/shows" component={() => <CustomPage type={"tv"} />} />
           <Route path="/signin" component={SignIn} />
           <Route path="/not-found" exact component={NotFound} />
-          {/* <Route path="/movie/:id" component={NotFound} /> */}
+          {/* <Route path="/movie/:id" component={NotFound} /> 
+           <Route path="/show/:id" component={NotFound} /> */}
           <Route path="/" exact component={HomePage} />
           <Redirect to="/not-found" />
         </Switch>
