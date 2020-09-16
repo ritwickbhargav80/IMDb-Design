@@ -135,29 +135,33 @@ class CustomPage extends Component {
           {popular.length === 0 ? (
             <Spinner />
           ) : (
-            popular.map((media) => (
-              <div
-                key={media.id}
-                onClick={() => this.handleClick(this.props, type, media.id)}
-                className="single-card"
-              >
-                <Slide
-                  banner={this.getPosterLink(media.poster_path)}
-                  title={type === "movie" ? media.title : media.name}
-                  genre={
-                    media.genre +
-                    (type === "movie"
-                      ? media.release_date.slice(0, 4)
-                      : media.first_air_date.slice(0, 4))
-                  }
-                  content={media.overview}
-                  trailer={media.trailer}
-                  color={type === "movie" ? "blue" : "green"}
-                  css={css}
-                  loadLink={this.loadLink}
-                />
-              </div>
-            ))
+            popular.map((media) =>
+              media.poster_path ? (
+                <div
+                  key={media.id}
+                  onClick={() => this.handleClick(this.props, type, media.id)}
+                  className="single-card"
+                >
+                  <Slide
+                    banner={this.getPosterLink(media.poster_path)}
+                    title={type === "movie" ? media.title : media.name}
+                    genre={
+                      media.genre +
+                      (type === "movie"
+                        ? media.release_date.slice(0, 4)
+                        : media.first_air_date.slice(0, 4))
+                    }
+                    content={media.overview}
+                    trailer={media.trailer}
+                    color={type === "movie" ? "blue" : "green"}
+                    css={css}
+                    loadLink={this.loadLink}
+                  />
+                </div>
+              ) : (
+                <React.Fragment key={media.id} />
+              )
+            )
           )}
         </div>
         <br />
