@@ -46,6 +46,7 @@ class CustomPage extends Component {
 
   loadLink = (link) => {
     this.setState({ link });
+    window.scroll(0, 0);
   };
 
   topComponent = (link) => {

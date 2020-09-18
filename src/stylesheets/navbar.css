@@ -32,6 +32,12 @@
   line-height: 1.5;
   border-radius: 0.25rem;
   width: 7em;
+  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.sign-in:hover {
+  color: rgb(255, 255, 255);
 }
 
 .behind {
