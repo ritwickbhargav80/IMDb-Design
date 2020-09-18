@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slide from "./slide";
-import { getMedia, getGenres } from "../../utils/apiCalls";
+import { getMedia, getGenres, getTotalPages } from "../../utils/apiCalls";
 import StickyVideo from "react-sticky-video";
 import Spinner from "./spinner";
 import Pagination from "./pagination";
@@ -10,16 +10,26 @@ class CustomPage extends Component {
     data: { popular: [], genres: [] },
     link: "",
     pageNo: 1,
+    total_pages: 0,
   };
 
   async componentDidMount() {
     try {
-      const { type } = this.props;
+      const { type, search } = this.props;
+      // if(search)
+      // this.setState({
+      //   search: {
+      //     popular: await getMedia(type, "search", "1"),
+      //     genres: await getGenres(type),
+      //   },
+      // });
+      // else
       this.setState({
         data: {
           popular: await getMedia("popular", type, "1"),
           genres: await getGenres(type),
         },
+        total_pages: await getTotalPages("popular", type, "1"),
       });
     } catch (err) {
       console.log(err);
@@ -99,7 +109,7 @@ class CustomPage extends Component {
       marginTop: "2.5em",
     };
     const { popular, genres } = this.state.data;
-    let { pageNo } = this.state;
+    let { pageNo, total_pages } = this.state;
 
     popular.map((m) => {
       m.genre = this.getString(m.genre_ids, genres);
@@ -169,7 +179,14 @@ class CustomPage extends Component {
           )}
         </div>
         <br />
-        <Pagination page={pageNo} type={type} updatePage={this.updatePage} />
+        {total_pages !== 0 && (
+          <Pagination
+            page={pageNo}
+            type={type}
+            updatePage={this.updatePage}
+            pages={total_pages}
+          />
+        )}
       </div>
     );
   }

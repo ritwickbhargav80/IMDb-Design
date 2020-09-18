@@ -41,7 +41,9 @@ class App extends Component {
         />
         <Navbar onChange={this.handleChange} />
         <Switch>
-          {search !== "" && <Route path="/search" component={Search} />}
+          {search !== "" && (
+            <Route path="/search" component={Search} search={search} />
+          )}
           {search !== "" && <Redirect to="/search" />}
           <Route
             path="/movies"
