@@ -17,19 +17,44 @@ async function getGenres(type) {
   return data.genres;
 }
 
-async function getMedia(type, category, pageNo = 1) {
-  const { data } = await axios.get(
-    `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&page=${pageNo}`
-  );
-  data.results.map(async (m) => (m.trailer = await getTrailer(m.id, category)));
-  return data.results;
+async function getMedia(type, category, pageNo = 1, search = "") {
+  let tempdata;
+  if (search) {
+    const { data } = await axios.get(
+      `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&query=${search}&page=${pageNo}`
+    );
+    tempdata = data;
+
+    tempdata.results.map(
+      async (m) => (m.trailer = await getTrailer(m.id, type))
+    );
+  } else {
+    const { data } = await axios.get(
+      `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&page=${pageNo}`
+    );
+    tempdata = data;
+
+    tempdata.results.map(
+      async (m) => (m.trailer = await getTrailer(m.id, category))
+    );
+  }
+  return tempdata.results;
 }
 
-async function getTotalPages(type, category, pageNo = 1) {
-  const { data } = await axios.get(
-    `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&page=${pageNo}`
-  );
-  return data.total_pages;
+async function getTotalPages(type, category, pageNo = 1, search = "") {
+  let tempdata;
+  if (search) {
+    const { data } = await axios.get(
+      `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&query=${search}&page=${pageNo}`
+    );
+    tempdata = data;
+  } else {
+    const { data } = await axios.get(
+      `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&page=${pageNo}`
+    );
+    tempdata = data;
+  }
+  return tempdata.total_pages;
 }
 
 async function getActorBirthday(date, month) {

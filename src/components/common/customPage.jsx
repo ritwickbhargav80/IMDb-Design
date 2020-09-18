@@ -16,21 +16,22 @@ class CustomPage extends Component {
   async componentDidMount() {
     try {
       const { type, search } = this.props;
-      // if(search)
-      // this.setState({
-      //   search: {
-      //     popular: await getMedia(type, "search", "1"),
-      //     genres: await getGenres(type),
-      //   },
-      // });
-      // else
-      this.setState({
-        data: {
-          popular: await getMedia("popular", type, "1"),
-          genres: await getGenres(type),
-        },
-        total_pages: await getTotalPages("popular", type, "1"),
-      });
+      if (search)
+        this.setState({
+          data: {
+            popular: await getMedia(type, "search", "1", search),
+            genres: await getGenres(type),
+          },
+          total_pages: await getTotalPages(type, "search", "1", search),
+        });
+      else
+        this.setState({
+          data: {
+            popular: await getMedia("popular", type, "1"),
+            genres: await getGenres(type),
+          },
+          total_pages: await getTotalPages("popular", type, "1"),
+        });
     } catch (err) {
       console.log(err);
     }
@@ -50,7 +51,6 @@ class CustomPage extends Component {
   };
 
   handleClick = (props, type, id) => {
-    console.log(props);
     props.history.push(`/${type}/${id}`);
   };
 
@@ -102,7 +102,7 @@ class CustomPage extends Component {
   };
 
   render() {
-    const { type } = this.props;
+    const { type, search } = this.props;
     const css = {
       marginLeft: "0.75em",
       marginRight: "0.75em",
@@ -118,11 +118,13 @@ class CustomPage extends Component {
 
     return (
       <div className="container">
-        <h3 className="h3">
-          {type.charAt(0).toUpperCase() +
-            type.substr(1).toLowerCase() +
-            (type === "movie" ? "s" : " Shows")}
-        </h3>
+        {!search && (
+          <h3 className="h3">
+            {type.charAt(0).toUpperCase() +
+              type.substr(1).toLowerCase() +
+              (type === "movie" ? "s" : " Shows")}
+          </h3>
+        )}
         {this.topComponent(this.state.link)}
         {this.state.link && (
           <div style={{ height: "1.64em", marginBottom: "20px" }}>
@@ -137,10 +139,14 @@ class CustomPage extends Component {
         )}
         <div className="left-border">
           <h5 className="sub-heading">
-            Popular{" "}
-            {type.charAt(0).toUpperCase() +
-              type.substr(1).toLowerCase() +
-              (type === "movie" ? "s" : " Shows")}
+            {search
+              ? type.charAt(0).toUpperCase() +
+                type.substr(1).toLowerCase() +
+                (type === "movie" ? "s" : " Shows")
+              : "Popular " +
+                (type.charAt(0).toUpperCase() +
+                  type.substr(1).toLowerCase() +
+                  (type === "movie" ? "s" : " Shows"))}
           </h5>
         </div>
         <div className="row">
