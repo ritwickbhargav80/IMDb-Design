@@ -15,7 +15,7 @@ const Pagination = ({ page, type, updatePage }) => {
   }
 
   function styles(pageNo, a) {
-    return pageNo === a ? { scale: "1.4", color: "#f5c01f" } : {};
+    return pageNo === a ? { transform: "scale(1.4)", color: "#f5c01f" } : {};
   }
   const arr = getArray(page);
 

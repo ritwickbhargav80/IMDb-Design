@@ -61,6 +61,11 @@
   cursor: pointer;
 }
 
+.paginate:hover {
+  color: #f5c01f;
+  filter: brightness(95%);
+}
+
 .paginate-dot {
   margin-top: 1rem;
   padding: 2px 20px;

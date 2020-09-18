@@ -10,17 +10,21 @@ import { ToastContainer, Flip } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import CustomPage from "./components/common/customPage";
+import Search from "./components/search";
 
 class App extends Component {
   state = {
     search: "",
+    changed: false,
   };
 
   handleChange = (e) => {
-    this.setState({ search: e.currentTarget.value });
+    this.setState({ search: e.currentTarget.value, changed: true });
   };
 
   render() {
+    const { search, changed } = this.state;
+
     return (
       <div className="App">
         <ToastContainer
@@ -37,6 +41,8 @@ class App extends Component {
         />
         <Navbar onChange={this.handleChange} />
         <Switch>
+          {search !== "" && <Route path="/search" component={Search} />}
+          {search !== "" && <Redirect to="/search" />}
           <Route
             path="/movies"
             component={(props) => <CustomPage type={"movie"} history={props} />}
@@ -50,6 +56,7 @@ class App extends Component {
           {/* <Route path="/movie/:id" component={NotFound} /> 
            <Route path="/show/:id" component={NotFound} /> */}
           <Route path="/" exact component={HomePage} />
+          {search === "" && changed && <Redirect to="/" />}
           <Redirect to="/not-found" />
         </Switch>
         <Footer />
