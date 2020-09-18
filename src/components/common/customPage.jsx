@@ -4,13 +4,14 @@ import { getMedia, getGenres, getTotalPages } from "../../utils/apiCalls";
 import StickyVideo from "react-sticky-video";
 import Spinner from "./spinner";
 import Pagination from "./pagination";
+import empty from "./../../assets/empty.png";
 
 class CustomPage extends Component {
   state = {
     data: { popular: [], genres: [] },
     link: "",
     pageNo: 1,
-    total_pages: 0,
+    total_pages: null,
   };
 
   async componentDidMount() {
@@ -79,23 +80,32 @@ class CustomPage extends Component {
 
   handleUpdate = async (pageNo, type) => {
     let { genres } = this.state.data;
+    const { search } = this.props;
     this.setState({ popular: [], genres });
     try {
-      this.setState({
-        data: {
-          popular: await getMedia("popular", type, pageNo),
-          genres,
-        },
-      });
+      if (search)
+        this.setState({
+          data: {
+            popular: await getMedia(type, "search", pageNo, search),
+            genres,
+          },
+        });
+      else
+        this.setState({
+          data: {
+            popular: await getMedia("popular", type, pageNo),
+            genres,
+          },
+        });
     } catch (err) {
       console.log(err);
     }
   };
 
   updatePage = (type, value) => {
-    let { pageNo } = this.state;
+    let { pageNo, total_pages } = this.state;
     if (value === "left" && pageNo !== 1) pageNo -= 1;
-    else if (value === "right" && pageNo !== 500) pageNo += 1;
+    else if (value === "right" && pageNo !== total_pages) pageNo += 1;
     else if (value !== "left" && value !== "right") pageNo = value;
     this.setState({ pageNo });
     this.handleUpdate(pageNo, type);
@@ -125,8 +135,8 @@ class CustomPage extends Component {
               (type === "movie" ? "s" : " Shows")}
           </h3>
         )}
-        {this.topComponent(this.state.link)}
-        {this.state.link && (
+        {!search && this.topComponent(this.state.link)}
+        {!search && this.state.link && (
           <div style={{ height: "1.64em", marginBottom: "20px" }}>
             <button
               className="btn btn-danger mt-2"
@@ -149,49 +159,60 @@ class CustomPage extends Component {
                   (type === "movie" ? "s" : " Shows"))}
           </h5>
         </div>
-        <div className="row">
-          {popular.length === 0 ? (
-            <Spinner />
-          ) : (
-            popular.map((media) =>
-              media.poster_path ? (
-                <div
-                  key={media.id}
-                  onClick={() =>
-                    this.handleClick(this.props.history, type, media.id)
-                  }
-                  className="single-card"
-                >
-                  <Slide
-                    banner={this.getPosterLink(media.poster_path)}
-                    title={type === "movie" ? media.title : media.name}
-                    genre={
-                      media.genre +
-                      (type === "movie"
-                        ? media.release_date.slice(0, 4)
-                        : media.first_air_date.slice(0, 4))
-                    }
-                    content={media.overview}
-                    trailer={media.trailer}
-                    color={type === "movie" ? "blue" : "green"}
-                    css={css}
-                    loadLink={this.loadLink}
-                  />
-                </div>
+        {total_pages === 0 ? (
+          <div className="text-center not-available">
+            <p>
+              <img src={empty} alt="NA" />
+              Not Available
+            </p>
+          </div>
+        ) : (
+          <React.Fragment>
+            <div className="row">
+              {popular.length === 0 ? (
+                <Spinner />
               ) : (
-                <React.Fragment key={media.id} />
-              )
-            )
-          )}
-        </div>
-        <br />
-        {total_pages !== 0 && (
-          <Pagination
-            page={pageNo}
-            type={type}
-            updatePage={this.updatePage}
-            pages={total_pages}
-          />
+                popular.map((media) =>
+                  media.poster_path ? (
+                    <div
+                      key={media.id}
+                      onClick={() =>
+                        this.handleClick(this.props.history, type, media.id)
+                      }
+                      className="single-card"
+                    >
+                      <Slide
+                        banner={this.getPosterLink(media.poster_path)}
+                        title={type === "movie" ? media.title : media.name}
+                        genre={
+                          media.genre +
+                          (type === "movie"
+                            ? media.release_date.slice(0, 4)
+                            : media.first_air_date.slice(0, 4))
+                        }
+                        content={media.overview}
+                        trailer={media.trailer}
+                        color={type === "movie" ? "blue" : "green"}
+                        css={css}
+                        loadLink={search ? this.props.linkLoad : this.loadLink}
+                      />
+                    </div>
+                  ) : (
+                    <React.Fragment key={media.id} />
+                  )
+                )
+              )}
+            </div>
+            <br />
+            {total_pages !== null && total_pages !== 0 && total_pages > 1 && (
+              <Pagination
+                page={pageNo}
+                type={type}
+                updatePage={this.updatePage}
+                pages={total_pages}
+              />
+            )}
+          </React.Fragment>
         )}
       </div>
     );

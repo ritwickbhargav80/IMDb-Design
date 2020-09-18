@@ -4,7 +4,7 @@ const Pagination = ({ page, type, updatePage, pages }) => {
   function getArray(pageNo, pages) {
     if (pages <= 6) {
       let arr = [];
-      for (let i = 1; i < pages; i++) arr.push(i);
+      for (let i = 1; i <= pages; i++) arr.push(i);
       return arr;
     }
     if (pageNo <= 4) return [1, 2, 3, 4, 5];
@@ -54,41 +54,49 @@ const Pagination = ({ page, type, updatePage, pages }) => {
               1
             </p>
           )}
-          {page > 4 && page < pages - 3 ? (
-            <React.Fragment>
+          {pages > 6 ? (
+            page > 4 && page < pages - 3 ? (
+              <React.Fragment>
+                <p className="paginate-dot">...</p>
+                {arr.map((a) => (
+                  <p
+                    className="paginate"
+                    key={a}
+                    style={styles(page, a)}
+                    onClick={() => updatePage(type, a)}
+                  >
+                    {a}
+                  </p>
+                ))}
+                <p className="paginate-dot">...</p>
+              </React.Fragment>
+            ) : (
               <p className="paginate-dot">...</p>
-              {arr.map((a) => (
-                <p
-                  className="paginate"
-                  key={a}
-                  style={styles(page, a)}
-                  onClick={() => updatePage(type, a)}
-                >
-                  {a}
-                </p>
-              ))}
-              <p className="paginate-dot">...</p>
-            </React.Fragment>
+            )
           ) : (
-            <p className="paginate-dot">...</p>
+            ""
           )}
-          {page > pages - 3 ? (
-            <React.Fragment>
-              {arr.map((a) => (
-                <p
-                  className="paginate"
-                  key={a}
-                  style={styles(page, a)}
-                  onClick={() => updatePage(type, a)}
-                >
-                  {a}
-                </p>
-              ))}
-            </React.Fragment>
+          {pages > 6 ? (
+            page > pages - 3 ? (
+              <React.Fragment>
+                {arr.map((a) => (
+                  <p
+                    className="paginate"
+                    key={a}
+                    style={styles(page, a)}
+                    onClick={() => updatePage(type, a)}
+                  >
+                    {a}
+                  </p>
+                ))}
+              </React.Fragment>
+            ) : (
+              <p className="paginate" onClick={() => updatePage(type, pages)}>
+                {pages}
+              </p>
+            )
           ) : (
-            <p className="paginate" onClick={() => updatePage(type, pages)}>
-              {pages}
-            </p>
+            ""
           )}
           {pages > 6 && (
             <i

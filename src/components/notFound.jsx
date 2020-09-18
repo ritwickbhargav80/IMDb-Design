@@ -57,7 +57,7 @@ class NotFound extends Component {
             />
           </div>
           <img
-            className="col-md img-container"
+            className="col-md img-container image-404"
             src={image}
             alt="404 - Page Not Found"
           />
