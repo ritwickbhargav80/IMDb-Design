@@ -207,7 +207,7 @@ class CustomSlider extends Component {
                     ).slice(0, 4)
                   }
                   content={movie.overview}
-                  trailer={movie.trailer}
+                  trailer={movie}
                   props={props}
                   loadLink={loadLink}
                   color={

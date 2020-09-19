@@ -17,21 +17,22 @@ class CustomPage extends Component {
   async componentDidMount() {
     try {
       const { type, search } = this.props;
+      const { pageNo } = this.state;
       if (search)
         this.setState({
           data: {
-            popular: await getMedia(type, "search", "1", search),
+            popular: await getMedia(type, "search", pageNo, search),
             genres: await getGenres(type),
           },
-          total_pages: await getTotalPages(type, "search", "1", search),
+          total_pages: await getTotalPages(type, "search", pageNo, search),
         });
       else
         this.setState({
           data: {
-            popular: await getMedia("popular", type, "1"),
+            popular: await getMedia("popular", type, pageNo),
             genres: await getGenres(type),
           },
-          total_pages: await getTotalPages("popular", type, "1"),
+          total_pages: await getTotalPages("popular", type, pageNo),
         });
     } catch (err) {
       console.log(err);
@@ -81,7 +82,7 @@ class CustomPage extends Component {
   handleUpdate = async (pageNo, type) => {
     let { genres } = this.state.data;
     const { search } = this.props;
-    this.setState({ popular: [], genres });
+    this.setState({ data: { popular: [], genres } });
     try {
       if (search)
         this.setState({
@@ -125,6 +126,8 @@ class CustomPage extends Component {
       m.genre = this.getString(m.genre_ids, genres);
       return null;
     });
+
+    // popular.map((media) => console.log(media));
 
     return (
       <div className="container">
@@ -191,7 +194,7 @@ class CustomPage extends Component {
                             : media.first_air_date.slice(0, 4))
                         }
                         content={media.overview}
-                        trailer={media.trailer}
+                        trailer={media}
                         color={type === "movie" ? "blue" : "green"}
                         css={css}
                         loadLink={search ? this.props.linkLoad : this.loadLink}

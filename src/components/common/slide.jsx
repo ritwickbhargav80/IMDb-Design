@@ -16,10 +16,10 @@ class Slide extends Component {
     this.setState({ showBtn: value });
   }
 
-  handleTrailer = (e, trailer, loadLink) => {
+  handleTrailer = (e, media, loadLink) => {
     e.stopPropagation();
-    if (!trailer) toast.info("No trailer available");
-    else loadLink("https://www.youtube.com/watch?v=" + trailer);
+    if (!media.trailer) toast.info("No trailer available");
+    else loadLink("https://www.youtube.com/watch?v=" + media.trailer);
   };
 
   handleWhitelist = (e, props) => {

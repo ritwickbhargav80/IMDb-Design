@@ -38,7 +38,7 @@ async function getMedia(type, category, pageNo = 1, search = "") {
       async (m) => (m.trailer = await getTrailer(m.id, category))
     );
   }
-  return tempdata.results;
+  return tempdata.results.filter((data) => data.poster_path != null);
 }
 
 async function getTotalPages(type, category, pageNo = 1, search = "") {
