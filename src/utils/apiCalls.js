@@ -57,6 +57,14 @@ async function getTotalPages(type, category, pageNo = 1, search = "") {
   return tempdata.total_pages;
 }
 
+async function getDetails(type, id) {
+  const { data } = await axios.get(
+    `${common}${type}/${id}${apiKey}${process.env.REACT_APP_API_KEY}`
+  );
+
+  return data;
+}
+
 async function getActorBirthday(date, month) {
   // const api = process.env.REACT_APP_ACTORS_API_KEY;
   // const headers = {
@@ -88,4 +96,4 @@ async function getActorBirthday(date, month) {
   // console.log(arr);
 }
 
-export { getGenres, getMedia, getTotalPages, getActorBirthday };
+export { getGenres, getMedia, getTotalPages, getDetails, getActorBirthday };

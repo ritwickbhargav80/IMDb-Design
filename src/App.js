@@ -11,6 +11,7 @@ import { ToastContainer, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CustomPage from "./components/common/customPage";
 import Search from "./components/search";
+import CustomDetails from "./components/common/customDetails";
 
 class App extends Component {
   state = {
@@ -80,8 +81,7 @@ class App extends Component {
             )}
           />
           <Route path="/not-found" exact component={NotFound} />
-          {/* <Route path="/movie/:id" component={NotFound} /> 
-           <Route path="/show/:id" component={NotFound} /> */}
+          <Route path="/:type/:id" component={CustomDetails} />
           <Route path="/" exact component={HomePage} />
           {search === "" && changed && <Redirect to="/" />}
           <Redirect to="/not-found" />
