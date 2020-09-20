@@ -22,6 +22,11 @@ class App extends Component {
     this.setState({ search: e.currentTarget.value, changed: true });
   };
 
+  handleClear = (e) => {
+    document.getElementById("myForm").reset();
+    this.setState({ search: "" });
+  };
+
   render() {
     const { search, changed } = this.state;
 
@@ -39,7 +44,7 @@ class App extends Component {
           draggable
           pauseOnHover
         />
-        <Navbar onChange={this.handleChange} />
+        <Navbar onChange={this.handleChange} onClear={this.handleClear} />
         <Switch>
           {search !== "" && (
             <Route

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../../logo.svg";
 import "../../stylesheets/navbar.css";
 
-const Navbar = ({ onChange }) => {
+const Navbar = ({ onChange, onClear }) => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <NavLink to="/">
@@ -24,24 +24,24 @@ const Navbar = ({ onChange }) => {
       <div className="collapse navbar-collapse" id="myid">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item pad-left">
-            <NavLink className="nav-link" exact to="/">
+            <NavLink className="nav-link" exact to="/" onClick={onClear}>
               Home
             </NavLink>
           </li>
           <li className="nav-item pad-left">
-            <NavLink className="nav-link" to="/movies">
+            <NavLink className="nav-link" to="/movies" onClick={onClear}>
               Movies
             </NavLink>
           </li>
           <li className="nav-item pad-left">
-            <NavLink className="nav-link" to="/shows">
+            <NavLink className="nav-link" to="/shows" onClick={onClear}>
               Tv Shows
             </NavLink>
           </li>
         </ul>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <form className="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0" id="myForm">
               <input
                 className="form-control mr-sm-2 search-box"
                 type="search"
@@ -54,7 +54,11 @@ const Navbar = ({ onChange }) => {
           <li className="nav-item pad-left last">
             <div className="behind" />
             <div className="front">
-              <NavLink className="nav-link sign-in" to="/signin">
+              <NavLink
+                className="nav-link sign-in"
+                to="/signin"
+                onClick={onClear}
+              >
                 Sign In
               </NavLink>
             </div>
