@@ -77,6 +77,7 @@ class SignIn extends Component {
 
   render() {
     const { login, register, error } = this.state;
+    const { onLogin } = this.props;
 
     return (
       <div className="container">
@@ -142,6 +143,7 @@ class SignIn extends Component {
                 onSubmit={this.handleSubmit}
                 props={this.props}
                 isError={this.isError}
+                onLogin={onLogin}
               />
             )}
             {register && (

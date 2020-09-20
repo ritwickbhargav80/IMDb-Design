@@ -30,7 +30,14 @@ class Login extends Component {
 
   render() {
     const { type, placeholder, icon } = this.state;
-    const { register, error, onChange, onSubmit, isError } = this.props;
+    const {
+      register,
+      error,
+      onChange,
+      onSubmit,
+      isError,
+      onLogin,
+    } = this.props;
 
     return (
       <div className="txt-center">
@@ -93,6 +100,7 @@ class Login extends Component {
             type="submit"
             value="Sign-In"
             disabled={isError()}
+            onClick={onLogin}
           />
         </form>
         <br />

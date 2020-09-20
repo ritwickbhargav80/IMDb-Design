@@ -15,6 +15,7 @@ import Search from "./components/search";
 class App extends Component {
   state = {
     search: "",
+    login: false,
     changed: false,
   };
 
@@ -22,13 +23,19 @@ class App extends Component {
     this.setState({ search: e.currentTarget.value, changed: true });
   };
 
-  handleClear = (e) => {
+  handleClear = () => {
     document.getElementById("myForm").reset();
     this.setState({ search: "" });
   };
 
+  handleLogin = (props) => {
+    const { login } = this.state;
+    this.setState({ login: !login });
+    !login && props.history.replace("/");
+  };
+
   render() {
-    const { search, changed } = this.state;
+    const { search, login, changed } = this.state;
 
     return (
       <div className="App">
@@ -44,7 +51,12 @@ class App extends Component {
           draggable
           pauseOnHover
         />
-        <Navbar onChange={this.handleChange} onClear={this.handleClear} />
+        <Navbar
+          login={login}
+          onLogout={() => this.handleLogin(this.props)}
+          onChange={this.handleChange}
+          onClear={this.handleClear}
+        />
         <Switch>
           {search !== "" && (
             <Route
@@ -61,7 +73,12 @@ class App extends Component {
             path="/shows"
             component={(props) => <CustomPage type={"tv"} history={props} />}
           />
-          <Route path="/signin" component={SignIn} />
+          <Route
+            path="/signin"
+            component={(props) => (
+              <SignIn onLogin={() => this.handleLogin(props)} />
+            )}
+          />
           <Route path="/not-found" exact component={NotFound} />
           {/* <Route path="/movie/:id" component={NotFound} /> 
            <Route path="/show/:id" component={NotFound} /> */}

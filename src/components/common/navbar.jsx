@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../../logo.svg";
 import "../../stylesheets/navbar.css";
 
-const Navbar = ({ onChange, onClear }) => {
+const Navbar = ({ login, onLogout, onChange, onClear }) => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <NavLink to="/">
@@ -56,10 +56,10 @@ const Navbar = ({ onChange, onClear }) => {
             <div className="front">
               <NavLink
                 className="nav-link sign-in"
-                to="/signin"
-                onClick={onClear}
+                to={!login ? "/signin" : "/"}
+                onClick={(onClear, login ? onLogout : () => {})}
               >
-                Sign In
+                {!login ? "Sign In" : "Sign Out"}
               </NavLink>
             </div>
           </li>
