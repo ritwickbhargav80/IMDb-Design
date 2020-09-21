@@ -1,10 +1,7 @@
 import React from "react";
+import { getPosterLink } from "../../utils/apiCalls";
 
 const Carousel = ({ movies }) => {
-  function getPosterLink(poster_path) {
-    return process.env.REACT_APP_API_LINK + poster_path;
-  }
-
   return (
     <div className="sticky-video--player--3QVPP carousel-top" id="venue">
       <div className="container sticky-video--player--3QVPP">

@@ -66,4 +66,8 @@
   .left-div-heading {
     margin-top: 5% !important;
   }
+
+  .splitscreen .right-content {
+    max-width: 47% !important;
+  }
 }

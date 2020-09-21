@@ -62,7 +62,13 @@ class App extends Component {
           {search !== "" && (
             <Route
               path="/search"
-              component={(props) => <Search search={search} history={props} />}
+              component={(props) => (
+                <Search
+                  search={search}
+                  history={props}
+                  onClear={this.handleClear}
+                />
+              )}
             />
           )}
           {search !== "" && <Redirect to="/search" />}

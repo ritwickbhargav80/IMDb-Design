@@ -77,4 +77,12 @@
   .tnc {
     margin: 1rem 0rem;
   }
+
+  .splitscreen .left-content {
+    flex: 0.5 !important;
+  }
+
+  .media-status {
+    margin-top: -32.5% !important;
+  }
 }

@@ -6,6 +6,7 @@ import Slide from "./slide";
 import "../../stylesheets/customSlider.css";
 import { CheckBox } from "./input";
 import empty from "./../../assets/empty.png";
+import { getPosterLink } from "../../utils/apiCalls";
 
 function SampleNextArrow(props) {
   const { onClick, show } = props;
@@ -27,10 +28,6 @@ function SamplePrevArrow(props) {
       style={{ visibility: show ? "visible" : "hidden" }}
     />
   );
-}
-
-function getPosterLink(poster_path) {
-  return process.env.REACT_APP_API_LINK + poster_path;
 }
 
 class CustomSlider extends Component {

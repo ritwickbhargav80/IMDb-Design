@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getDetails } from "../../utils/apiCalls";
+import { getDetails, getPosterLink } from "../../utils/apiCalls";
 import Spinner from "./spinner";
 
 class CustomDetails extends Component {
@@ -15,28 +15,53 @@ class CustomDetails extends Component {
     this.setState({ data });
   }
 
-  displayPage = (data) => {
+  displayPage = (params, data) => {
     return (
       <React.Fragment>
-        <h3 className="h3" style={{ display: "inline-block" }}>
-          {data.title}
-        </h3>
-        <i
-          className="fa fa-check"
-          aria-hidden="true"
-          style={{ float: "right", marginTop: "1.6%" }}
-        />
-        {data.tagline ? <p className="sub-script">{data.tagline}</p> : ""}
+        <div class="splitscreen">
+          <div class="left-content">
+            <div
+              className="card custom-card-1"
+              style={{
+                boxShadow:
+                  params.type === "movie"
+                    ? "4.5px 3.5px rgb(18, 38, 66)"
+                    : "4.5px 3.5px rgb(0, 41, 23)",
+              }}
+            >
+              <img
+                className="img-responsive img-card"
+                src={getPosterLink(data.poster_path)}
+                alt="poster"
+                style={{ borderRadius: "0.25rem" }}
+              />
+            </div>
+          </div>
+
+          <div class="right-content">
+            <h3 className="h3">{data.title}</h3>
+          </div>
+        </div>
+        <div className="custom-control media-status">
+          <i
+            className="fa fa-check custom-control-input media-status-icon"
+            aria-hidden="true"
+          />
+          <p className="media-status-text">Released</p>
+        </div>
       </React.Fragment>
     );
   };
 
   render() {
+    const {
+      match: { params },
+    } = this.props;
     const { data } = this.state;
 
     return (
       <div className="container">
-        {data.title ? this.displayPage(data) : <Spinner />}
+        {data.title ? this.displayPage(params, data) : <Spinner />}
       </div>
     );
   }

@@ -31,7 +31,7 @@ class Search extends Component {
   };
 
   render() {
-    const { search, history } = this.props;
+    const { search, history, onClear } = this.props;
     const { link } = this.state;
 
     return (
@@ -44,7 +44,7 @@ class Search extends Component {
               <button
                 className="btn btn-danger mt-2"
                 style={{ float: "right" }}
-                onClick={this.handleClose}
+                onClick={(onClear, this.handleClose)}
               >
                 Close Player
               </button>

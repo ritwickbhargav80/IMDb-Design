@@ -10,6 +10,10 @@ async function getTrailer(id, type) {
   return obj?.key;
 }
 
+function getPosterLink(poster_path) {
+  return process.env.REACT_APP_API_LINK + poster_path;
+}
+
 async function getGenres(type) {
   const { data } = await axios.get(
     `${common}genre/${type}${genres}${process.env.REACT_APP_API_KEY}`
@@ -96,4 +100,11 @@ async function getActorBirthday(date, month) {
   // console.log(arr);
 }
 
-export { getGenres, getMedia, getTotalPages, getDetails, getActorBirthday };
+export {
+  getGenres,
+  getPosterLink,
+  getMedia,
+  getTotalPages,
+  getDetails,
+  getActorBirthday,
+};

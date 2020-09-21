@@ -152,6 +152,10 @@
   .sticky-video--sticky--3LGf- {
     height: initial !important;
   }
+
+  .splitscreen .right-content {
+    max-width: 70%;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -166,6 +170,18 @@
   .laptop {
     width: 110%;
     max-width: 110% !important;
+  }
+
+  .splitscreen .left-content {
+    flex: 0.3;
+  }
+
+  .container .media-status {
+    margin-top: -24.5%;
+  }
+
+  .splitscreen .right-content {
+    max-width: 62%;
   }
 }
 

@@ -71,11 +71,53 @@
   padding: 2px 20px;
 }
 
+.splitscreen {
+  display: flex;
+  margin-top: 2.8%;
+}
+.splitscreen .left-content {
+  flex: 0.2;
+  max-width: 160px;
+}
+.splitscreen .right-content {
+  flex: 1;
+  max-width: 74%;
+}
+
+.container .media-status {
+  padding-left: 2rem;
+  color: green;
+  float: right;
+  margin-top: -15.5%;
+}
+
+.media-status .media-status-icon {
+  padding: 0px;
+  opacity: 1;
+}
+
+.media-status-text {
+  position: relative;
+}
+
 @media screen and (max-width: 437px) {
   .paginate-dot {
     padding: 2px 0px;
   }
   .pagination-arrow {
     padding: 20px 5px !important;
+  }
+}
+
+@media screen and (max-width: 442px) {
+  .splitscreen .left-content {
+    flex: 0.8 !important;
+  }
+}
+
+@media screen and (max-width: 542px) {
+  .media-status {
+    margin-top: 2% !important;
+    float: left !important;
   }
 }

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Slide from "./slide";
-import { getMedia, getGenres, getTotalPages } from "../../utils/apiCalls";
+import {
+  getMedia,
+  getGenres,
+  getTotalPages,
+  getPosterLink,
+} from "../../utils/apiCalls";
 import StickyVideo from "react-sticky-video";
 import Spinner from "./spinner";
 import Pagination from "./pagination";
@@ -46,10 +51,6 @@ class CustomPage extends Component {
       return null;
     });
     return str;
-  };
-
-  getPosterLink = (poster_path) => {
-    return process.env.REACT_APP_API_LINK + poster_path;
   };
 
   handleClick = (props, type, id) => {
@@ -185,7 +186,7 @@ class CustomPage extends Component {
                       className="single-card"
                     >
                       <Slide
-                        banner={this.getPosterLink(media.poster_path)}
+                        banner={getPosterLink(media.poster_path)}
                         title={type === "movie" ? media.title : media.name}
                         genre={
                           media.genre +
