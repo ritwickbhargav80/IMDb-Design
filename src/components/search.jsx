@@ -44,7 +44,7 @@ class Search extends Component {
               <button
                 className="btn btn-danger mt-2"
                 style={{ float: "right" }}
-                onClick={(onClear, this.handleClose)}
+                onClick={this.handleClose}
               >
                 Close Player
               </button>
@@ -56,6 +56,7 @@ class Search extends Component {
           history={history}
           search={search}
           linkLoad={this.loadLink}
+          onClear={onClear}
         />
         <br />
         <br />
@@ -64,6 +65,7 @@ class Search extends Component {
           history={history}
           search={search}
           linkLoad={this.loadLink}
+          onClear={onClear}
         />
       </React.Fragment>
     );

@@ -42,13 +42,32 @@ const Navbar = ({ login, onLogout, onChange, onClear }) => {
         <ul className="navbar-nav">
           <li className="nav-item">
             <form className="form-inline my-2 my-lg-0" id="myForm">
-              <input
-                className="form-control mr-sm-2 search-box"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                onChange={onChange}
-              />
+              <div id="input_container">
+                <input
+                  className="form-control search-box"
+                  id="input"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  onChange={onChange}
+                />
+                <div style={{ display: "contents" }}>
+                  <svg
+                    className="w-6 h-6 magnifying-glass"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
             </form>
           </li>
           <li className="nav-item pad-left last">

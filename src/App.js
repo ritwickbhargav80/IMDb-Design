@@ -74,11 +74,23 @@ class App extends Component {
           {search !== "" && <Redirect to="/search" />}
           <Route
             path="/movies"
-            component={(props) => <CustomPage type={"movie"} history={props} />}
+            component={(props) => (
+              <CustomPage
+                type={"movie"}
+                history={props}
+                onClear={this.handleClear}
+              />
+            )}
           />
           <Route
             path="/shows"
-            component={(props) => <CustomPage type={"tv"} history={props} />}
+            component={(props) => (
+              <CustomPage
+                type={"tv"}
+                history={props}
+                onClear={this.handleClear}
+              />
+            )}
           />
           <Route
             path="/signin"

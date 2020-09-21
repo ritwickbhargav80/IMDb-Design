@@ -8,6 +8,9 @@
 
 .search-box {
   padding-left: 25px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  margin-right: 0.2rem;
 }
 
 .pad-left {
@@ -88,6 +91,17 @@
 
 .navs-active:hover {
   opacity: 1;
+}
+
+#input_container {
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+}
+
+.magnifying-glass {
+  height: 1.9em;
+  width: 1.9em;
+  margin-right: 0.2rem;
 }
 
 @media screen and (max-width: 991px) {

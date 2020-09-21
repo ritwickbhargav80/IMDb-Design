@@ -53,7 +53,8 @@ class CustomPage extends Component {
     return str;
   };
 
-  handleClick = (props, type, id) => {
+  handleClick = (props, type, id, onClear) => {
+    onClear();
     props.history.push(`/${type}/${id}`);
   };
 
@@ -114,7 +115,7 @@ class CustomPage extends Component {
   };
 
   render() {
-    const { type, search } = this.props;
+    const { type, search, onClear } = this.props;
     const css = {
       marginLeft: "0.75em",
       marginRight: "0.75em",
@@ -180,9 +181,14 @@ class CustomPage extends Component {
                   media.poster_path ? (
                     <div
                       key={media.id}
-                      onClick={() =>
-                        this.handleClick(this.props.history, type, media.id)
-                      }
+                      onClick={() => {
+                        this.handleClick(
+                          this.props.history,
+                          type,
+                          media.id,
+                          onClear
+                        );
+                      }}
                       className="single-card"
                     >
                       <Slide
