@@ -8,9 +8,9 @@
 
 .search-box {
   padding-left: 25px !important;
-  border-top-right-radius: 0px !important;
+  /* border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
-  margin-right: 0.2rem;
+  margin-right: 0.4rem; */
 }
 
 .pad-left {
@@ -101,7 +101,8 @@
 .magnifying-glass {
   height: 1.9em;
   width: 1.9em;
-  margin-right: 0.2rem;
+  margin-right: 0.4rem;
+  color: #343a40;
 }
 
 @media screen and (max-width: 991px) {

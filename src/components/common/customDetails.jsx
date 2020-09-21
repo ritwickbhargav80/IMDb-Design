@@ -15,11 +15,18 @@ class CustomDetails extends Component {
     this.setState({ data });
   }
 
+  getGenres = (data) => {
+    let str = "";
+    data.genres.map((g) => (str += g.name + ", "));
+    str += data.release_date.slice(0, 4);
+    return str;
+  };
+
   displayPage = (params, data) => {
     return (
       <React.Fragment>
-        <div class="splitscreen">
-          <div class="left-content">
+        <div className="splitscreen">
+          <div className="left-content">
             <div
               className="card custom-card-1"
               style={{
@@ -38,16 +45,23 @@ class CustomDetails extends Component {
             </div>
           </div>
 
-          <div class="right-content">
-            <h3 className="h3">{data.title}</h3>
+          <div className="right-content">
+            <div className="custom-control media-status">
+              <i
+                className="fa fa-check custom-control-input media-status-icon"
+                aria-hidden="true"
+              />
+              <p className="media-status-text">Released</p>
+            </div>
+            <h3 className="h3" style={{ marginBottom: "0px" }}>
+              {data.title}
+            </h3>
+            <p className="sub-script">{this.getGenres(data)}</p>
+            <div className="left-border">
+              <h5 className="sub-heading">Overview</h5>
+            </div>
+            <p className="sub-script">{data.overview}</p>
           </div>
-        </div>
-        <div className="custom-control media-status">
-          <i
-            className="fa fa-check custom-control-input media-status-icon"
-            aria-hidden="true"
-          />
-          <p className="media-status-text">Released</p>
         </div>
       </React.Fragment>
     );

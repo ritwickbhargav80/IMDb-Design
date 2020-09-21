@@ -21,6 +21,8 @@ class App extends Component {
   };
 
   handleChange = (e) => {
+    // const search = document.getElementById("myForm").elements[0].value;
+    // this.setState({ search, changed: true });
     this.setState({ search: e.currentTarget.value, changed: true });
   };
 

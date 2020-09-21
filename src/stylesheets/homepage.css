@@ -156,6 +156,9 @@
   .splitscreen .right-content {
     max-width: 70%;
   }
+  .container .media-status {
+    margin-top: 5%;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -174,10 +177,6 @@
 
   .splitscreen .left-content {
     flex: 0.3;
-  }
-
-  .container .media-status {
-    margin-top: -24.5%;
   }
 
   .splitscreen .right-content {
@@ -216,6 +215,10 @@
   .mobile {
     display: block;
   }
+
+  .container .media-status {
+    margin-top: 12.1%;
+  }
 }
 
 @media screen and (max-width: 470px) {
@@ -229,5 +232,9 @@
 
   .mobile-text .color {
     display: block;
+  }
+
+  .container .media-status {
+    display: none;
   }
 }

@@ -88,7 +88,7 @@
   padding-left: 2rem;
   color: green;
   float: right;
-  margin-top: -15.5%;
+  margin-top: 3.1%;
 }
 
 .media-status .media-status-icon {
@@ -98,6 +98,11 @@
 
 .media-status-text {
   position: relative;
+}
+
+.magnifying-class {
+  height: 1.9em;
+  width: 1.9em;
 }
 
 @media screen and (max-width: 437px) {
@@ -112,12 +117,5 @@
 @media screen and (max-width: 442px) {
   .splitscreen .left-content {
     flex: 0.8 !important;
-  }
-}
-
-@media screen and (max-width: 542px) {
-  .media-status {
-    margin-top: 2% !important;
-    float: left !important;
   }
 }
