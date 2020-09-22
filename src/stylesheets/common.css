@@ -124,6 +124,15 @@
   margin-top: 20px;
 }
 
+.op {
+  opacity: 0.91;
+}
+
+.help {
+  cursor: pointer;
+  color: #f5c01f;
+}
+
 @media screen and (max-width: 437px) {
   .paginate-dot {
     padding: 2px 0px;
