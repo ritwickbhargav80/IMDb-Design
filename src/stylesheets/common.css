@@ -91,6 +91,12 @@
   margin-top: 3.1%;
 }
 
+.media-status-1 {
+  padding-left: 2rem !important;
+  color: green;
+}
+
+.media-status-1 .media-status-icon,
 .media-status .media-status-icon {
   padding: 0px;
   opacity: 1;
@@ -105,6 +111,19 @@
   width: 1.9em;
 }
 
+.custom-control-1 {
+  position: relative;
+  min-height: 1.5rem;
+}
+
+.mobile-overview {
+  display: none;
+}
+
+.mobile-left {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 437px) {
   .paginate-dot {
     padding: 2px 0px;
@@ -117,5 +136,13 @@
 @media screen and (max-width: 442px) {
   .splitscreen .left-content {
     flex: 0.8 !important;
+  }
+
+  .laptop-overview {
+    display: none;
+  }
+
+  .mobile-overview {
+    display: block;
   }
 }

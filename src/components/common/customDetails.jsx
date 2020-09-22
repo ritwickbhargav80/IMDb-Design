@@ -57,11 +57,27 @@ class CustomDetails extends Component {
               {data.title}
             </h3>
             <p className="sub-script">{this.getGenres(data)}</p>
-            <div className="left-border">
-              <h5 className="sub-heading">Overview</h5>
+            <div className="laptop-overview">
+              <div className="left-border">
+                <h5 className="sub-heading">Overview</h5>
+              </div>
+              <p className="sub-script">{data.overview}</p>
             </div>
-            <p className="sub-script">{data.overview}</p>
+            <div className="custom-control-1 media-status-1 mobile-overview">
+              <i
+                className="fa fa-check custom-control-input media-status-icon"
+                aria-hidden="true"
+              />
+              <p className="media-status-text">Released</p>
+            </div>
           </div>
+        </div>
+
+        <div className="mobile-overview">
+          <div className="left-border mobile-left">
+            <h5 className="sub-heading">Overview</h5>
+          </div>
+          <p className="sub-script">{data.overview}</p>
         </div>
       </React.Fragment>
     );
