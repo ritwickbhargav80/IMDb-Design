@@ -27,14 +27,42 @@
     bottom 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
 }
 
+.slide-1 .child-element {
+  width: min-content;
+  text-align: center;
+}
+
+.slide-text-1 {
+  color: #ffffff;
+  padding: 2px 5px;
+  width: 100%;
+  -webkit-transition: opacity 0.25s ease-in,
+    bottom 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+  -o-transition: opacity 0.25s ease-in,
+    bottom 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+  transition: opacity 0.25s ease-in,
+    bottom 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+}
+
 .content-title-div {
-  height: 24.1px;
+  height: max-content;
 }
 
 .content-title {
   font-size: 1em;
   font-weight: 500;
   float: left;
+}
+
+.content-title-1 {
+  font-weight: 500;
+  color: #f5c01f;
+  opacity: 0.95;
+}
+
+.character {
+  font-size: 0.82rem;
+  opacity: 0.82;
 }
 
 .play-circle-icon {

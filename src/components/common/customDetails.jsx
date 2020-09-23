@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { getDetails, getPosterLink } from "../../utils/apiCalls";
+import { getCast, getDetails, getPosterLink } from "../../utils/apiCalls";
 import Spinner from "./spinner";
 import DisplayOverview from "./displayOverview";
+import ProfileCustomSlider from "./profileCustomSlider";
 
 class CustomDetails extends Component {
-  state = { data: {} };
+  state = { data: {}, cast: [] };
 
   async componentDidMount() {
     const {
@@ -15,8 +16,13 @@ class CustomDetails extends Component {
       params.type === "show" ? "tv" : "movie",
       params.id
     );
+
+    const cast = await getCast(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
     // console.log(data);
-    this.setState({ data });
+    this.setState({ data, cast });
   }
 
   getGenres = (data) => {
@@ -28,7 +34,7 @@ class CustomDetails extends Component {
     return str;
   };
 
-  displayPage = (params, data) => {
+  displayPage = (params, data, cast) => {
     return (
       <React.Fragment>
         <div className="splitscreen">
@@ -85,6 +91,10 @@ class CustomDetails extends Component {
           </div>
           <DisplayOverview expanded={false} overview={data.overview} />
         </div>
+        <div className="left-border" style={{ marginTop: "10px" }}>
+          <h5 className="sub-heading">Cast</h5>
+        </div>
+        {cast.length !== 0 ? <ProfileCustomSlider cast={cast} /> : <Spinner />}
       </React.Fragment>
     );
   };
@@ -93,11 +103,11 @@ class CustomDetails extends Component {
     const {
       match: { params },
     } = this.props;
-    const { data } = this.state;
+    const { data, cast } = this.state;
 
     return (
       <div className="container">
-        {data.poster_path ? this.displayPage(params, data) : <Spinner />}
+        {data.poster_path ? this.displayPage(params, data, cast) : <Spinner />}
       </div>
     );
   }

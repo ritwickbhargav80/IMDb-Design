@@ -100,6 +100,14 @@ async function getActorBirthday(date, month) {
   // console.log(arr);
 }
 
+async function getCast(type, id) {
+  const { data } = await axios.get(
+    `${common}${type}/${id}/credits${apiKey}${process.env.REACT_APP_API_KEY}`
+  );
+
+  return data.cast.filter((data) => data.profile_path != null);
+}
+
 export {
   getGenres,
   getPosterLink,
@@ -107,4 +115,5 @@ export {
   getTotalPages,
   getDetails,
   getActorBirthday,
+  getCast,
 };
