@@ -54,6 +54,28 @@ class CustomDetails extends Component {
                 alt="poster"
                 style={{ borderRadius: "0.25rem" }}
               />
+              <div
+                className="add-to-watchlist"
+                title="Add to Watchlist"
+                style={{
+                  backgroundColor:
+                    params.type === "movie" ? "#1b3a64" : "#004235",
+                  height: "1.7em",
+                  paddingTop: "1px",
+                  marginTop: "5px",
+                }}
+              >
+                <p className="watchlist btn">
+                  <i
+                    className="fa-plus plus-icon"
+                    aria-hidden="true"
+                    style={{ fontSize: "14.5px" }}
+                  />
+                  <span className="btn-txt" style={{ fontSize: "11px" }}>
+                    Add to Watchlist
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
 
