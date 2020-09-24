@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../stylesheets/slide.css";
+import { getTitle } from "../../utils/slide";
 
 class ProfileSlide extends Component {
   state = { show: false };
@@ -27,7 +28,9 @@ class ProfileSlide extends Component {
           </div>
           <div className="slide-text-1">
             <div className="content-title-div">
-              <h5 className="content-title-1">{name}</h5>
+              <abbr title={name}>
+                <h5 className="content-title-1">{getTitle(name)}</h5>
+              </abbr>
             </div>
             <div className="content-info">
               <h6 className="character">{character}</h6>

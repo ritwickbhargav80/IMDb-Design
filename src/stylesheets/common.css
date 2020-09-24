@@ -128,9 +128,39 @@
   opacity: 0.91;
 }
 
+abbr {
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
 .help {
   cursor: pointer;
   color: #f5c01f;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.keywords p {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  line-height: 24px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  white-space: nowrap;
+  background: #f5c01f;
+  padding: 4px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 520;
+}
+
+.networks {
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 437px) {

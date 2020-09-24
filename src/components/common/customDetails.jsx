@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
-import { getCast, getDetails, getPosterLink } from "../../utils/apiCalls";
+import {
+  getCast,
+  getDetails,
+  getPosterLink,
+  getKeywords,
+} from "../../utils/apiCalls";
 import Spinner from "./spinner";
 import DisplayOverview from "./displayOverview";
 import ProfileCustomSlider from "./profileCustomSlider";
+import Keywords from "./keywords";
 
 class CustomDetails extends Component {
-  state = { data: {}, cast: [] };
+  state = { data: {}, cast: [], keywords: [] };
 
   async componentDidMount() {
     const {
@@ -23,8 +29,14 @@ class CustomDetails extends Component {
       params.type === "movie" ? "movie" : "tv",
       params.id
     );
-    // console.log(data);
-    this.setState({ data, cast });
+
+    const keywords = await getKeywords(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    console.log(data);
+    this.setState({ data, cast, keywords });
   }
 
   getGenres = (data) => {
@@ -36,7 +48,7 @@ class CustomDetails extends Component {
     return str;
   };
 
-  displayPage = (params, data, cast) => {
+  displayPage = (params, data, cast, keywords) => {
     return (
       <React.Fragment>
         <div className="splitscreen">
@@ -118,31 +130,73 @@ class CustomDetails extends Component {
         <div className="left-border" style={{ marginTop: "10px" }}>
           <h5 className="sub-heading">Cast</h5>
         </div>
-        {cast.length !== 0 ? <ProfileCustomSlider cast={cast} /> : <Spinner />}
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <CountUp
-          prefix="$ "
-          separator=","
-          end={200000000}
-          duration={1}
-          decimals={2}
-          redraw={true}
-        >
-          {({ countUpRef, start }) => (
-            <VisibilitySensor onChange={start} delayedCall>
-              <span ref={countUpRef} />
-            </VisibilitySensor>
+        <div className="profile-custom-slider">
+          {cast.length !== 0 ? (
+            <ProfileCustomSlider cast={cast} />
+          ) : (
+            <Spinner />
           )}
-        </CountUp>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="left-border" style={{ marginTop: "25px" }}>
+              <h5 className="sub-heading">
+                {params.type === "movie" ? "Budget" : "Network"}
+              </h5>
+            </div>
+            {params.type === "movie" ? (
+              <CountUp
+                prefix="$ "
+                separator=","
+                end={data.budget}
+                duration={1}
+                decimals={2}
+                redraw={true}
+              >
+                {({ countUpRef, start }) => (
+                  <VisibilitySensor onChange={start} delayedCall>
+                    <span ref={countUpRef} />
+                  </VisibilitySensor>
+                )}
+              </CountUp>
+            ) : (
+              <img
+                className="networks"
+                src={
+                  "http://image.tmdb.org/t/p/h30" + data.networks[0].logo_path
+                }
+                alt="networks"
+              />
+            )}
+          </div>
+          <div className="col-md-4">
+            <div className="left-border" style={{ marginTop: "25px" }}>
+              <h5 className="sub-heading">
+                {params.type === "movie" ? "Revenue" : "Status"}
+              </h5>
+            </div>
+            <CountUp
+              prefix="$ "
+              separator=","
+              end={data.revenue}
+              duration={1}
+              decimals={2}
+              redraw={true}
+            >
+              {({ countUpRef, start }) => (
+                <VisibilitySensor onChange={start} delayedCall>
+                  <span ref={countUpRef} />
+                </VisibilitySensor>
+              )}
+            </CountUp>
+          </div>
+          <div className="col-md-4">
+            <div className="left-border" style={{ marginTop: "25px" }}>
+              <h5 className="sub-heading">Keywords</h5>
+            </div>
+            <Keywords keywords={keywords} />
+          </div>
+        </div>
       </React.Fragment>
     );
   };
@@ -151,11 +205,15 @@ class CustomDetails extends Component {
     const {
       match: { params },
     } = this.props;
-    const { data, cast } = this.state;
+    const { data, cast, keywords } = this.state;
 
     return (
       <div className="container">
-        {data.poster_path ? this.displayPage(params, data, cast) : <Spinner />}
+        {data.poster_path ? (
+          this.displayPage(params, data, cast, keywords)
+        ) : (
+          <Spinner />
+        )}
       </div>
     );
   }

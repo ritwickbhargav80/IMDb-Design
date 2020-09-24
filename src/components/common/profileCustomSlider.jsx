@@ -32,7 +32,6 @@ class ProfileCustomSlider extends Component {
   // };
 
   getSettings = (profiles) => {
-    console.log(profiles);
     return {
       dots: false,
       infinite: profiles.length > 7 ? true : false,
@@ -113,7 +112,7 @@ class ProfileCustomSlider extends Component {
       <div className="container">
         <Slider {...settings}>
           {cast.map((c) => (
-            <div key={c.id} className="single-card">
+            <div key={c.id} className="single-card-1">
               <ProfileSlide
                 profile_path={this.getProfileLink(c.profile_path)}
                 name={c.name}

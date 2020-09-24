@@ -108,6 +108,14 @@ async function getCast(type, id) {
   return data.cast.filter((data) => data.profile_path != null);
 }
 
+async function getKeywords(type, id) {
+  const { data } = await axios.get(
+    `${common}${type}/${id}/keywords${apiKey}${process.env.REACT_APP_API_KEY}`
+  );
+
+  return type === "movie" ? data.keywords : data.results;
+}
+
 export {
   getGenres,
   getPosterLink,
@@ -116,4 +124,5 @@ export {
   getDetails,
   getActorBirthday,
   getCast,
+  getKeywords,
 };

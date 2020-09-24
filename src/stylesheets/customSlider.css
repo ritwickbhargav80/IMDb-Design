@@ -4,8 +4,17 @@
   height: 16em;
 }
 
+.single-card-1 {
+  outline: none;
+  height: 16em;
+}
+
 .slick-slider {
   height: 250px;
+}
+
+.profile-custom-slider {
+  height: max-content;
 }
 
 .left-arrow,

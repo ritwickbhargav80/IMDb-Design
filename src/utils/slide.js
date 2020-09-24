@@ -6,7 +6,8 @@ export function getContent(str) {
 }
 
 export function getTitle(str) {
+  const str1 = str;
   str = str.slice(0, 7);
-  if (str.length > 6) str += " ...";
+  if (str1.length > 7) str += " ...";
   return str;
 }
