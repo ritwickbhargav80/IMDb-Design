@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 import { getCast, getDetails, getPosterLink } from "../../utils/apiCalls";
 import Spinner from "./spinner";
 import DisplayOverview from "./displayOverview";
@@ -117,6 +119,30 @@ class CustomDetails extends Component {
           <h5 className="sub-heading">Cast</h5>
         </div>
         {cast.length !== 0 ? <ProfileCustomSlider cast={cast} /> : <Spinner />}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <CountUp
+          prefix="$ "
+          separator=","
+          end={200000000}
+          duration={1}
+          decimals={2}
+          redraw={true}
+        >
+          {({ countUpRef, start }) => (
+            <VisibilitySensor onChange={start} delayedCall>
+              <span ref={countUpRef} />
+            </VisibilitySensor>
+          )}
+        </CountUp>
       </React.Fragment>
     );
   };
