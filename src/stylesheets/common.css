@@ -160,7 +160,18 @@ abbr {
 }
 
 .networks {
-  margin-top: 20px;
+  background: #f5c01f;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.bottom-marg {
+  margin-bottom: 20px;
+}
+
+.status {
+  color: #f5c01f;
+  font-size: 1.3em;
 }
 
 @media screen and (max-width: 437px) {

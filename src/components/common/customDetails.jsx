@@ -139,7 +139,10 @@ class CustomDetails extends Component {
         </div>
         <div className="row">
           <div className="col-md-4">
-            <div className="left-border" style={{ marginTop: "25px" }}>
+            <div
+              className="left-border bottom-marg"
+              style={{ marginTop: "25px" }}
+            >
               <h5 className="sub-heading">
                 {params.type === "movie" ? "Budget" : "Network"}
               </h5>
@@ -155,7 +158,7 @@ class CustomDetails extends Component {
               >
                 {({ countUpRef, start }) => (
                   <VisibilitySensor onChange={start} delayedCall>
-                    <span ref={countUpRef} />
+                    <span className="status" ref={countUpRef} />
                   </VisibilitySensor>
                 )}
               </CountUp>
@@ -170,25 +173,32 @@ class CustomDetails extends Component {
             )}
           </div>
           <div className="col-md-4">
-            <div className="left-border" style={{ marginTop: "25px" }}>
-              <h5 className="sub-heading">
+            <div
+              className="left-border bottom-marg"
+              style={{ marginTop: "25px" }}
+            >
+              <h5 className="sub-heading bottom-marg">
                 {params.type === "movie" ? "Revenue" : "Status"}
               </h5>
             </div>
-            <CountUp
-              prefix="$ "
-              separator=","
-              end={data.revenue}
-              duration={1}
-              decimals={2}
-              redraw={true}
-            >
-              {({ countUpRef, start }) => (
-                <VisibilitySensor onChange={start} delayedCall>
-                  <span ref={countUpRef} />
-                </VisibilitySensor>
-              )}
-            </CountUp>
+            {params.type === "movie" ? (
+              <CountUp
+                prefix="$ "
+                separator=","
+                end={data.revenue}
+                duration={1}
+                decimals={2}
+                redraw={true}
+              >
+                {({ countUpRef, start }) => (
+                  <VisibilitySensor onChange={start} delayedCall>
+                    <span className="status" ref={countUpRef} />
+                  </VisibilitySensor>
+                )}
+              </CountUp>
+            ) : (
+              <p className="status">{data.status}</p>
+            )}
           </div>
           <div className="col-md-4">
             <div className="left-border" style={{ marginTop: "25px" }}>

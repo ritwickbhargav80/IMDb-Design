@@ -129,8 +129,6 @@ class CustomPage extends Component {
       return null;
     });
 
-    // popular.map((media) => console.log(media));
-
     return (
       <div className="container">
         {!search && (
