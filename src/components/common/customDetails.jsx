@@ -6,14 +6,28 @@ import {
   getDetails,
   getPosterLink,
   getKeywords,
+  getRecommendations,
+  getGenres,
+  getTrailer,
 } from "../../utils/apiCalls";
 import Spinner from "./spinner";
 import DisplayOverview from "./displayOverview";
 import ProfileCustomSlider from "./profileCustomSlider";
 import Keywords from "./keywords";
+import CustomSlider from "./customSlider";
+import StickyVideo from "react-sticky-video";
+import { toast } from "react-toastify";
 
 class CustomDetails extends Component {
-  state = { data: {}, cast: [], keywords: [] };
+  state = {
+    data: {},
+    cast: [],
+    keywords: [],
+    genres: [],
+    recommendations: [],
+    trailer: "",
+    link: "",
+  };
 
   async componentDidMount() {
     const {
@@ -35,8 +49,19 @@ class CustomDetails extends Component {
       params.id
     );
 
-    console.log(data);
-    this.setState({ data, cast, keywords });
+    const genres = await getGenres(params.type === "movie" ? "movie" : "tv");
+
+    const recommendations = await getRecommendations(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    const trailer = await getTrailer(
+      params.id,
+      params.type === "movie" ? "movie" : "tv"
+    );
+
+    this.setState({ data, cast, keywords, genres, recommendations, trailer });
   }
 
   getGenres = (data) => {
@@ -52,9 +77,49 @@ class CustomDetails extends Component {
     props.history.push("/signin");
   };
 
-  displayPage = (params, data, cast, keywords, login, props) => {
+  loadLink = (link) => {
+    this.setState({ link });
+    window.scroll(0, 0);
+  };
+
+  handleClose = () => {
+    this.setState({ link: "" });
+  };
+
+  displayPage = (params, login, props) => {
+    const {
+      data,
+      cast,
+      keywords,
+      genres,
+      recommendations,
+      link,
+      trailer,
+    } = this.state;
+    const media = { recommendations: recommendations, genres: genres };
+
     return (
       <React.Fragment>
+        {link && (
+          <React.Fragment>
+            <StickyVideo
+              className="mt-4"
+              url={link}
+              stickyConfig={{
+                position: "bottom-right",
+              }}
+            />
+            <div style={{ height: "1.64em" }}>
+              <button
+                className="btn btn-danger mt-2"
+                style={{ float: "right" }}
+                onClick={this.handleClose}
+              >
+                Close Player
+              </button>
+            </div>
+          </React.Fragment>
+        )}
         <div className="splitscreen">
           <div className="left-content">
             <div
@@ -72,6 +137,35 @@ class CustomDetails extends Component {
                 alt="poster"
                 style={{ borderRadius: "0.25rem" }}
               />
+              <div
+                className="add-to-watchlist"
+                title="Play Trailer"
+                style={{
+                  backgroundColor:
+                    params.type === "movie" ? "#1b3a64" : "#004235",
+                  height: "1.7em",
+                  paddingTop: "1px",
+                  marginTop: "5px",
+                }}
+                onClick={() =>
+                  trailer
+                    ? this.loadLink(
+                        "https://www.youtube.com/watch?v=" + trailer
+                      )
+                    : toast.info("No trailer Available")
+                }
+              >
+                <p className="watchlist btn">
+                  <i
+                    className="fa-play plus-icon"
+                    aria-hidden="true"
+                    style={{ fontSize: "14.5px" }}
+                  />
+                  <span className="btn-txt" style={{ fontSize: "11px" }}>
+                    Play Trailer
+                  </span>
+                </p>
+              </div>
               <div
                 className="add-to-watchlist"
                 title="Add to Watchlist"
@@ -230,8 +324,26 @@ class CustomDetails extends Component {
           </div>
         )}
         <div className="left-border">
-          <h5 className="sub-heading">Overview</h5>
+          <h5 className="sub-heading">Recommendations</h5>
         </div>
+        {!login ? (
+          <div className="text-center sign-in-card">
+            <p>Sign In To Access!</p>
+            <input
+              className="btn create-acc-btn back-button"
+              defaultValue="Sign in to IMDb Design"
+              onClick={() => this.handleClick(props)}
+            />
+          </div>
+        ) : (
+          <CustomSlider
+            media={media}
+            type={"recommendations"}
+            props={props}
+            loadLink={this.loadLink}
+            single={params.type}
+          />
+        )}
       </React.Fragment>
     );
   };
@@ -240,20 +352,13 @@ class CustomDetails extends Component {
     const {
       match: { params },
     } = this.props.props;
-    const { data, cast, keywords } = this.state;
+    const { data } = this.state;
     const { login } = this.props;
 
     return (
       <div className="container">
         {data.poster_path ? (
-          this.displayPage(
-            params,
-            data,
-            cast,
-            keywords,
-            login,
-            this.props.props
-          )
+          this.displayPage(params, login, this.props.props)
         ) : (
           <Spinner />
         )}

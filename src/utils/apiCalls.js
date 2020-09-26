@@ -116,8 +116,19 @@ async function getKeywords(type, id) {
   return type === "movie" ? data.keywords : data.results;
 }
 
+async function getRecommendations(type, id) {
+  const { data } = await axios.get(
+    `${common}${type}/${id}/recommendations${apiKey}${process.env.REACT_APP_API_KEY}`
+  );
+
+  data.results.map(async (m) => (m.trailer = await getTrailer(m.id, type)));
+
+  return data.results.filter((data) => data.poster_path != null);
+}
+
 export {
   getGenres,
+  getTrailer,
   getPosterLink,
   getMedia,
   getTotalPages,
@@ -125,4 +136,5 @@ export {
   getActorBirthday,
   getCast,
   getKeywords,
+  getRecommendations,
 };
