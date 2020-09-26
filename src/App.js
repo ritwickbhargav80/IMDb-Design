@@ -101,7 +101,10 @@ class App extends Component {
             )}
           />
           <Route path="/not-found" exact component={NotFound} />
-          <Route path="/:type/:id" component={CustomDetails} />
+          <Route
+            path="/:type/:id"
+            component={(props) => <CustomDetails props={props} login={login} />}
+          />
           <Route path="/" exact component={HomePage} />
           {search === "" && changed && <Redirect to="/" />}
           <Redirect to="/not-found" />

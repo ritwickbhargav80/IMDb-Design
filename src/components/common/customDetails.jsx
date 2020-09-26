@@ -18,7 +18,7 @@ class CustomDetails extends Component {
   async componentDidMount() {
     const {
       match: { params },
-    } = this.props;
+    } = this.props.props;
 
     const data = await getDetails(
       params.type === "show" ? "tv" : "movie",
@@ -48,7 +48,11 @@ class CustomDetails extends Component {
     return str;
   };
 
-  displayPage = (params, data, cast, keywords) => {
+  handleClick = (props) => {
+    props.history.push("/signin");
+  };
+
+  displayPage = (params, data, cast, keywords, login, props) => {
     return (
       <React.Fragment>
         <div className="splitscreen">
@@ -147,29 +151,33 @@ class CustomDetails extends Component {
                 {params.type === "movie" ? "Budget" : "Network"}
               </h5>
             </div>
-            {params.type === "movie" ? (
-              <CountUp
-                prefix="$ "
-                separator=","
-                end={data.budget}
-                duration={1}
-                decimals={2}
-                redraw={true}
-              >
-                {({ countUpRef, start }) => (
-                  <VisibilitySensor onChange={start} delayedCall>
-                    <span className="status" ref={countUpRef} />
-                  </VisibilitySensor>
-                )}
-              </CountUp>
+            {login ? (
+              params.type === "movie" ? (
+                <CountUp
+                  prefix="$ "
+                  separator=","
+                  end={data.budget}
+                  duration={1}
+                  decimals={2}
+                  redraw={true}
+                >
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span className="status" ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
+              ) : (
+                <img
+                  className="networks"
+                  src={
+                    "http://image.tmdb.org/t/p/h30" + data.networks[0].logo_path
+                  }
+                  alt="networks"
+                />
+              )
             ) : (
-              <img
-                className="networks"
-                src={
-                  "http://image.tmdb.org/t/p/h30" + data.networks[0].logo_path
-                }
-                alt="networks"
-              />
+              ""
             )}
           </div>
           <div className="col-md-4">
@@ -181,31 +189,48 @@ class CustomDetails extends Component {
                 {params.type === "movie" ? "Revenue" : "Status"}
               </h5>
             </div>
-            {params.type === "movie" ? (
-              <CountUp
-                prefix="$ "
-                separator=","
-                end={data.revenue}
-                duration={1}
-                decimals={2}
-                redraw={true}
-              >
-                {({ countUpRef, start }) => (
-                  <VisibilitySensor onChange={start} delayedCall>
-                    <span className="status" ref={countUpRef} />
-                  </VisibilitySensor>
-                )}
-              </CountUp>
+            {login ? (
+              params.type === "movie" ? (
+                <CountUp
+                  prefix="$ "
+                  separator=","
+                  end={data.revenue}
+                  duration={1}
+                  decimals={2}
+                  redraw={true}
+                >
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span className="status" ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
+              ) : (
+                <p className="status">{data.status}</p>
+              )
             ) : (
-              <p className="status">{data.status}</p>
+              ""
             )}
           </div>
           <div className="col-md-4">
             <div className="left-border" style={{ marginTop: "25px" }}>
               <h5 className="sub-heading">Keywords</h5>
             </div>
-            <Keywords keywords={keywords} />
+            {login ? <Keywords keywords={keywords} /> : ""}
           </div>
+        </div>
+        {!login && (
+          <div className="text-center sign-in-card">
+            <p>Sign In To Access!</p>
+            <input
+              className="btn create-acc-btn back-button"
+              defaultValue="Sign in to IMDb Design"
+              onClick={() => this.handleClick(props)}
+            />
+          </div>
+        )}
+        <div className="left-border">
+          <h5 className="sub-heading">Overview</h5>
         </div>
       </React.Fragment>
     );
@@ -214,13 +239,21 @@ class CustomDetails extends Component {
   render() {
     const {
       match: { params },
-    } = this.props;
+    } = this.props.props;
     const { data, cast, keywords } = this.state;
+    const { login } = this.props;
 
     return (
       <div className="container">
         {data.poster_path ? (
-          this.displayPage(params, data, cast, keywords)
+          this.displayPage(
+            params,
+            data,
+            cast,
+            keywords,
+            login,
+            this.props.props
+          )
         ) : (
           <Spinner />
         )}
