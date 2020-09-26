@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StickyVideo from "react-sticky-video";
+import { toast } from "react-toastify";
 
 import CustomSlider from "./common/customSlider";
 
@@ -10,6 +11,7 @@ import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
 import Carousel from "./common/carousel";
 import { getGenres, getMedia } from "../utils/apiCalls";
+import empty from "../assets/empty.png";
 
 class HomePage extends Component {
   state = {
@@ -51,7 +53,7 @@ class HomePage extends Component {
         },
       });
     } catch (err) {
-      console.log(err);
+      if (err.message === "Network Error") toast.error("Network Error!");
     }
   }
 
@@ -154,6 +156,12 @@ class HomePage extends Component {
         <p className="sub-script">
           People born on {month} {date}
         </p>
+        <div className="text-center not-available">
+          <p>
+            <img src={empty} alt="NA" />
+            Not Available
+          </p>
+        </div>
       </div>
     );
   }
