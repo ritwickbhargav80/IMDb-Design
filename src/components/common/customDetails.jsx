@@ -10,6 +10,7 @@ import {
   getRecommendations,
   getGenres,
   getTrailer,
+  getReviews,
 } from "../../utils/apiCalls";
 import Spinner from "./spinner";
 import DisplayOverview from "./displayOverview";
@@ -18,6 +19,7 @@ import Keywords from "./keywords";
 import CustomSlider from "./customSlider";
 import StickyVideo from "react-sticky-video";
 import { toast } from "react-toastify";
+import Reviews from "./Reviews";
 
 class CustomDetails extends Component {
   state = {
@@ -28,6 +30,7 @@ class CustomDetails extends Component {
     recommendations: [],
     trailer: "",
     link: "",
+    reviews: [],
     play: false,
   };
 
@@ -63,7 +66,20 @@ class CustomDetails extends Component {
       params.type === "movie" ? "movie" : "tv"
     );
 
-    this.setState({ data, cast, keywords, genres, recommendations, trailer });
+    const reviews = await getReviews(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    this.setState({
+      data,
+      cast,
+      keywords,
+      genres,
+      recommendations,
+      trailer,
+      reviews,
+    });
   }
 
   getGenres = (data) => {
@@ -104,6 +120,7 @@ class CustomDetails extends Component {
       recommendations,
       link,
       trailer,
+      reviews,
     } = this.state;
     const media = { recommendations: recommendations, genres: genres };
 
@@ -351,7 +368,7 @@ class CustomDetails extends Component {
               value={data.vote_average}
               maxValue={10}
               lineGap={1}
-              lineWidth={25}
+              lineWidth={22}
               fadedOpacity={10}
             />
             <p className="styles_wrapper__3KXDn votes-count">
@@ -359,9 +376,10 @@ class CustomDetails extends Component {
             </p>
           </div>
           <div className="col-md">
-            <div className="left-border">
+            <div className="left-border" style={{ marginBottom: "20px" }}>
               <h5 className="sub-heading">Reviews</h5>
             </div>
+            <Reviews reviews={reviews} />
           </div>
         </div>
         <br />

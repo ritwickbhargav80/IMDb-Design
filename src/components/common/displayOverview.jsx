@@ -11,7 +11,7 @@ class DisplayOverview extends Component {
   getContent = (overview) => {
     let arr = overview.split(" ");
     overview = arr.slice(0, 32).join(" ");
-    if (arr.length > 21) overview += " ...";
+    if (arr.length > 32) overview += " ...";
     return overview;
   };
 
@@ -28,7 +28,7 @@ class DisplayOverview extends Component {
     return (
       <p className="sub-script op">
         {expanded ? overview : this.getContent(overview)}{" "}
-        {arr.length > 21 && (
+        {arr.length > 32 && (
           <span className="help" onClick={this.handleClick}>
             {expanded ? "See Less" : "See More"}
           </span>

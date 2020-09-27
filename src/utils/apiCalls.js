@@ -126,6 +126,14 @@ async function getRecommendations(type, id) {
   return data.results.filter((data) => data.poster_path != null);
 }
 
+async function getReviews(type, id) {
+  const { data } = await axios.get(
+    `${common}${type}/${id}/reviews${apiKey}${process.env.REACT_APP_API_KEY}`
+  );
+
+  return data.results;
+}
+
 export {
   getGenres,
   getTrailer,
@@ -137,4 +145,5 @@ export {
   getCast,
   getKeywords,
   getRecommendations,
+  getReviews,
 };

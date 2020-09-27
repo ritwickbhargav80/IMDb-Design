@@ -218,6 +218,21 @@ canvas {
   color: #f5c01f;
 }
 
+.review-message {
+  color: #ffffff;
+}
+
+.more-reviews-count {
+  color: #f5c01f;
+  float: right;
+}
+
+.review-author {
+  color: #f5c01f;
+  float: left;
+  margin-top: 0.5rem;
+}
+
 @media screen and (max-width: 437px) {
   .paginate-dot {
     padding: 2px 0px;
