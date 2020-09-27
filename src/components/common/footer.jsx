@@ -125,6 +125,23 @@ const Footer = () => {
               IMDb.com, Inc.
             </Link>
           </div>
+
+          <div className="footer-copyright text-center">
+            <span className="copyright">Designed by:</span>
+            <a
+              className="footer-link"
+              href="https://www.behance.net/gallery/94485805/IMDb-Website-Design"
+            >
+              Aakash Goel
+            </a>{" "}
+            &#128150; <span className="copyright">Developed by:</span>
+            <a
+              className="footer-link"
+              href="https://github.com/ritwickbhargav80"
+            >
+              Ritwick Bhargav
+            </a>
+          </div>
         </div>
       </div>
     </footer>
