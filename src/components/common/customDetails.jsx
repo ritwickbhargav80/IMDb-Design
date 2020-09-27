@@ -27,6 +27,7 @@ class CustomDetails extends Component {
     recommendations: [],
     trailer: "",
     link: "",
+    play: false,
   };
 
   async componentDidMount() {
@@ -86,6 +87,13 @@ class CustomDetails extends Component {
     this.setState({ link: "" });
   };
 
+  handleLoadLink = (trailer) => {
+    if (trailer) {
+      this.setState({ play: true });
+      this.loadLink("https://www.youtube.com/watch?v=" + trailer);
+    } else toast.info("No trailer Available");
+  };
+
   displayPage = (params, login, props) => {
     const {
       data,
@@ -118,6 +126,7 @@ class CustomDetails extends Component {
                 Close Player
               </button>
             </div>
+            <br />
           </React.Fragment>
         )}
         <div className="splitscreen">
@@ -147,22 +156,20 @@ class CustomDetails extends Component {
                   paddingTop: "1px",
                   marginTop: "5px",
                 }}
-                onClick={() =>
-                  trailer
-                    ? this.loadLink(
-                        "https://www.youtube.com/watch?v=" + trailer
-                      )
-                    : toast.info("No trailer Available")
-                }
+                onClick={() => this.handleLoadLink(trailer)}
               >
                 <p className="watchlist btn">
                   <i
-                    className="fa-play plus-icon"
+                    className={
+                      this.state.play
+                        ? "fa-refresh plus-icon"
+                        : "fa-play plus-icon"
+                    }
                     aria-hidden="true"
                     style={{ fontSize: "14.5px" }}
                   />
                   <span className="btn-txt" style={{ fontSize: "11px" }}>
-                    Play Trailer
+                    {this.state.play ? "Play Again" : "Play Trailer"}
                   </span>
                 </p>
               </div>
@@ -218,6 +225,7 @@ class CustomDetails extends Component {
             </div>
           </div>
         </div>
+        <br />
 
         <div className="mobile-overview">
           <div className="left-border mobile-left">
@@ -235,18 +243,31 @@ class CustomDetails extends Component {
             <Spinner />
           )}
         </div>
-        <div className="row">
-          <div className="col-md-4">
-            <div
-              className="left-border bottom-marg"
-              style={{ marginTop: "25px" }}
-            >
-              <h5 className="sub-heading">
-                {params.type === "movie" ? "Budget" : "Network"}
-              </h5>
-            </div>
-            {login ? (
-              params.type === "movie" ? (
+        <br />
+        {!login && (
+          <div
+            className="left-border bottom-marg"
+            style={{ marginTop: "25px" }}
+          >
+            <h5 className="sub-heading bottom-marg">
+              {params.type === "movie"
+                ? "Budget, Revenue & Keywords"
+                : "Network, Status & Keywords"}
+            </h5>
+          </div>
+        )}
+        {login ? (
+          <div className="row">
+            <div className="col-md-4">
+              <div
+                className="left-border bottom-marg"
+                style={{ marginTop: "25px" }}
+              >
+                <h5 className="sub-heading">
+                  {params.type === "movie" ? "Budget" : "Network"}
+                </h5>
+              </div>
+              {params.type === "movie" ? (
                 <CountUp
                   prefix="$ "
                   separator=","
@@ -269,22 +290,18 @@ class CustomDetails extends Component {
                   }
                   alt="networks"
                 />
-              )
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="col-md-4">
-            <div
-              className="left-border bottom-marg"
-              style={{ marginTop: "25px" }}
-            >
-              <h5 className="sub-heading bottom-marg">
-                {params.type === "movie" ? "Revenue" : "Status"}
-              </h5>
+              )}
             </div>
-            {login ? (
-              params.type === "movie" ? (
+            <div className="col-md-4">
+              <div
+                className="left-border bottom-marg"
+                style={{ marginTop: "25px" }}
+              >
+                <h5 className="sub-heading bottom-marg">
+                  {params.type === "movie" ? "Revenue" : "Status"}
+                </h5>
+              </div>
+              {params.type === "movie" ? (
                 <CountUp
                   prefix="$ "
                   separator=","
@@ -301,18 +318,18 @@ class CustomDetails extends Component {
                 </CountUp>
               ) : (
                 <p className="status">{data.status}</p>
-              )
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="col-md-4">
-            <div className="left-border" style={{ marginTop: "25px" }}>
-              <h5 className="sub-heading">Keywords</h5>
+              )}
             </div>
-            {login ? <Keywords keywords={keywords} /> : ""}
+            <div className="col-md-4">
+              <div className="left-border" style={{ marginTop: "25px" }}>
+                <h5 className="sub-heading">Keywords</h5>
+              </div>
+              <Keywords keywords={keywords} />
+            </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
         {!login && (
           <div className="text-center sign-in-card">
             <p>Sign In To Access!</p>
@@ -323,6 +340,7 @@ class CustomDetails extends Component {
             />
           </div>
         )}
+        <br />
         <div className="left-border">
           <h5 className="sub-heading">Recommendations</h5>
         </div>

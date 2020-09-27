@@ -186,11 +186,16 @@ abbr {
 
 .sign-in-card input {
   width: auto;
+  max-width: 100%;
   color: #ffffff;
 }
 
 .sign-in-card input:hover {
   color: #ffffff;
+}
+
+.fa-check {
+  color: green;
 }
 
 @media screen and (max-width: 437px) {

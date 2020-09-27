@@ -23,13 +23,16 @@ class DisplayOverview extends Component {
   render() {
     const { overview } = this.props;
     const { expanded } = this.state;
+    let arr = overview.split(" ");
 
     return (
       <p className="sub-script op">
         {expanded ? overview : this.getContent(overview)}{" "}
-        <span className="help" onClick={this.handleClick}>
-          {expanded ? "See Less" : "See More"}
-        </span>
+        {arr.length > 21 && (
+          <span className="help" onClick={this.handleClick}>
+            {expanded ? "See Less" : "See More"}
+          </span>
+        )}
       </p>
     );
   }
