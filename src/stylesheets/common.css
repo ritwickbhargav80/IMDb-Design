@@ -198,6 +198,26 @@ abbr {
   color: green;
 }
 
+canvas {
+  width: 160px !important;
+}
+
+.styles_scoreValue__2dBgK {
+  bottom: 60px !important;
+}
+
+.votes-count {
+  margin-top: -32px !important;
+  width: 100%;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.votes-count span {
+  font-size: 1.16rem;
+  color: #f5c01f;
+}
+
 @media screen and (max-width: 437px) {
   .paginate-dot {
     padding: 2px 0px;

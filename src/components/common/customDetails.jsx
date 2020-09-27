@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
+import ReactStoreIndicator from "react-score-indicator";
 import {
   getCast,
   getDetails,
@@ -340,6 +341,29 @@ class CustomDetails extends Component {
             />
           </div>
         )}
+        <br />
+        <div className="row">
+          <div className="col-md-4">
+            <div className="left-border" style={{ marginBottom: "20px" }}>
+              <h5 className="sub-heading">Ratings</h5>
+            </div>
+            <ReactStoreIndicator
+              value={data.vote_average}
+              maxValue={10}
+              lineGap={1}
+              lineWidth={25}
+              fadedOpacity={10}
+            />
+            <p className="styles_wrapper__3KXDn votes-count">
+              Votes Count: <span>{data.vote_count}</span>
+            </p>
+          </div>
+          <div className="col-md">
+            <div className="left-border">
+              <h5 className="sub-heading">Reviews</h5>
+            </div>
+          </div>
+        </div>
         <br />
         <div className="left-border">
           <h5 className="sub-heading">Recommendations</h5>

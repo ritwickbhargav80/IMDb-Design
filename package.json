@@ -19,6 +19,7 @@
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+    "react-score-indicator": "^2.2.1",
     "react-scripts": "^3.4.3",
     "react-slick": "^0.27.2",
     "react-spinners": "^0.9.0",

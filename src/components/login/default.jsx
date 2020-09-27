@@ -17,22 +17,22 @@ const Default = ({ signIn, register }) => {
         <span className="btn-txt">Sign in with IMDb</span>
       </button>
       <br />
-      <button className="btn custom">
+      <button className="btn custom" disabled>
         <img src={amazon} alt="amazon-logo" className="btn-logo-1" />
         <span className="btn-txt">Sign in with Amazon</span>
       </button>
       <br />
-      <button className="btn custom">
+      <button className="btn custom" disabled>
         <img src={facebook} alt="facebook-logo" className="btn-logo-1" />
         <span className="btn-txt">Sign in with Facebook</span>
       </button>
       <br />
-      <button className="btn custom">
+      <button className="btn custom" disabled>
         <img src={google} alt="google-logo" className="btn-logo-1" />
         <span className="btn-txt">Sign in with Google</span>
       </button>
       <br />
-      <button className="btn custom">
+      <button className="btn custom" disabled>
         <img src={apple} alt="apple-logo" className="btn-logo-1" />
         <span className="btn-txt">Sign in with Apple</span>
       </button>
