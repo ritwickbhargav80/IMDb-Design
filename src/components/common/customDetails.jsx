@@ -7,6 +7,7 @@ import {
   getDetails,
   getPosterLink,
   getKeywords,
+  getSimilarMovies,
   getRecommendations,
   getGenres,
   getTrailer,
@@ -20,6 +21,7 @@ import CustomSlider from "./customSlider";
 import StickyVideo from "react-sticky-video";
 import { toast } from "react-toastify";
 import Reviews from "./Reviews";
+import empty from "../../assets/empty.png";
 
 class CustomDetails extends Component {
   state = {
@@ -27,6 +29,7 @@ class CustomDetails extends Component {
     cast: [],
     keywords: [],
     genres: [],
+    similar: [],
     recommendations: [],
     trailer: "",
     link: "",
@@ -56,6 +59,11 @@ class CustomDetails extends Component {
 
     const genres = await getGenres(params.type === "movie" ? "movie" : "tv");
 
+    const similar = await getSimilarMovies(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
     const recommendations = await getRecommendations(
       params.type === "movie" ? "movie" : "tv",
       params.id
@@ -76,6 +84,61 @@ class CustomDetails extends Component {
       cast,
       keywords,
       genres,
+      similar,
+      recommendations,
+      trailer,
+      reviews,
+    });
+  }
+
+  async componentDidUpdate() {
+    const {
+      match: { params },
+    } = this.props.props;
+
+    const data = await getDetails(
+      params.type === "show" ? "tv" : "movie",
+      params.id
+    );
+
+    const cast = await getCast(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    const keywords = await getKeywords(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    const genres = await getGenres(params.type === "movie" ? "movie" : "tv");
+
+    const similar = await getSimilarMovies(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    const recommendations = await getRecommendations(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    const trailer = await getTrailer(
+      params.id,
+      params.type === "movie" ? "movie" : "tv"
+    );
+
+    const reviews = await getReviews(
+      params.type === "movie" ? "movie" : "tv",
+      params.id
+    );
+
+    this.setState({
+      data,
+      cast,
+      keywords,
+      genres,
+      similar,
       recommendations,
       trailer,
       reviews,
@@ -117,12 +180,13 @@ class CustomDetails extends Component {
       cast,
       keywords,
       genres,
+      similar,
       recommendations,
       link,
       trailer,
       reviews,
     } = this.state;
-    const media = { recommendations: recommendations, genres: genres };
+    const media = { recommendations, similar, genres };
 
     return (
       <React.Fragment>
@@ -395,7 +459,7 @@ class CustomDetails extends Component {
               onClick={() => this.handleClick(props)}
             />
           </div>
-        ) : (
+        ) : recommendations.length > 0 ? (
           <CustomSlider
             media={media}
             type={"recommendations"}
@@ -403,6 +467,41 @@ class CustomDetails extends Component {
             loadLink={this.loadLink}
             single={params.type}
           />
+        ) : (
+          <div className="text-center not-available">
+            <p>
+              <img src={empty} alt="NA" />
+              Not Available
+            </p>
+          </div>
+        )}
+        <div className="left-border">
+          <h5 className="sub-heading">Similar Movies</h5>
+        </div>
+        {!login ? (
+          <div className="text-center sign-in-card">
+            <p>Sign In To Access!</p>
+            <input
+              className="btn create-acc-btn back-button"
+              defaultValue="Sign in to IMDb Design"
+              onClick={() => this.handleClick(props)}
+            />
+          </div>
+        ) : similar.length > 0 ? (
+          <CustomSlider
+            media={media}
+            type={"similar"}
+            props={props}
+            loadLink={this.loadLink}
+            single={params.type}
+          />
+        ) : (
+          <div className="text-center not-available">
+            <p>
+              <img src={empty} alt="NA" />
+              Not Available
+            </p>
+          </div>
         )}
       </React.Fragment>
     );

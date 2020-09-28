@@ -38,6 +38,13 @@ const Navbar = ({ login, onLogout, onChange, onClear }) => {
               Tv Shows
             </NavLink>
           </li>
+          {login && (
+            <li className="nav-item pad-left">
+              <NavLink className="nav-link" to="/watchlist" onClick={onClear}>
+                Watchlist
+              </NavLink>
+            </li>
+          )}
         </ul>
         <ul className="navbar-nav">
           <li className="nav-item">

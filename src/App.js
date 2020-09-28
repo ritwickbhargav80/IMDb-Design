@@ -12,11 +12,12 @@ import "react-toastify/dist/ReactToastify.css";
 import CustomPage from "./components/common/customPage";
 import Search from "./components/search";
 import CustomDetails from "./components/common/customDetails";
+import Watchlist from "./components/watchlist";
 
 class App extends Component {
   state = {
     search: "",
-    login: false,
+    login: true,
     changed: false,
   };
 
@@ -100,6 +101,7 @@ class App extends Component {
               <SignIn onLogin={() => this.handleLogin(props)} />
             )}
           />
+          {login && <Route path="/watchlist" component={() => <Watchlist />} />}
           <Route path="/not-found" exact component={NotFound} />
           <Route
             path="/:type/:id"

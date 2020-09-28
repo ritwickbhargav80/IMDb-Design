@@ -175,7 +175,7 @@ abbr {
 }
 
 .sign-in-card {
-  margin: 1.4rem;
+  margin: 4.7rem 0rem;
   color: #f5c01f;
   font-size: 1.6em;
 }
@@ -195,7 +195,7 @@ abbr {
 }
 
 .fa-check {
-  color: green;
+  color: green !important;
 }
 
 canvas {
