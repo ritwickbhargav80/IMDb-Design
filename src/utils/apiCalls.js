@@ -66,6 +66,8 @@ async function getDetails(type, id) {
     `${common}${type}/${id}${apiKey}${process.env.REACT_APP_API_KEY}`
   );
 
+  data.trailer = await getTrailer(id, type);
+
   return data;
 }
 
