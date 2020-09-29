@@ -172,23 +172,35 @@ abbr {
   font-size: 1.3em;
 }
 
-.sign-in-card {
+.sign-in-card,
+.sign-in-card-1 {
   margin: 4.7rem 0rem;
   color: #f5c01f;
+  padding: 0.5em;
   font-size: 1.6em;
 }
 
-.sign-in-card p {
+.sign-in-card p,
+.sign-in-card-1 .title {
   margin-bottom: 0.2rem;
 }
 
-.sign-in-card input {
+.sign-in-card-1 .desc {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+  margin-top: -5px;
+}
+
+.sign-in-card input,
+.sign-in-card-1 input {
   width: auto;
   max-width: 100%;
   color: #ffffff;
 }
 
-.sign-in-card input:hover {
+.sign-in-card input:hover,
+.sign-in-card-1 input:hover {
   color: #ffffff;
 }
 

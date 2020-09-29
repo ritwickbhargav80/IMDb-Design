@@ -19,6 +19,7 @@ class App extends Component {
     search: "",
     login: true,
     changed: false,
+    watchlist: { movie: [], show: [] },
   };
 
   handleChange = (e) => {
@@ -39,7 +40,7 @@ class App extends Component {
   };
 
   render() {
-    const { search, login, changed } = this.state;
+    const { search, login, changed, watchlist } = this.state;
 
     return (
       <div className="App">
@@ -101,7 +102,14 @@ class App extends Component {
               <SignIn onLogin={() => this.handleLogin(props)} />
             )}
           />
-          {login && <Route path="/watchlist" component={() => <Watchlist />} />}
+          {login && (
+            <Route
+              path="/watchlist"
+              component={(props) => (
+                <Watchlist props={props} watchlist={watchlist} />
+              )}
+            />
+          )}
           <Route path="/not-found" exact component={NotFound} />
           <Route
             path="/:type/:id"
