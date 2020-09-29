@@ -164,7 +164,7 @@ class CustomSlider extends Component {
     return data;
   };
 
-  getSlider = (checkbox, data, props, loadLink, media, single) => {
+  getSlider = (checkbox, data, props, loadLink, media, single, watchlist) => {
     const settings = this.getSettings(data);
     if (single) {
       let { genres } = media;
@@ -194,6 +194,7 @@ class CustomSlider extends Component {
                 className="single-card"
               >
                 <Slide
+                  key={movie.id}
                   banner={getPosterLink(movie.poster_path)}
                   title={movie.title ? movie.title : movie.name}
                   genre={
@@ -214,6 +215,8 @@ class CustomSlider extends Component {
                         : "green"
                       : movie.color
                   }
+                  id={movie.id}
+                  watchlist={watchlist}
                 />
               </div>
             ))}
@@ -240,6 +243,7 @@ class CustomSlider extends Component {
       checkbox = false,
       single,
       val,
+      watchlist,
     } = this.props;
     let { checkboxes } = this.state,
       data;
@@ -263,7 +267,15 @@ class CustomSlider extends Component {
         ) : (
           ""
         )}
-        {this.getSlider(checkboxes, data, props, loadLink, media, single)}
+        {this.getSlider(
+          checkboxes,
+          data,
+          props,
+          loadLink,
+          media,
+          single,
+          watchlist
+        )}
       </React.Fragment>
     );
   }

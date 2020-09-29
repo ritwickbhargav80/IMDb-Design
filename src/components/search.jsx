@@ -31,7 +31,7 @@ class Search extends Component {
   };
 
   render() {
-    const { search, history, onClear } = this.props;
+    const { search, history, onClear, watchlist } = this.props;
     const { link } = this.state;
 
     return (
@@ -57,6 +57,7 @@ class Search extends Component {
           search={search}
           linkLoad={this.loadLink}
           onClear={onClear}
+          watchlist={watchlist}
         />
         <br />
         <br />
@@ -66,6 +67,7 @@ class Search extends Component {
           search={search}
           linkLoad={this.loadLink}
           onClear={onClear}
+          watchlist={watchlist}
         />
       </React.Fragment>
     );

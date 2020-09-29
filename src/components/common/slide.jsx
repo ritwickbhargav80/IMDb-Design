@@ -38,7 +38,14 @@ class Slide extends Component {
       loadLink,
       color,
       css,
+      watchlist,
+      id,
     } = this.props;
+
+    console.log(id, watchlist);
+
+    const type = color === "green" ? "show" : "movie";
+    const added = watchlist[type].find((e) => e === id);
 
     let titleSliced = getTitle(title),
       contentSliced = getContent(content);
@@ -99,7 +106,12 @@ class Slide extends Component {
                 title="Add to Watchlist"
                 onClick={(e) => this.handleWhitelist(e, props)}
                 style={{
-                  backgroundColor: color === "green" ? "#004235" : "#1b3a64",
+                  backgroundColor:
+                    added !== undefined
+                      ? "#f5c01f"
+                      : color === "green"
+                      ? "#004235"
+                      : "#1b3a64",
                 }}
               >
                 <p
@@ -108,8 +120,20 @@ class Slide extends Component {
                   onMouseLeave={() => this.setBtnIsShown(false)}
                   style={{ opacity: this.state.showBtn ? 1 : 0.8 }}
                 >
-                  <i className="fa-plus plus-icon" aria-hidden="true" />
-                  <span className="btn-txt">Add to Watchlist</span>
+                  <i
+                    className={
+                      "fa-plus plus-icon " +
+                      (added === undefined ? "" : "select-color")
+                    }
+                    aria-hidden="true"
+                  />
+                  <span
+                    className={
+                      "btn-txt " + (added === undefined ? "" : "select-color")
+                    }
+                  >
+                    Add to Watchlist
+                  </span>
                 </p>
               </div>
             </div>

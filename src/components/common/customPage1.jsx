@@ -84,7 +84,7 @@ class CustomPage1 extends Component {
   };
 
   render() {
-    const { type, loadLink } = this.props;
+    const { type, loadLink, watchlist } = this.props;
     const { pageNo, total_pages } = this.state;
     const { mediaData } = this.state.data;
 
@@ -131,6 +131,7 @@ class CustomPage1 extends Component {
                       className="single-card"
                     >
                       <Slide
+                        id={media.id}
                         banner={getPosterLink(media.poster_path)}
                         title={type === "movie" ? media.title : media.name}
                         genre={
@@ -144,6 +145,7 @@ class CustomPage1 extends Component {
                         color={type === "movie" ? "blue" : "green"}
                         css={css}
                         loadLink={loadLink}
+                        watchlist={watchlist}
                       />
                     </div>
                   ) : (

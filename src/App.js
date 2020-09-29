@@ -19,7 +19,7 @@ class App extends Component {
     search: "",
     login: true,
     changed: false,
-    watchlist: { movie: [], show: [] },
+    watchlist: { movie: [539885, 337401], show: [] },
   };
 
   handleChange = (e) => {
@@ -71,6 +71,7 @@ class App extends Component {
                   search={search}
                   history={props}
                   onClear={this.handleClear}
+                  watchlist={watchlist}
                 />
               )}
             />
@@ -83,6 +84,7 @@ class App extends Component {
                 type={"movie"}
                 history={props}
                 onClear={this.handleClear}
+                watchlist={watchlist}
               />
             )}
           />
@@ -93,6 +95,7 @@ class App extends Component {
                 type={"tv"}
                 history={props}
                 onClear={this.handleClear}
+                watchlist={watchlist}
               />
             )}
           />
@@ -115,7 +118,11 @@ class App extends Component {
             path="/:type/:id"
             component={(props) => <CustomDetails props={props} login={login} />}
           />
-          <Route path="/" exact component={HomePage} />
+          <Route
+            path="/"
+            exact
+            component={() => <HomePage watchlist={watchlist} />}
+          />
           {search === "" && changed && <Redirect to="/" />}
           <Redirect to="/not-found" />
         </Switch>

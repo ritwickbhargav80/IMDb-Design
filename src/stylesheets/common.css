@@ -204,6 +204,10 @@ abbr {
   color: #ffffff;
 }
 
+.select-color {
+  color: #000000 !important;
+}
+
 .blue-color {
   color: rgba(65, 105, 225, 0.9) !important;
 }
