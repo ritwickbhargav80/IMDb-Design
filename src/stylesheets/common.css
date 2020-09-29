@@ -86,14 +86,12 @@
 
 .container .media-status {
   padding-left: 2rem;
-  color: green;
   float: right;
   margin-top: 3.1%;
 }
 
 .media-status-1 {
   padding-left: 2rem !important;
-  color: green;
 }
 
 .media-status-1 .media-status-icon,
@@ -194,8 +192,20 @@ abbr {
   color: #ffffff;
 }
 
-.fa-check {
-  color: green !important;
+.blue-color {
+  color: rgba(65, 105, 225, 0.9) !important;
+}
+
+.yellow-color {
+  color: rgba(255, 247, 0, 0.9) !important;
+}
+
+.green-color {
+  color: rgba(76, 187, 23, 0.9) !important;
+}
+
+.red-color {
+  color: rgba(255, 36, 0, 0.9) !important;
 }
 
 canvas {

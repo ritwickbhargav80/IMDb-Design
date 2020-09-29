@@ -186,6 +186,24 @@ class CustomDetails extends Component {
       trailer,
       reviews,
     } = this.state;
+    let status = {};
+
+    if (data.status === "Rumored")
+      status = { icon: "fa fa-bomb ", class: " blue-color" };
+    else if (data.status === "Planned")
+      status = { icon: "fa fa-paperclip ", class: " yellow-color" };
+    else if (data.status === "In Production")
+      status = { icon: "fa fa-film ", class: " yellow-color" };
+    else if (data.status === "Post Production")
+      status = { icon: "fa fa-ticket ", class: " yellow-color" };
+    else if (data.status === "Released")
+      status = { icon: "fa fa-check ", class: " green-color" };
+    else if (data.status === "Returning Series")
+      status = { icon: "fa fa-refresh ", class: " green-color" };
+    else if (data.status === "Pilot")
+      status = { icon: "fa fa-plane ", class: " yellow-color" };
+    else status = { icon: "fa fa-times ", class: " red-color" };
+
     const media = { recommendations, similar, genres };
 
     return (
@@ -244,7 +262,7 @@ class CustomDetails extends Component {
                   <i
                     className={
                       this.state.play
-                        ? "fa-refresh plus-icon"
+                        ? "fa-repeat plus-icon"
                         : "fa-play plus-icon"
                     }
                     aria-hidden="true"
@@ -281,12 +299,16 @@ class CustomDetails extends Component {
           </div>
 
           <div className="right-content">
-            <div className="custom-control media-status">
+            <div className={"custom-control media-status" + status.class}>
               <i
-                className="fa fa-check custom-control-input media-status-icon"
+                className={
+                  status.icon +
+                  "custom-control-input media-status-icon" +
+                  status.class
+                }
                 aria-hidden="true"
               />
-              <p className="media-status-text">Released</p>
+              <p className="media-status-text">{data.status}</p>
             </div>
             <h3 className="h3" style={{ marginBottom: "0px" }}>
               {data.title ? data.title : data.name}
@@ -298,12 +320,20 @@ class CustomDetails extends Component {
               </div>
               <DisplayOverview expanded={true} overview={data.overview} />
             </div>
-            <div className="custom-control-1 media-status-1 mobile-overview">
+            <div
+              className={
+                "custom-control-1 media-status-1 mobile-overview" + status.class
+              }
+            >
               <i
-                className="fa fa-check custom-control-input media-status-icon"
+                className={
+                  status.icon +
+                  "custom-control-input media-status-icon" +
+                  status.class
+                }
                 aria-hidden="true"
               />
-              <p className="media-status-text">Released</p>
+              <p className="media-status-text">{data.status}</p>
             </div>
           </div>
         </div>
