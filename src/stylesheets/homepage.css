@@ -185,6 +185,10 @@
 }
 
 @media screen and (max-width: 769px) {
+  #venue {
+    display: none;
+  }
+
   .sticky-video--player--3QVPP {
     height: 300px !important;
     width: 100%;

@@ -64,7 +64,7 @@ class CustomSlider extends Component {
       slidesToScroll: 7,
       nextArrow: <SampleNextArrow show={show} />,
       prevArrow: <SamplePrevArrow show={show} />,
-      // autoplay: true,
+      autoplay: true,
       responsive: [
         {
           breakpoint: 1200,
