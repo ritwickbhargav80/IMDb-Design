@@ -39,7 +39,7 @@ class Watchlist extends Component {
     return (
       <div className="container">
         <h3 className="h3">Your Watchlist</h3>
-        {watchlist.movie.length === 0 && watchlist.movie.length === 0 ? (
+        {watchlist.movie.length === 0 && watchlist.show.length === 0 ? (
           <div className="text-center sign-in-card-1">
             <p className="title">No releases added in Watchlist!</p>
             <p className="desc">
