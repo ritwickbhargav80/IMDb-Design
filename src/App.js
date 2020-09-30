@@ -19,7 +19,7 @@ class App extends Component {
     search: "",
     login: false,
     changed: false,
-    watchlist: { movie: [539885, 337401], show: [] },
+    watchlist: { movie: [], show: [] },
   };
 
   handleChange = (e) => {

@@ -45,13 +45,6 @@ class Slide extends Component {
     const type = color === "green" ? "show" : "movie";
     const added = watchlist[type].find((e) => e === id);
 
-    const css1 = {
-      marginLeft: "0.75em",
-      marginRight: "0.75em",
-      marginTop: "2.5em",
-      boxShadow: "4px 2px rgba(245, 192, 31, 0.8)",
-    };
-
     let titleSliced = getTitle(title),
       contentSliced = getContent(content);
 
@@ -62,7 +55,7 @@ class Slide extends Component {
             className="card custom-card"
             onMouseEnter={() => this.setIsShown(true)}
             onMouseLeave={() => this.setIsShown(false)}
-            style={added === undefined ? css : css1}
+            style={css}
           >
             <img
               className="img-responsive img-card"
