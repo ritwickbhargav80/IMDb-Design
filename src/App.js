@@ -144,10 +144,11 @@ class App extends Component {
           <Route
             path="/"
             exact
-            component={() => (
+            component={(props) => (
               <HomePage
                 watchlist={watchlist}
                 onWatchlist={this.handleWhitelist}
+                props={props}
               />
             )}
           />

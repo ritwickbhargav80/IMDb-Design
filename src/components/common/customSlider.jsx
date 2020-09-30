@@ -256,6 +256,7 @@ class CustomSlider extends Component {
       watchlist,
       onWatchlist,
     } = this.props;
+
     let { checkboxes } = this.state,
       data;
 

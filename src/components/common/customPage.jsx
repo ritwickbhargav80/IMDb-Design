@@ -55,6 +55,7 @@ class CustomPage extends Component {
 
   handleClick = (props, type, id, onClear) => {
     onClear();
+    if (type === "tv") type = "show";
     props.history.push(`/${type}/${id}`);
   };
 

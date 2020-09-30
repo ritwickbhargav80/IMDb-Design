@@ -85,7 +85,7 @@ class HomePage extends Component {
   };
 
   render() {
-    const { watchlist, onWatchlist } = this.props;
+    const { props, watchlist, onWatchlist } = this.props;
     const { date, month } = getDateFunction();
     // getActorBirthday(date, monthInNo);
     let { media, link } = this.state;
@@ -117,7 +117,7 @@ class HomePage extends Component {
           <CustomSlider
             media={media}
             type={"playing"}
-            props={this.props}
+            props={props}
             loadLink={this.loadLink}
             checkbox={true}
             val={0}
