@@ -25,6 +25,7 @@ import empty from "../../assets/empty.png";
 
 class CustomDetails extends Component {
   state = {
+    id: "",
     data: {},
     cast: [],
     keywords: [],
@@ -80,6 +81,7 @@ class CustomDetails extends Component {
     );
 
     this.setState({
+      id: params.id,
       data,
       cast,
       keywords,
@@ -96,53 +98,55 @@ class CustomDetails extends Component {
       match: { params },
     } = this.props.props;
 
-    const data = await getDetails(
-      params.type === "show" ? "tv" : "movie",
-      params.id
-    );
+    if (params.id !== this.state.id) {
+      const data = await getDetails(
+        params.type === "show" ? "tv" : "movie",
+        params.id
+      );
 
-    const cast = await getCast(
-      params.type === "movie" ? "movie" : "tv",
-      params.id
-    );
+      const cast = await getCast(
+        params.type === "movie" ? "movie" : "tv",
+        params.id
+      );
 
-    const keywords = await getKeywords(
-      params.type === "movie" ? "movie" : "tv",
-      params.id
-    );
+      const keywords = await getKeywords(
+        params.type === "movie" ? "movie" : "tv",
+        params.id
+      );
 
-    const genres = await getGenres(params.type === "movie" ? "movie" : "tv");
+      const genres = await getGenres(params.type === "movie" ? "movie" : "tv");
 
-    const similar = await getSimilarMovies(
-      params.type === "movie" ? "movie" : "tv",
-      params.id
-    );
+      const similar = await getSimilarMovies(
+        params.type === "movie" ? "movie" : "tv",
+        params.id
+      );
 
-    const recommendations = await getRecommendations(
-      params.type === "movie" ? "movie" : "tv",
-      params.id
-    );
+      const recommendations = await getRecommendations(
+        params.type === "movie" ? "movie" : "tv",
+        params.id
+      );
 
-    const trailer = await getTrailer(
-      params.id,
-      params.type === "movie" ? "movie" : "tv"
-    );
+      const trailer = await getTrailer(
+        params.id,
+        params.type === "movie" ? "movie" : "tv"
+      );
 
-    const reviews = await getReviews(
-      params.type === "movie" ? "movie" : "tv",
-      params.id
-    );
+      const reviews = await getReviews(
+        params.type === "movie" ? "movie" : "tv",
+        params.id
+      );
 
-    this.setState({
-      data,
-      cast,
-      keywords,
-      genres,
-      similar,
-      recommendations,
-      trailer,
-      reviews,
-    });
+      this.setState({
+        data,
+        cast,
+        keywords,
+        genres,
+        similar,
+        recommendations,
+        trailer,
+        reviews,
+      });
+    }
   }
 
   getGenres = (data) => {

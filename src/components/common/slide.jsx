@@ -4,6 +4,7 @@ import "../../stylesheets/slide.css";
 
 import { getTitle, getContent } from "../../utils/slide";
 import { toast } from "react-toastify";
+import { getTrailer } from "../../utils/apiCalls";
 
 class Slide extends Component {
   state = { show: false, showBtn: false };
@@ -16,16 +17,23 @@ class Slide extends Component {
     this.setState({ showBtn: value });
   }
 
-  handleTrailer = (e, media, loadLink) => {
+  handleTrailer = async (e, media, loadLink, id, type) => {
     e.stopPropagation();
-    if (!media.trailer) toast.info("No trailer available");
-    else loadLink("https://www.youtube.com/watch?v=" + media.trailer);
+    try {
+      const trailer = await getTrailer(id, type === "movie" ? "movie" : "tv");
+
+      if (!trailer) toast.info("No trailer available");
+      else loadLink("https://www.youtube.com/watch?v=" + trailer);
+    } catch (err) {
+      if (err.response.status === 404) toast.info("No trailer available");
+      else toast.info("Something went Wrong");
+    }
   };
 
   handleWhitelist = (e, props, onWatchlist, type, id, login, added) => {
     e.stopPropagation();
     if (login) {
-      onWatchlist(type, id);
+      onWatchlist(type === "movie" ? "movie" : "tv", id);
       if (added === undefined) toast.success("Added successfully!");
       else toast.success("Removed successfully!");
     } else props.history.push("/signin");
@@ -92,7 +100,9 @@ class Slide extends Component {
                 <abbr title="Play Trailer">
                   <div
                     className="pulse"
-                    onClick={(e) => this.handleTrailer(e, trailer, loadLink)}
+                    onClick={(e) =>
+                      this.handleTrailer(e, trailer, loadLink, id, type)
+                    }
                   >
                     <i
                       className="fa fa-play-circle-o play-circle-icon"

@@ -29,18 +29,18 @@ async function getMedia(type, category, pageNo = 1, search = "") {
     );
     tempdata = data;
 
-    tempdata.results.map(
-      async (m) => (m.trailer = await getTrailer(m.id, type))
-    );
+    // tempdata.results.map(
+    //   async (m) => (m.trailer = await getTrailer(m.id, type))
+    // );
   } else {
     const { data } = await axios.get(
       `${common}${category}/${type}${apiKey}${process.env.REACT_APP_API_KEY}&page=${pageNo}`
     );
     tempdata = data;
 
-    tempdata.results.map(
-      async (m) => (m.trailer = await getTrailer(m.id, category))
-    );
+    // tempdata.results.map(
+    //   async (m) => (m.trailer = await getTrailer(m.id, category))
+    // );
   }
   return tempdata.results.filter((data) => data.poster_path != null);
 }
@@ -66,7 +66,7 @@ async function getDetails(type, id) {
     `${common}${type}/${id}${apiKey}${process.env.REACT_APP_API_KEY}`
   );
 
-  data.trailer = await getTrailer(id, type);
+  // data.trailer = await getTrailer(id, type);
 
   return data;
 }
@@ -123,7 +123,7 @@ async function getSimilarMovies(type, id) {
     `${common}${type}/${id}/similar${apiKey}${process.env.REACT_APP_API_KEY}`
   );
 
-  data.results.map(async (m) => (m.trailer = await getTrailer(m.id, type)));
+  // data.results.map(async (m) => (m.trailer = await getTrailer(m.id, type)));
 
   return data.results.filter((data) => data.poster_path != null);
 }
@@ -133,7 +133,7 @@ async function getRecommendations(type, id) {
     `${common}${type}/${id}/recommendations${apiKey}${process.env.REACT_APP_API_KEY}`
   );
 
-  data.results.map(async (m) => (m.trailer = await getTrailer(m.id, type)));
+  // data.results.map(async (m) => (m.trailer = await getTrailer(m.id, type)));
 
   return data.results.filter((data) => data.poster_path != null);
 }
