@@ -174,7 +174,7 @@ class CustomDetails extends Component {
     } else toast.info("No trailer Available");
   };
 
-  displayPage = (params, login, props) => {
+  displayPage = (params, login, props, watchlist, onWatchlist) => {
     const {
       data,
       cast,
@@ -496,6 +496,9 @@ class CustomDetails extends Component {
             props={props}
             loadLink={this.loadLink}
             single={params.type}
+            watchlist={watchlist}
+            onWatchlist={onWatchlist}
+            login={login}
           />
         ) : (
           <div className="text-center not-available">
@@ -524,6 +527,9 @@ class CustomDetails extends Component {
             props={props}
             loadLink={this.loadLink}
             single={params.type}
+            watchlist={watchlist}
+            onWatchlist={onWatchlist}
+            login={login}
           />
         ) : (
           <div className="text-center not-available">
@@ -542,12 +548,18 @@ class CustomDetails extends Component {
       match: { params },
     } = this.props.props;
     const { data } = this.state;
-    const { login } = this.props;
+    const { login, watchlist, onWatchlist } = this.props;
 
     return (
       <div className="container">
         {data.poster_path ? (
-          this.displayPage(params, login, this.props.props)
+          this.displayPage(
+            params,
+            login,
+            this.props.props,
+            watchlist,
+            onWatchlist
+          )
         ) : (
           <Spinner />
         )}

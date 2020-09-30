@@ -172,7 +172,8 @@ class CustomSlider extends Component {
     media,
     single,
     watchlist,
-    onWatchlist
+    onWatchlist,
+    login
   ) => {
     const settings = this.getSettings(data);
     if (single) {
@@ -227,6 +228,7 @@ class CustomSlider extends Component {
                   id={movie.id}
                   watchlist={watchlist}
                   onWatchlist={onWatchlist}
+                  login={login}
                 />
               </div>
             ))}
@@ -255,6 +257,7 @@ class CustomSlider extends Component {
       val,
       watchlist,
       onWatchlist,
+      login,
     } = this.props;
 
     let { checkboxes } = this.state,
@@ -287,7 +290,8 @@ class CustomSlider extends Component {
           media,
           single,
           watchlist,
-          onWatchlist
+          onWatchlist,
+          login
         )}
       </React.Fragment>
     );

@@ -85,7 +85,7 @@ class HomePage extends Component {
   };
 
   render() {
-    const { props, watchlist, onWatchlist } = this.props;
+    const { props, watchlist, onWatchlist, login } = this.props;
     const { date, month } = getDateFunction();
     // getActorBirthday(date, monthInNo);
     let { media, link } = this.state;
@@ -123,6 +123,7 @@ class HomePage extends Component {
             val={0}
             watchlist={watchlist}
             onWatchlist={onWatchlist}
+            login={login}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
@@ -132,12 +133,13 @@ class HomePage extends Component {
           <CustomSlider
             media={media}
             type={"popular"}
-            props={this.props}
+            props={props}
             loadLink={this.loadLink}
             checkbox={true}
             val={2}
             watchlist={watchlist}
             onWatchlist={onWatchlist}
+            login={login}
           />
         )}
         <h3 className="h3">Top Rated</h3>
@@ -147,12 +149,13 @@ class HomePage extends Component {
           <CustomSlider
             media={media}
             type={"topRated"}
-            props={this.props}
+            props={props}
             loadLink={this.loadLink}
             checkbox={true}
             val={4}
             watchlist={watchlist}
             onWatchlist={onWatchlist}
+            login={login}
           />
         )}
         <h3 className="h3">Today's Exclusive</h3>

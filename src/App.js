@@ -89,6 +89,7 @@ class App extends Component {
                   onClear={this.handleClear}
                   watchlist={watchlist}
                   onWatchlist={this.handleWhitelist}
+                  login={login}
                 />
               )}
             />
@@ -103,6 +104,7 @@ class App extends Component {
                 onClear={this.handleClear}
                 watchlist={watchlist}
                 onWatchlist={this.handleWhitelist}
+                login={login}
               />
             )}
           />
@@ -115,6 +117,7 @@ class App extends Component {
                 onClear={this.handleClear}
                 watchlist={watchlist}
                 onWatchlist={this.handleWhitelist}
+                login={login}
               />
             )}
           />
@@ -139,7 +142,14 @@ class App extends Component {
           <Route path="/not-found" exact component={NotFound} />
           <Route
             path="/:type/:id"
-            component={(props) => <CustomDetails props={props} login={login} />}
+            component={(props) => (
+              <CustomDetails
+                props={props}
+                login={login}
+                watchlist={watchlist}
+                onWatchlist={this.handleWhitelist}
+              />
+            )}
           />
           <Route
             path="/"
@@ -149,6 +159,7 @@ class App extends Component {
                 watchlist={watchlist}
                 onWatchlist={this.handleWhitelist}
                 props={props}
+                login={login}
               />
             )}
           />

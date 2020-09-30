@@ -22,9 +22,10 @@ class Slide extends Component {
     else loadLink("https://www.youtube.com/watch?v=" + media.trailer);
   };
 
-  handleWhitelist = (e, onWatchlist, type, id) => {
+  handleWhitelist = (e, props, onWatchlist, type, id, login) => {
     e.stopPropagation();
-    onWatchlist(type, id);
+    if (login) onWatchlist(type, id);
+    else props.history.push("/signin");
   };
 
   render() {
@@ -40,6 +41,8 @@ class Slide extends Component {
       watchlist,
       onWatchlist,
       id,
+      props,
+      login,
     } = this.props;
 
     const type = color === "green" ? "show" : "movie";
@@ -102,7 +105,9 @@ class Slide extends Component {
               <div
                 className="add-to-watchlist"
                 title="Add to Watchlist"
-                onClick={(e) => this.handleWhitelist(e, onWatchlist, type, id)}
+                onClick={(e) =>
+                  this.handleWhitelist(e, props, onWatchlist, type, id, login)
+                }
                 style={{
                   backgroundColor:
                     added !== undefined
