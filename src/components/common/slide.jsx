@@ -22,10 +22,13 @@ class Slide extends Component {
     else loadLink("https://www.youtube.com/watch?v=" + media.trailer);
   };
 
-  handleWhitelist = (e, props, onWatchlist, type, id, login) => {
+  handleWhitelist = (e, props, onWatchlist, type, id, login, added) => {
     e.stopPropagation();
-    if (login) onWatchlist(type, id);
-    else props.history.push("/signin");
+    if (login) {
+      onWatchlist(type, id);
+      if (added === undefined) toast.success("Added successfully!");
+      else toast.success("Removed successfully!");
+    } else props.history.push("/signin");
   };
 
   render() {
@@ -106,7 +109,15 @@ class Slide extends Component {
                 className="add-to-watchlist"
                 title="Add to Watchlist"
                 onClick={(e) =>
-                  this.handleWhitelist(e, props, onWatchlist, type, id, login)
+                  this.handleWhitelist(
+                    e,
+                    props,
+                    onWatchlist,
+                    type,
+                    id,
+                    login,
+                    added
+                  )
                 }
                 style={{
                   backgroundColor:

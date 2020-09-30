@@ -174,6 +174,14 @@ class CustomDetails extends Component {
     } else toast.info("No trailer Available");
   };
 
+  handleWhitelist = (e, props, onWatchlist, type, id, login, added) => {
+    if (login) {
+      onWatchlist(type, parseInt(id));
+      if (added === undefined) toast.success("Added successfully!");
+      else toast.success("Removed successfully!");
+    } else props.history.push("/signin");
+  };
+
   displayPage = (params, login, props, watchlist, onWatchlist) => {
     const {
       data,
@@ -205,6 +213,7 @@ class CustomDetails extends Component {
     else status = { icon: "fa fa-times ", class: " red-color" };
 
     const media = { recommendations, similar, genres };
+    const added = watchlist[params.type].find((e) => e === parseInt(params.id));
 
     return (
       <React.Fragment>
@@ -276,9 +285,24 @@ class CustomDetails extends Component {
               <div
                 className="add-to-watchlist"
                 title="Add to Watchlist"
+                onClick={(e) =>
+                  this.handleWhitelist(
+                    e,
+                    props,
+                    onWatchlist,
+                    params.type,
+                    params.id,
+                    login,
+                    added
+                  )
+                }
                 style={{
                   backgroundColor:
-                    params.type === "movie" ? "#1b3a64" : "#004235",
+                    added !== undefined
+                      ? "rgba(245, 192, 31, 0.8)"
+                      : params.type === "movie"
+                      ? "#1b3a64"
+                      : "#004235",
                   height: "1.7em",
                   paddingTop: "1px",
                   marginTop: "5px",
@@ -286,12 +310,21 @@ class CustomDetails extends Component {
               >
                 <p className="watchlist btn">
                   <i
-                    className="fa-plus plus-icon"
+                    className={
+                      (added === undefined ? "fa-plus " : "fa-times ") +
+                      "plus-icon " +
+                      (added === undefined ? "" : "select-color")
+                    }
                     aria-hidden="true"
                     style={{ fontSize: "14.5px" }}
                   />
-                  <span className="btn-txt" style={{ fontSize: "11px" }}>
-                    Add to Watchlist
+                  <span
+                    className={
+                      "btn-txt " + (added === undefined ? "" : "select-color")
+                    }
+                    style={{ fontSize: "11px" }}
+                  >
+                    {added === undefined ? "Add to Watchlist" : "Remove"}
                   </span>
                 </p>
               </div>
