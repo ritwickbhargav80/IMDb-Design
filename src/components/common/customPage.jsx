@@ -115,7 +115,7 @@ class CustomPage extends Component {
   };
 
   render() {
-    const { type, search, onClear, watchlist } = this.props;
+    const { type, search, onClear, watchlist, onWatchlist } = this.props;
     const css = {
       marginLeft: "0.75em",
       marginRight: "0.75em",
@@ -205,6 +205,7 @@ class CustomPage extends Component {
                         css={css}
                         loadLink={search ? this.props.linkLoad : this.loadLink}
                         watchlist={watchlist}
+                        onWatchlist={onWatchlist}
                       />
                     </div>
                   ) : (

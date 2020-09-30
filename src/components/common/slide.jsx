@@ -22,9 +22,9 @@ class Slide extends Component {
     else loadLink("https://www.youtube.com/watch?v=" + media.trailer);
   };
 
-  handleWhitelist = (e, props) => {
+  handleWhitelist = (e, onWatchlist, type, id) => {
     e.stopPropagation();
-    window.location = "/";
+    onWatchlist(type, id);
   };
 
   render() {
@@ -34,18 +34,23 @@ class Slide extends Component {
       trailer,
       genre,
       content,
-      props,
       loadLink,
       color,
       css,
       watchlist,
+      onWatchlist,
       id,
     } = this.props;
 
-    console.log(id, watchlist);
-
     const type = color === "green" ? "show" : "movie";
     const added = watchlist[type].find((e) => e === id);
+
+    const css1 = {
+      marginLeft: "0.75em",
+      marginRight: "0.75em",
+      marginTop: "2.5em",
+      boxShadow: "4px 2px rgba(245, 192, 31, 0.8)",
+    };
 
     let titleSliced = getTitle(title),
       contentSliced = getContent(content);
@@ -57,7 +62,7 @@ class Slide extends Component {
             className="card custom-card"
             onMouseEnter={() => this.setIsShown(true)}
             onMouseLeave={() => this.setIsShown(false)}
-            style={css}
+            style={added === undefined ? css : css1}
           >
             <img
               className="img-responsive img-card"
@@ -104,11 +109,11 @@ class Slide extends Component {
               <div
                 className="add-to-watchlist"
                 title="Add to Watchlist"
-                onClick={(e) => this.handleWhitelist(e, props)}
+                onClick={(e) => this.handleWhitelist(e, onWatchlist, type, id)}
                 style={{
                   backgroundColor:
                     added !== undefined
-                      ? "#f5c01f"
+                      ? "rgba(245, 192, 31, 0.8)"
                       : color === "green"
                       ? "#004235"
                       : "#1b3a64",
@@ -122,7 +127,8 @@ class Slide extends Component {
                 >
                   <i
                     className={
-                      "fa-plus plus-icon " +
+                      (added === undefined ? "fa-plus " : "fa-times ") +
+                      "plus-icon " +
                       (added === undefined ? "" : "select-color")
                     }
                     aria-hidden="true"
@@ -132,7 +138,7 @@ class Slide extends Component {
                       "btn-txt " + (added === undefined ? "" : "select-color")
                     }
                   >
-                    Add to Watchlist
+                    {added === undefined ? "Add to Watchlist" : "Remove"}
                   </span>
                 </p>
               </div>

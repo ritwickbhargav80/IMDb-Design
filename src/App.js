@@ -17,7 +17,7 @@ import Watchlist from "./components/watchlist";
 class App extends Component {
   state = {
     search: "",
-    login: true,
+    login: false,
     changed: false,
     watchlist: { movie: [539885, 337401], show: [] },
   };
@@ -37,6 +37,22 @@ class App extends Component {
     const { login } = this.state;
     this.setState({ login: !login });
     !login && props.history.replace("/");
+  };
+
+  handleWhitelist = (type, id) => {
+    let { watchlist } = this.state;
+    const temp = watchlist[type].find((e) => e === id);
+    if (temp === undefined) watchlist[type].push(id);
+    else {
+      const filtered = watchlist[type].filter((e) => e !== id);
+
+      if (type === "movie")
+        this.setState({ watchlist: { movie: filtered, show: watchlist.show } });
+      else
+        this.setState({
+          watchlist: { movie: watchlist.movie, show: filtered },
+        });
+    }
   };
 
   render() {
@@ -72,6 +88,7 @@ class App extends Component {
                   history={props}
                   onClear={this.handleClear}
                   watchlist={watchlist}
+                  onWatchlist={this.handleWhitelist}
                 />
               )}
             />
@@ -85,6 +102,7 @@ class App extends Component {
                 history={props}
                 onClear={this.handleClear}
                 watchlist={watchlist}
+                onWatchlist={this.handleWhitelist}
               />
             )}
           />
@@ -96,6 +114,7 @@ class App extends Component {
                 history={props}
                 onClear={this.handleClear}
                 watchlist={watchlist}
+                onWatchlist={this.handleWhitelist}
               />
             )}
           />
@@ -109,7 +128,11 @@ class App extends Component {
             <Route
               path="/watchlist"
               component={(props) => (
-                <Watchlist props={props} watchlist={watchlist} />
+                <Watchlist
+                  props={props}
+                  watchlist={watchlist}
+                  onWatchlist={this.handleWhitelist}
+                />
               )}
             />
           )}
@@ -121,7 +144,12 @@ class App extends Component {
           <Route
             path="/"
             exact
-            component={() => <HomePage watchlist={watchlist} />}
+            component={() => (
+              <HomePage
+                watchlist={watchlist}
+                onWatchlist={this.handleWhitelist}
+              />
+            )}
           />
           {search === "" && changed && <Redirect to="/" />}
           <Redirect to="/not-found" />

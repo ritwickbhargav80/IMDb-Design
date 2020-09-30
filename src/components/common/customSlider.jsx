@@ -164,7 +164,16 @@ class CustomSlider extends Component {
     return data;
   };
 
-  getSlider = (checkbox, data, props, loadLink, media, single, watchlist) => {
+  getSlider = (
+    checkbox,
+    data,
+    props,
+    loadLink,
+    media,
+    single,
+    watchlist,
+    onWatchlist
+  ) => {
     const settings = this.getSettings(data);
     if (single) {
       let { genres } = media;
@@ -217,6 +226,7 @@ class CustomSlider extends Component {
                   }
                   id={movie.id}
                   watchlist={watchlist}
+                  onWatchlist={onWatchlist}
                 />
               </div>
             ))}
@@ -244,6 +254,7 @@ class CustomSlider extends Component {
       single,
       val,
       watchlist,
+      onWatchlist,
     } = this.props;
     let { checkboxes } = this.state,
       data;
@@ -274,7 +285,8 @@ class CustomSlider extends Component {
           loadLink,
           media,
           single,
-          watchlist
+          watchlist,
+          onWatchlist
         )}
       </React.Fragment>
     );

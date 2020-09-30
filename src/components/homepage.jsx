@@ -85,7 +85,7 @@ class HomePage extends Component {
   };
 
   render() {
-    const { watchlist } = this.props;
+    const { watchlist, onWatchlist } = this.props;
     const { date, month } = getDateFunction();
     // getActorBirthday(date, monthInNo);
     let { media, link } = this.state;
@@ -122,6 +122,7 @@ class HomePage extends Component {
             checkbox={true}
             val={0}
             watchlist={watchlist}
+            onWatchlist={onWatchlist}
           />
         )}
         <h3 className="h3 margin-bottom-10">Popular TV Shows and Movies</h3>
@@ -136,6 +137,7 @@ class HomePage extends Component {
             checkbox={true}
             val={2}
             watchlist={watchlist}
+            onWatchlist={onWatchlist}
           />
         )}
         <h3 className="h3">Top Rated</h3>
@@ -150,6 +152,7 @@ class HomePage extends Component {
             checkbox={true}
             val={4}
             watchlist={watchlist}
+            onWatchlist={onWatchlist}
           />
         )}
         <h3 className="h3">Today's Exclusive</h3>

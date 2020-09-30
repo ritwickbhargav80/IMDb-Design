@@ -84,7 +84,7 @@ class CustomPage1 extends Component {
   };
 
   render() {
-    const { type, loadLink, watchlist } = this.props;
+    const { type, loadLink, watchlist, onWatchlist } = this.props;
     const { pageNo, total_pages } = this.state;
     const { mediaData } = this.state.data;
 
@@ -146,6 +146,7 @@ class CustomPage1 extends Component {
                         css={css}
                         loadLink={loadLink}
                         watchlist={watchlist}
+                        onWatchlist={onWatchlist}
                       />
                     </div>
                   ) : (

@@ -33,7 +33,7 @@ class Watchlist extends Component {
   };
 
   render() {
-    const { props, watchlist } = this.props;
+    const { props, watchlist, onWatchlist } = this.props;
     const { link } = this.state;
 
     return (
@@ -69,11 +69,13 @@ class Watchlist extends Component {
             </div>
             <CustomPage1
               watchlist={watchlist}
+              onWatchlist={onWatchlist}
               type="movie"
               loadLink={this.loadLink}
             />
             <CustomPage1
               watchlist={watchlist}
+              onWatchlist={onWatchlist}
               type="show"
               loadLink={this.loadLink}
             />
