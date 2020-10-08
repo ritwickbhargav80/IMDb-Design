@@ -7,7 +7,6 @@ import CustomSlider from "./common/customSlider";
 import "react-sticky-video/dist/index.css";
 import "../stylesheets/homepage.css";
 
-import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
 import Carousel from "./common/carousel";
 import { getGenres, getMedia } from "../utils/apiCalls";
