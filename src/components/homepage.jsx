@@ -85,7 +85,6 @@ class HomePage extends Component {
 
   render() {
     const { props, watchlist, onWatchlist, login } = this.props;
-    const { month } = getDateFunction();
     // getActorBirthday(date, monthInNo);
     let { media, link } = this.state;
     let { movies } = this.state.media;
