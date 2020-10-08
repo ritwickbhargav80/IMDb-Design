@@ -11,7 +11,6 @@ import { getDateFunction } from "./../utils/common";
 import Spinner from "./common/spinner";
 import Carousel from "./common/carousel";
 import { getGenres, getMedia } from "../utils/apiCalls";
-import empty from "../assets/empty.png";
 
 class HomePage extends Component {
   state = {
@@ -86,7 +85,7 @@ class HomePage extends Component {
 
   render() {
     const { props, watchlist, onWatchlist, login } = this.props;
-    const { date, month } = getDateFunction();
+    const { month } = getDateFunction();
     // getActorBirthday(date, monthInNo);
     let { media, link } = this.state;
     let { movies } = this.state.media;
