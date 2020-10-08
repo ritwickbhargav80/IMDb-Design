@@ -158,19 +158,6 @@ class HomePage extends Component {
             login={login}
           />
         )}
-        <h3 className="h3">Today's Exclusive</h3>
-        <div className="left-border">
-          <h5 className="sub-heading">Top Coverage &gt;</h5>
-        </div>
-        <p className="sub-script">
-          People born on {month} {date}
-        </p>
-        <div className="text-center not-available">
-          <p>
-            <img src={empty} alt="NA" />
-            Not Available
-          </p>
-        </div>
       </div>
     );
   }
