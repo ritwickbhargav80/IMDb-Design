@@ -6,7 +6,7 @@ async function getTrailer(id, type) {
   const { data } = await axios.get(
     `${common}${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
   );
-  const obj = data.results.find((o) => o.type.toLowerCase() === "trailer");
+  const obj = data.results.find((o) => o.type.toLowerCase() === "trailer" && o.site.toLowerCase() === "youtube");
   return obj?.key;
 }
 
