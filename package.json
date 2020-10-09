@@ -15,7 +15,6 @@
     "popper.js": "^1.16.1",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
-    "react-animated-slider": "^2.0.0",
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
