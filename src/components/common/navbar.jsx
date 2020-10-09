@@ -23,23 +23,39 @@ const Navbar = ({ login, onLogout, onChange, onClear }) => {
       </button>
       <div className="collapse navbar-collapse" id="myid">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item pad-left">
+          <li
+            className="nav-item pad-left"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+          >
             <NavLink className="nav-link" exact to="/" onClick={onClear}>
               Home
             </NavLink>
           </li>
-          <li className="nav-item pad-left">
+          <li
+            className="nav-item pad-left"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+          >
             <NavLink className="nav-link" to="/movies" onClick={onClear}>
               Movies
             </NavLink>
           </li>
-          <li className="nav-item pad-left">
+          <li
+            className="nav-item pad-left"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+          >
             <NavLink className="nav-link" to="/shows" onClick={onClear}>
               Tv Shows
             </NavLink>
           </li>
           {login && (
-            <li className="nav-item pad-left">
+            <li
+              className="nav-item pad-left"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+            >
               <NavLink className="nav-link" to="/watchlist" onClick={onClear}>
                 Watchlist
               </NavLink>
@@ -78,7 +94,11 @@ const Navbar = ({ login, onLogout, onChange, onClear }) => {
               </div>
             </form>
           </li>
-          <li className="nav-item pad-left last">
+          <li
+            className="nav-item pad-left last"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+          >
             <div className="behind" />
             <div className="front">
               <NavLink

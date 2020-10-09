@@ -78,13 +78,29 @@ class App extends Component {
           onChange={this.handleChange}
           onClear={this.handleClear}
         />
-        <Switch>
-          {search !== "" && (
+        <div data-toggle="collapse" data-target=".navbar-collapse.show">
+          <Switch>
+            {search !== "" && (
+              <Route
+                path="/search"
+                component={(props) => (
+                  <Search
+                    search={search}
+                    history={props}
+                    onClear={this.handleClear}
+                    watchlist={watchlist}
+                    onWatchlist={this.handleWhitelist}
+                    login={login}
+                  />
+                )}
+              />
+            )}
+            {search !== "" && <Redirect to="/search" />}
             <Route
-              path="/search"
+              path="/movies"
               component={(props) => (
-                <Search
-                  search={search}
+                <CustomPage
+                  type={"movie"}
                   history={props}
                   onClear={this.handleClear}
                   watchlist={watchlist}
@@ -93,80 +109,66 @@ class App extends Component {
                 />
               )}
             />
-          )}
-          {search !== "" && <Redirect to="/search" />}
-          <Route
-            path="/movies"
-            component={(props) => (
-              <CustomPage
-                type={"movie"}
-                history={props}
-                onClear={this.handleClear}
-                watchlist={watchlist}
-                onWatchlist={this.handleWhitelist}
-                login={login}
-              />
-            )}
-          />
-          <Route
-            path="/shows"
-            component={(props) => (
-              <CustomPage
-                type={"tv"}
-                history={props}
-                onClear={this.handleClear}
-                watchlist={watchlist}
-                onWatchlist={this.handleWhitelist}
-                login={login}
-              />
-            )}
-          />
-          <Route
-            path="/signin"
-            component={(props) => (
-              <SignIn onLogin={() => this.handleLogin(props)} />
-            )}
-          />
-          {login && (
             <Route
-              path="/watchlist"
+              path="/shows"
               component={(props) => (
-                <Watchlist
+                <CustomPage
+                  type={"tv"}
+                  history={props}
+                  onClear={this.handleClear}
+                  watchlist={watchlist}
+                  onWatchlist={this.handleWhitelist}
+                  login={login}
+                />
+              )}
+            />
+            <Route
+              path="/signin"
+              component={(props) => (
+                <SignIn onLogin={() => this.handleLogin(props)} />
+              )}
+            />
+            {login && (
+              <Route
+                path="/watchlist"
+                component={(props) => (
+                  <Watchlist
+                    props={props}
+                    watchlist={watchlist}
+                    onWatchlist={this.handleWhitelist}
+                  />
+                )}
+              />
+            )}
+            <Route path="/not-found" exact component={NotFound} />
+            <Route
+              path="/:type/:id"
+              component={(props) => (
+                <CustomDetails
                   props={props}
+                  login={login}
                   watchlist={watchlist}
                   onWatchlist={this.handleWhitelist}
                 />
               )}
             />
-          )}
-          <Route path="/not-found" exact component={NotFound} />
-          <Route
-            path="/:type/:id"
-            component={(props) => (
-              <CustomDetails
-                props={props}
-                login={login}
-                watchlist={watchlist}
-                onWatchlist={this.handleWhitelist}
-              />
-            )}
-          />
-          <Route
-            path="/"
-            exact
-            component={(props) => (
-              <HomePage
-                watchlist={watchlist}
-                onWatchlist={this.handleWhitelist}
-                props={props}
-                login={login}
-              />
-            )}
-          />
-          {search === "" && changed && <Redirect to="/" />}
-          <Redirect to="/not-found" />
-        </Switch>
-        <Footer />
+            <Route
+              path="/"
+              exact
+              component={(props) => (
+                <HomePage
+                  watchlist={watchlist}
+                  onWatchlist={this.handleWhitelist}
+                  props={props}
+                  login={login}
+                />
+              )}
+            />
+            {search === "" && changed && <Redirect to="/" />}
+            <Redirect to="/not-found" />
+          </Switch>
+          <Footer />
+        </div>
       </div>
     );
   }
