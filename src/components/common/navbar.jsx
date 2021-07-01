@@ -64,7 +64,11 @@ const Navbar = ({ login, onLogout, onChange, onClear }) => {
         </ul>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <form className="form-inline my-2 my-lg-0" id="myForm">
+            <form
+              className="form-inline my-2 my-lg-0"
+              id="myForm"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <div id="input_container">
                 <input
                   className="form-control search-box"

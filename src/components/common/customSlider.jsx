@@ -209,9 +209,10 @@ class CustomSlider extends Component {
                   title={movie.title ? movie.title : movie.name}
                   genre={
                     movie.genre +
-                    (movie.release_date
-                      ? movie.release_date
-                      : movie.first_air_date
+                    String(
+                      movie.release_date
+                        ? movie.release_date
+                        : movie.first_air_date
                     ).slice(0, 4)
                   }
                   content={movie.overview}
