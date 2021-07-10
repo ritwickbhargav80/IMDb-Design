@@ -153,8 +153,8 @@ class CustomDetails extends Component {
     let str = "";
     data.genres.map((g) => (str += g.name + ", "));
     str += data.release_date
-      ? data.release_date.slice(0, 4)
-      : data.first_air_date.slice(0, 4);
+      ? String(data.release_date).slice(0, 4)
+      : String(data.first_air_date).slice(0, 4);
     return str;
   };
 
