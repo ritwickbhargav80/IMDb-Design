@@ -116,15 +116,8 @@ class CustomPage extends Component {
   };
 
   render() {
-    const {
-      type,
-      search,
-      onClear,
-      watchlist,
-      onWatchlist,
-      history,
-      login,
-    } = this.props;
+    const { type, search, onClear, watchlist, onWatchlist, history, login } =
+      this.props;
     const css = {
       marginLeft: "0.75em",
       marginRight: "0.75em",
@@ -205,8 +198,8 @@ class CustomPage extends Component {
                         genre={
                           media.genre +
                           (type === "movie"
-                            ? media.release_date.slice(0, 4)
-                            : media.first_air_date.slice(0, 4))
+                            ? String(media.release_date).slice(0, 4)
+                            : String(media.first_air_date).slice(0, 4))
                         }
                         content={media.overview}
                         trailer={media}

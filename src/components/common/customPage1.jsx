@@ -137,8 +137,8 @@ class CustomPage1 extends Component {
                         genre={
                           media.genre +
                           (type === "movie"
-                            ? media.release_date.slice(0, 4)
-                            : media.first_air_date.slice(0, 4))
+                            ? String(media.release_date).slice(0, 4)
+                            : String(media.first_air_date).slice(0, 4))
                         }
                         content={media.overview}
                         trailer={media}
